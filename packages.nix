@@ -15,7 +15,6 @@
 		cava
 		mono
 		cmake
-		git
     lutris
     neofetch
     pulseaudio
