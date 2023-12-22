@@ -7,6 +7,7 @@
   imports = [
     inputs.hyprland.homeManagerModules.default
 		./wofi.nix
+		./git.nix
     ./packages.nix
     #./hyprland.nix
     ./zsh.nix
