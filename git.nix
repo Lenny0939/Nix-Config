@@ -6,7 +6,7 @@
 		userEmail = "lennyescott@gmail.com";
 		extraConfig = {
 			credential.helper = "${
-				pkgs.git.override { withLibSecret = true; }
+				pkgs.git.override { withLibsecret = true; }
 			}/bin/git-credential-libsecret";
 		};
 	};
