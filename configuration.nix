@@ -5,26 +5,10 @@
 { inputs, config, pkgs, ... }:
 
 {
-	nixpkgs.overlays = [ (final: prev: {
-		myHyprland = prev.hyprland.overrideAttrs (old: {
-			src = prev.fetchFromGitHub {
-				owner = "hyprwm";
-				repo = "Hyprland";
-				rev = "v0.33.1";
-				# If you don't know the hash, the first time, set:
-				# hash = "";
-				# then nix will fail the build with such an error message:
-				# hash mismatch in fixed-output derivation '/nix/store/m1ga09c0z1a6n7rj8ky3s31dpgalsn0n-source':
-				# specified: sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
-				# got:    sha256-173gxk0ymiw94glyjzjizp8bv8g72gwkjhacigd1an09jshdrjb4
-				hash = "sha256-goxBCjjWitvx2Oq4AihpA2OhYEirolMLC48fdA7Iey8=";
-			};
-		});
-	} ) ];	
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-	./nvidia.nix
+			./unique.nix
       inputs.home-manager.nixosModules.home-manager
     ];
   programs.zsh.enable = true;
