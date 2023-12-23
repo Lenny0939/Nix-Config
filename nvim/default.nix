@@ -72,13 +72,10 @@
 				plugin = own-code_runner-nvim;
 				config = toLuaFile ./plugin/code_runner.lua;
 			}
-<<<<<<< HEAD
-=======
 			{
 				plugin = nvim-colorizer-lua;
 				config = toLua "require(\"colorizer\").setup()";
 			}
->>>>>>> pc
 			which-key-nvim
 			indent-blankline-nvim
 			{
