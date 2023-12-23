@@ -6,10 +6,7 @@
       update = "sudo nixos-rebuild switch --flake ~/nix";
       detnsw = "nmcli --ask con up detnsw";
       wifi = "nmcli --ask dev wifi connect";
-<<<<<<< HEAD
 			nixtest = "sudo nixos-rebuild test --flake ~/nix";
-=======
->>>>>>> pc
     };
     plugins = [
     {
@@ -30,7 +27,6 @@
         rev = "5fab542516579bdea5cc8b94137d9d85a0c3fda5";
         sha256 = "1ff1z2snbl9rx3mrcjbamlvc21fh9l32zi2hh9vcgcwbjwn5kikg";
       };
-<<<<<<< HEAD
     }
 		/*{
 			name = "zsh-vi-mode";
@@ -49,9 +45,5 @@
 	programs.starship = {
     enable = true;
     #settings = pkgs.lib.importTOML ./starship.toml;
-=======
-      }
-    ];
->>>>>>> pc
   };
 }
