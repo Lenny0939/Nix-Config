@@ -1,5 +1,4 @@
 { config, pkgs, lib, ... }:
-<<<<<<< HEAD
 {  
 	nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
@@ -8,13 +7,9 @@
 		lua
 		searxng
 		swappy
-=======
-{
-  home.packages = with pkgs; [
 		spotify-tui
 		steam-tui
 		mangohud
->>>>>>> pc
 		grim
 		swww
 		slurp
@@ -25,11 +20,8 @@
 		cava
 		mono
 		cmake
-<<<<<<< HEAD
-=======
 		git
 		wofi
->>>>>>> pc
     lutris
     neofetch
     pulseaudio
