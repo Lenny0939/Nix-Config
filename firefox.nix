@@ -3,7 +3,6 @@
 	programs.firefox = {
 		enable = true;
 		profiles.lenchog = {
-<<<<<<< HEAD
 			search = {
 				engines = {
 					"Nix Packages" = {
@@ -38,30 +37,6 @@
 				force = true;
 				default = "SearX";
 			};
-=======
-			search.engines = {
-				"Nix Packages" = {
-					urls = [{
-						template = "https://search.nixos.org/packages";
-						params = [
-							{ name = "type"; value = "packages"; }
-							{ name = "query"; value = "{searchTerms}"; }
-						];
-					}];
-					icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-					definedAliases = [ "@nix" ];
-				};
-				"Searx" = {
-					urls = [{
-						template = "https://opnxng.com/search?q={searchTerms}";
-					}];
-					iconUpdateURL = "https://opnxng.com/favicon.ico";
-					updateInterval = 24 * 60 * 60 * 1000;
-					definedAliases = [ "@sx" ];
-				};
-			};
-			search.force = true;
->>>>>>> pc
 			settings = {
 				/****************************************************************************
 				 * Betterfox                                                                *
@@ -314,17 +289,6 @@
 				 * END: BETTERFOX                                                           *
 				*/
 			};
-<<<<<<< HEAD
-			userChrome = ''   
-#nav-bar {
-    transition: all 0.1s ease !important;    
-    opacity: 0; margin-top: -35px !important; 
-} 
-
-#titlebar:hover~#nav-bar, #nav-bar:hover, #nav-bar:focus-within { 
-    opacity: 1; margin-top: 0px !important; 
-}
-=======
 			userChrome = ''
 				/* 
 					This stylesheet is based on:
