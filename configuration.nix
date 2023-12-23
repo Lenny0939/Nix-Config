@@ -5,7 +5,6 @@
 { inputs, config, pkgs, ... }:
 
 {
-<<<<<<< HEAD
   imports =
   [ # Include the results of the hardware scan.
 		./unique.nix
@@ -13,7 +12,6 @@
 		./searx.nix
     inputs.home-manager.nixosModules.home-manager
   ];
-=======
 	nixpkgs.overlays = [ (final: prev: {
 		myHyprland = prev.hyprland.overrideAttrs (old: {
 			src = prev.fetchFromGitHub {
@@ -30,29 +28,6 @@
 			};
 		});
 	} ) ];	
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-	./nvidia.nix
-      inputs.home-manager.nixosModules.home-manager
-    ];
->>>>>>> pc
-  programs.zsh.enable = true;
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-  };
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  #boot.plymouth.enable = true;
-  #boot.plymouth.theme = "breeze";
-  boot.initrd.systemd.enable = true;
-  boot.loader.timeout = null;
-
-  systemd.services.NetworkManager-wait-online.enable = false;
-<<<<<<< HEAD
 	services.tlp.enable = true;
 	powerManagement.enable = true;
 	swapDevices = [ {
@@ -60,9 +35,6 @@
 		size = 16*1024;
 	}];
   networking.hostName = "nixos";
-=======
-  networking.hostName = "nixos"; # Define your hostname.
->>>>>>> pc
   users.defaultUserShell = pkgs.zsh;
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -73,11 +45,6 @@
 	console = {
 		earlySetup = true;
 		keyMap = "colemak";
-<<<<<<< HEAD
-	};
-=======
-		packages = with pkgs; [ hack-font ];
-		font = "${pkgs.hack-font}/share/fonts/truetype/Hack-Regular.ttf";
 	};
   # Enable video
   hardware.opengl = {
@@ -86,7 +53,6 @@
     intel-media-driver
     ];
   };
->>>>>>> pc
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -122,20 +88,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-		lf
-		dconf
-  ];
   fonts.packages = with pkgs; [
-  hack-font
-<<<<<<< HEAD
-  (nerdfonts.override { fonts = ["Hack"]; })
-=======
-  overpass
-  (nerdfonts.override { fonts = ["Hack" "Overpass" ]; })
->>>>>>> pc
+		hack-font
+		(nerdfonts.override { fonts = ["Hack"]; })
   ];
 
   services.greetd = {
