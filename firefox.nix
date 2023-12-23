@@ -3,6 +3,42 @@
 	programs.firefox = {
 		enable = true;
 		profiles.lenchog = {
+<<<<<<< HEAD
+			search = {
+				engines = {
+					"Nix Packages" = {
+						urls = [{
+							template = "https://search.nixos.org/packages";
+							params = [
+								{ name = "type"; value = "packages"; }
+								{ name = "query"; value = "{searchTerms}"; }
+							];
+						}];
+						icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+						definedAliases = [ "@nix" ];
+					};
+					"YT" = {
+						urls = [{
+							template = "https://www.youtube.com/results?search_query={searchTerms}";
+						}];
+						iconUpdateURL = "https://www.youtube.com/favicon.ico";
+						updateInterval = 24 * 60 * 60 * 1000;
+						definedAliases = [ "@yt" ];
+					};
+
+					"SearX" = {
+						urls = [{
+							template = "http://localhost:8888/search?q={searchTerms}";
+						}];
+						iconUpdateURL = "http://localhost:8888/favicon.ico";
+						updateInterval = 24 * 60 * 60 * 1000;
+						definedAliases = [ "@sx" ];
+					};
+				};
+				force = true;
+				default = "SearX";
+			};
+=======
 			search.engines = {
 				"Nix Packages" = {
 					urls = [{
@@ -25,6 +61,7 @@
 				};
 			};
 			search.force = true;
+>>>>>>> pc
 			settings = {
 				/****************************************************************************
 				 * Betterfox                                                                *
@@ -277,6 +314,17 @@
 				 * END: BETTERFOX                                                           *
 				*/
 			};
+<<<<<<< HEAD
+			userChrome = ''   
+#nav-bar {
+    transition: all 0.1s ease !important;    
+    opacity: 0; margin-top: -35px !important; 
+} 
+
+#titlebar:hover~#nav-bar, #nav-bar:hover, #nav-bar:focus-within { 
+    opacity: 1; margin-top: 0px !important; 
+}
+=======
 			userChrome = ''
 				/* 
 					This stylesheet is based on:
@@ -428,6 +476,7 @@
 					display: -moz-box;
 					height: 24px;
 				}
+>>>>>>> pc
 			'';
 		};
 	};
