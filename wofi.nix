@@ -1,9 +1,9 @@
-{ pkgs, config, ... }:
+{ config, pkgs, ... }:
 {
 	programs.wofi = {
 		enable = true;
 		settings = {
-			insensitive = true;
+			insensitive= true;
 			allow_images = true;
 		};
 		style = ''

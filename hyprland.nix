@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
+	wayland.windowManager.hyprland = {
+=======
 	/*wayland.windowManager.hyprland = {
+>>>>>>> pc
 		enable = true;
 		systemdIntegration = true;
 		extraConfig = ''
@@ -136,6 +140,9 @@
     bindm = $mainMod, mouse:272, movewindow
     bindm = $mainMod, mouse:273, resizewindow
     '';
+<<<<<<< HEAD
+  };
+=======
   };*/
 	programs.waybar = {
 		enable = true;
@@ -343,4 +350,5 @@
 		'';
 		*/
 	};
+>>>>>>> pc
 }
