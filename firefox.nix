@@ -3,6 +3,7 @@
 	programs.firefox = {
 		enable = true;
 		profiles.lenchog = {
+<<<<<<< HEAD
 			search = {
 				engines = {
 					"Nix Packages" = {
@@ -37,6 +38,30 @@
 				force = true;
 				default = "SearX";
 			};
+=======
+			search.engines = {
+				"Nix Packages" = {
+					urls = [{
+						template = "https://search.nixos.org/packages";
+						params = [
+							{ name = "type"; value = "packages"; }
+							{ name = "query"; value = "{searchTerms}"; }
+						];
+					}];
+					icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+					definedAliases = [ "@nix" ];
+				};
+				"Searx" = {
+					urls = [{
+						template = "https://opnxng.com/search?q={searchTerms}";
+					}];
+					iconUpdateURL = "https://opnxng.com/favicon.ico";
+					updateInterval = 24 * 60 * 60 * 1000;
+					definedAliases = [ "@sx" ];
+				};
+			};
+			search.force = true;
+>>>>>>> pc
 			settings = {
 				/****************************************************************************
 				 * Betterfox                                                                *
@@ -289,6 +314,7 @@
 				 * END: BETTERFOX                                                           *
 				*/
 			};
+<<<<<<< HEAD
 			userChrome = ''   
 #nav-bar {
     transition: all 0.1s ease !important;    
@@ -298,6 +324,159 @@
 #titlebar:hover~#nav-bar, #nav-bar:hover, #nav-bar:focus-within { 
     opacity: 1; margin-top: 0px !important; 
 }
+=======
+			userChrome = ''
+				/* 
+					This stylesheet is based on:
+						- https://github.com/khuedoan/one-line-firefox
+						- https://github.com/MrOtherGuy/firefox-csshacks
+				*/
+				/* Hide buttons without keyboard shortcuts by ChatGPT */
+				#back-button,
+				#forward-button,
+				#reload-button,
+				#home-button,
+				.tab-close-button,
+				#new-tab-button {
+					display: none !important;
+				}
+				/* Hide bookmarks by ChatGPT */
+				#PersonalToolbar {
+					display: none !important;
+				}
+				/* Title bar */
+				.titlebar-buttonbox {
+					display: none !important;
+				}
+
+				.titlebar-spacer {
+					display: none !important;
+				}
+
+				/* Tab bar */
+				#navigator-toolbox {
+					border: 0px !important;
+					padding-bottom: 1px !important; /* symmetry */
+				}
+
+				#TabsToolbar {
+					margin-left: 40vw !important; /* offset for url bar and icons */
+				}
+
+				#tabbrowser-tabs {
+					--tab-min-height: 29px !important;
+					border: none !important;
+					box-shadow: none !important;
+				}
+
+				/* Nav bar */
+				#nav-bar {
+					background: transparent !important;
+					margin-top: -36px !important;
+					margin-right: 60vw !important; /* offset for tab bar */
+					padding-bottom: 1px !important; /* symmetry */
+				}
+
+				/* URL bar elements - uncomment selectors to _hide_ them */
+
+				/* #back-button {
+					display: none !important;
+				} */
+
+				/* #forward-button {
+					display: none !important;
+				} */
+
+				/* #tracking-protection-icon-container {
+					display: none !important;
+				} */
+
+				#urlbar-container {
+					min-width: 175px !important;
+				}
+
+				#urlbar-background {
+					animation: none !important;
+				}
+
+				#urlbar {
+					background: transparent !important;
+					border: none !important;
+					box-shadow: none !important;
+				}
+
+				#page-action-buttons {
+					display: none !important;
+				}
+
+				#PanelUI-button {
+					display: none !important;
+				}
+
+				/* properly display url bar pop up (history, search suggestions,...) */
+
+				:root{
+					--toolbar-field-background-color: var(--toolbar-field-non-lwt-bgcolor);
+					--toolbar-field-focus-background-color: var(--lwt-toolbar-field-focus,Field);
+				}
+				:root:-moz-lwtheme{
+					--toolbar-field-background-color: var(--lwt-toolbar-field-background-color);
+				}
+
+				.urlbarView-row-inner{
+					 /* This sets how far the dropdown-items are from the window edge */
+					padding-inline-start: 6px !important;
+				}
+
+				#urlbar-container,
+				#urlbar {
+					position: static !important;
+					display: -moz-box !important;
+				}
+
+				#urlbar {
+					height: auto !important;
+					width: auto !important;
+					box-shadow: inset 0 0 0 1px var(--toolbar-field-border-color, hsla(240,5%,5%,.25));
+					background-color: var(--toolbar-field-background-color, hsla(0,0%,100%,.8));
+					border-radius: var(--toolbarbutton-border-radius);
+					--uc-urlbar-min-width: none; /* navbar_tabs_oneliner.css compatibility */
+				}
+
+				#urlbar[focused] {
+					box-shadow: inset 0 0 0 1px var(--toolbar-field-focus-border-color, highlight);
+				}
+
+				.urlbarView {
+					position: absolute !important;
+					margin: 0 !important;
+					left: 0 !important;
+					width: 40vw !important; /* width of the urlbar pop up; set to 100vw to make it as wide as the browser window */
+					border-width: 1px 0;
+					top: calc(var(--urlbar-toolbar-height) + 1px); /* symmetry */
+					background-color: var(--toolbar-field-focus-background-color, inherit);
+					z-index: 4;
+					box-shadow: 0 1px 4px rgba(0,0,0,.05);
+				}
+
+				#urlbar > #urlbar-input-container {
+					padding: 0px !important;
+					width: auto !important;
+					height: auto !important;
+				}
+
+				#urlbar > #urlbar-background {
+					display: none !important;
+				}
+
+				/* This may seem pretty weird, but it gets around an issue where the height of urlbar may suddenly change when one starts typing into it */
+				/* If you are otherwise modifying the urlbar height then you might need to modify the height of this too */
+				#urlbar > #urlbar-input-container::before {
+					content: "";
+					display: -moz-box;
+					height: 24px;
+				}
+>>>>>>> pc
 			'';
 		};
 	};

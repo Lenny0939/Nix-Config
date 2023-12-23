@@ -5,6 +5,7 @@
 { inputs, config, pkgs, ... }:
 
 {
+<<<<<<< HEAD
   imports =
   [ # Include the results of the hardware scan.
 		./unique.nix
@@ -12,6 +13,30 @@
 		./searx.nix
     inputs.home-manager.nixosModules.home-manager
   ];
+=======
+	nixpkgs.overlays = [ (final: prev: {
+		myHyprland = prev.hyprland.overrideAttrs (old: {
+			src = prev.fetchFromGitHub {
+				owner = "hyprwm";
+				repo = "Hyprland";
+				rev = "v0.33.1";
+				# If you don't know the hash, the first time, set:
+				# hash = "";
+				# then nix will fail the build with such an error message:
+				# hash mismatch in fixed-output derivation '/nix/store/m1ga09c0z1a6n7rj8ky3s31dpgalsn0n-source':
+				# specified: sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+				# got:    sha256-173gxk0ymiw94glyjzjizp8bv8g72gwkjhacigd1an09jshdrjb4
+				hash = "sha256-goxBCjjWitvx2Oq4AihpA2OhYEirolMLC48fdA7Iey8=";
+			};
+		});
+	} ) ];	
+  imports =
+    [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+	./nvidia.nix
+      inputs.home-manager.nixosModules.home-manager
+    ];
+>>>>>>> pc
   programs.zsh.enable = true;
   programs.steam = {
     enable = true;
@@ -27,6 +52,7 @@
   boot.loader.timeout = null;
 
   systemd.services.NetworkManager-wait-online.enable = false;
+<<<<<<< HEAD
 	services.tlp.enable = true;
 	powerManagement.enable = true;
 	swapDevices = [ {
@@ -34,6 +60,9 @@
 		size = 16*1024;
 	}];
   networking.hostName = "nixos";
+=======
+  networking.hostName = "nixos"; # Define your hostname.
+>>>>>>> pc
   users.defaultUserShell = pkgs.zsh;
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -44,7 +73,20 @@
 	console = {
 		earlySetup = true;
 		keyMap = "colemak";
+<<<<<<< HEAD
 	};
+=======
+		packages = with pkgs; [ hack-font ];
+		font = "${pkgs.hack-font}/share/fonts/truetype/Hack-Regular.ttf";
+	};
+  # Enable video
+  hardware.opengl = {
+  enable = true;
+  extraPackages = with pkgs; [
+    intel-media-driver
+    ];
+  };
+>>>>>>> pc
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -88,7 +130,12 @@
   ];
   fonts.packages = with pkgs; [
   hack-font
+<<<<<<< HEAD
   (nerdfonts.override { fonts = ["Hack"]; })
+=======
+  overpass
+  (nerdfonts.override { fonts = ["Hack" "Overpass" ]; })
+>>>>>>> pc
   ];
 
   services.greetd = {
