@@ -7,6 +7,7 @@
 	programs.home-manager.enable = true;
   imports = [
     inputs.hyprland.homeManagerModules.default
+		./neofetch.nix
 		./wofi.nix
 		./git.nix
     #./hyprland.nix
