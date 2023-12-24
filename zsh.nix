@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   programs.zsh = {
     enable = true;
     shellAliases = {
-      update = "sudo nixos-rebuild switch --flake ~/nix#${home.sessionVariables.hostname}";
+      update = "sudo nixos-rebuild switch --flake ~/nix#${config.networking.hostName}";
       detnsw = "nmcli --ask con up detnsw";
       wifi = "nmcli --ask dev wifi connect";
 			nixtest = "sudo nixos-rebuild test --flake ~/nix";
