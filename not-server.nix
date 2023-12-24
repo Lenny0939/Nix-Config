@@ -1,6 +1,7 @@
 { inputs, config, pkgs, ... }:
 
 {
+	imports = [ ./searx.nix ];
 	programs.hyprland = {
 		enable = true;
 	};
