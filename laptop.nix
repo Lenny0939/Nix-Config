@@ -8,7 +8,7 @@
 	home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      lenny = import ./laptop-home.nix;
+      lenny = import ./not-server.nix;
     };
   };
 	networking.hostName = "laptop";

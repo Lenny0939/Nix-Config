@@ -8,7 +8,7 @@
 	home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      lenny = import ./pc-home.nix;
+      lenny = import ./not-server-home.nix;
     };
   };
   networking.hostName = "pc"; # Define your hostname.
