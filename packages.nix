@@ -2,6 +2,7 @@
 {  
 	nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
+		playerctl
 		gh
 		lazygit
 		lua
