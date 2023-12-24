@@ -3,13 +3,7 @@
 	imports = [
     inputs.home-manager.nixosModules.home-manager
 	];
-	home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      lenny = import ./server-home.nix;
-    };
-  };
-  programs.zsh.enable = true;
+	programs.zsh.enable = true;
 	programs.neovim.enable = true;
 	programs.neovim.defaultEditor = true;
   boot.loader.systemd-boot.enable = true;
