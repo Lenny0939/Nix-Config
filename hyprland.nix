@@ -94,10 +94,10 @@
 	bind = $mainMod, e, movefocus, d
 	
 	# Resize windows with mainMod + shift + arrow keys
-	#bind = $mainMod SHIFT, a, n, resizewindow, l
-	#bind = $mainMod SHIFT, a, o, resizewindow, r
-	#bind = $mainMod SHIFT, a, i, resizewindow, u
-	#bind = $mainMod SHIFT, a, e, resizewindow, d
+	bind = $mainMod SUPER, n, resizeactive, -10 0
+	bind = $mainMod SUPER, o, resizeactive, 10 0
+	bind = $mainMod SUPER, i, resizeactive, 0 10
+	bind = $mainMod SUPER, e, resizeactive, 0 -10
 
 	# Move windows with mainMod + shift + arrow keys
 	bind = $mainMod SHIFT, n, movewindow, l
