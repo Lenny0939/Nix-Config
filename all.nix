@@ -12,7 +12,6 @@
   #boot.plymouth.theme = "breeze";
   boot.initrd.systemd.enable = true;
   boot.loader.timeout = null;
-	networking.hostName = "lennys-server";
   systemd.services.NetworkManager-wait-online.enable = false;
 	powerManagement.enable = true;
 	swapDevices = [ {
