@@ -10,7 +10,7 @@
 		./neofetch.nix
 		./wofi.nix
 		./git.nix
-    #./hyprland.nix
+    ./hyprland.nix
     ./packages.nix
 		./mangohud.nix
     ./zsh.nix
