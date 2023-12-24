@@ -1,7 +1,6 @@
 { inputs, config, pkgs, lib, ... }:
 {
 	imports = [
-		./server-hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
 	];
 	home-manager = {
