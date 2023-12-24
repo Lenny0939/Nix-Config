@@ -4,6 +4,9 @@
 	imports = [ ./searx.nix ];
 	programs.hyprland = {
 		enable = true;
+		package = pkgs.hyprland.override {
+			debug = true;
+		};
 	};
   programs.steam = {
     enable = true;
