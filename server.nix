@@ -1,14 +1,8 @@
 { inputs, config, pkgs, lib, ... }:
 {
 	imports = [
-		./configuration.nix
+		./all.nix
 		./server-hardware-configuration.nix
+		./searx.nix
 	];
-	home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      lenny = import ./server-home.nix;
-    };
-  };
-  networking.hostName = "lennys-server"; # Define your hostname.
 }
