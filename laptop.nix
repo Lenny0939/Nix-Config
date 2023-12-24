@@ -1,7 +1,8 @@
 { inputs, config, pkgs, lib, ... }:
 {
 	imports = [
-		./configuration.nix
+		./all.nix
+		./not-server.nix
 		./laptop-hardware-configuration.nix
 	];
 	home-manager = {
@@ -10,12 +11,11 @@
       lenny = import ./laptop-home.nix;
     };
   };
-	programs.hyprland = {
-		enable = true;
-	};
-  networking.hostName = "laptop";
+	networking.hostName = "laptop";
 	hardware.opengl = {
 		enable = true;
-		#put drivers here, just forgor
+		extraPackages = with pkgs; [
+			intel-media-driver
+		];
 	};
 }
