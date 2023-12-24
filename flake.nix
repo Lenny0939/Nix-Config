@@ -46,12 +46,27 @@
     	};
     in {
     	nixosConfigurations = {
-      	nixos = nixpkgs.lib.nixosSystem {
+      	laptop = nixpkgs.lib.nixosSystem {
         	specialArgs = { inherit inputs system; };
 					modules = [
-	  				./configuration.nix
+	  				./laptop.nix
 					];
   			};
+
+				pc = nixpkgs.lib.nixosSystem {
+        	specialArgs = { inherit inputs system; };
+					modules = [
+	  				./pc.nix
+					];
+  			};
+
+				server = nixpkgs.lib.nixosSystem {
+        	specialArgs = { inherit inputs system; };
+					modules = [
+	  				./server.nix
+					];
+  			};
+
 				live = nixpkgs.lib.nixosSystem {
         	specialArgs = { inherit inputs system; };
 					modules = [
