@@ -136,7 +136,7 @@
 				};
 			};
 			"custom/spotify" = {
-				exec = echo "$(${pkgs.playerctl} -p spotifyd metadata artist) - $(${pkgs.playerctl} -p spotifyd metadata title)";
+				exec = "echo $(${pkgs.playerctl} -p spotifyd metadata artist) - $(${pkgs.playerctl} -p spotifyd metadata title)";
 				format = "{} ";
 				return-type = "json";
 			};
