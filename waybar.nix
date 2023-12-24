@@ -109,8 +109,8 @@
 			position = "top";
 			height = 30;
 			modules-left = ["hyprland/workspaces" "clock"];
-			modules-center = ["hyprland/window" "custom/spotify"];
-			modules-right = ["pulseaudio" "battery" ];
+			modules-center = ["hyprland/window" ];
+			modules-right = ["pulseaudio" "battery" "custom/spotify"];
 			"hyprland/workspaces" = {
 				format = "{name}";
 			};
@@ -136,9 +136,8 @@
 				};
 			};
 			"custom/spotify" = {
-				exec = "echo $(${pkgs.playerctl} -p spotifyd metadata artist) - $(${pkgs.playerctl} -p spotifyd metadata title)";
+				exec = "echo $(${pkgs.playerctl}/bin/playerctl -p spotifyd metadata artist) - $(${pkgs.playerctl}/bin/playerctl -p spotifyd metadata title)";
 				format = "{} ";
-				return-type = "json";
 			};
 		}];
 	};
