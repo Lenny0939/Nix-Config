@@ -3,8 +3,8 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
-      #update = "sudo nixos-rebuild switch --flake ~/nix#${config.networking.hostName}";
-      detnsw = "nmcli --ask con up detnsw";
+      update = "sudo nixos-rebuild switch --flake ~/nix#$(hostname -s)";
+			detnsw = "nmcli --ask con up detnsw";
       wifi = "nmcli --ask dev wifi connect";
 			#nixtest = "sudo nixos-rebuild test --flake ~/nix";
     };
@@ -38,9 +38,11 @@
 			};
 		}*/
     ];
-		initExtra = ''
+		/*initExtra = ''
 			source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 		'';
+		*/
+		initExtra = "neofetch";
   };  
 	programs.starship = {
     enable = true;
