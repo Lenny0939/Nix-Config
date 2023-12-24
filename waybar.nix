@@ -110,7 +110,7 @@
 			height = 30;
 			modules-left = ["hyprland/workspaces" "clock"];
 			modules-center = ["hyprland/window" ];
-			modules-right = ["pulseaudio" "battery" "custom/spotify"];
+			modules-right = ["custom/spotify" "pulseaudio" "battery" ];
 			"hyprland/workspaces" = {
 				format = "{name}";
 			};
