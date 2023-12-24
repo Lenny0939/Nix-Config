@@ -3,7 +3,7 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
-      update = "sudo nixos-rebuild switch --flake ~/nix";
+      update = "sudo nixos-rebuild switch --flake ~/nix#${home.sessionVariables.hostname}";
       detnsw = "nmcli --ask con up detnsw";
       wifi = "nmcli --ask dev wifi connect";
 			nixtest = "sudo nixos-rebuild test --flake ~/nix";
