@@ -2,15 +2,9 @@
 {
 	imports = [
 		./all.nix
-		./not-server.nix
+		./configuration.nix
 		./laptop-hardware-configuration.nix
 	];
-	home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      lenny = import ./not-server.nix;
-    };
-  };
 	networking.hostName = "laptop";
 	hardware.opengl = {
 		enable = true;

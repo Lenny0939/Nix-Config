@@ -2,16 +2,10 @@
 {
 	imports = [
 		./all.nix
-		./not-server.nix
+		./configuration.nix
 		./pc-hardware-configuration.nix
 	];
-	home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      lenny = import ./not-server-home.nix;
-    };
-  };
-  networking.hostName = "pc"; # Define your hostname.
+	networking.hostName = "pc"; # Define your hostname.
 	environment.sessionVariables = rec { WLR_NO_HARDWARE_CURSORS = "1"; };
 	hardware.opengl = {
 		enable = true;

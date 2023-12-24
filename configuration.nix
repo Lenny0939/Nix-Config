@@ -16,7 +16,12 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
+	home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      lenny = import ./home.nix;
+    };
+  };
   fonts.packages = with pkgs; [
 		hack-font
 		(nerdfonts.override { fonts = ["Hack"]; })
