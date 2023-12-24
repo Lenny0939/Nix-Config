@@ -284,17 +284,18 @@
 				 * START: MY OVERRIDES                                                      *
 				****************************************************************************/
 				# Enter your personal prefs below this line:
-				DisableAppUpdate = false;
 				/****************************************************************************
 				 * END: BETTERFOX                                                           *
 				*/
 			};
 			userChrome = ''
-				#nav-bar:focus-within {
-    			height: auto;
-    			margin-bottom: 0px;
-  				opacity: 1;
-    			overflow: show;
+				#nav-bar {
+    			transition: all 0.1s ease !important;    
+    			opacity: 0; margin-top: -35px !important; 
+				} 
+
+				#titlebar:hover~#nav-bar, #nav-bar:hover, #nav-bar:focus-within { 
+  	  		opacity: 1; margin-top: 0px !important; 
 				}
 			'';
 		};
