@@ -129,6 +129,11 @@
 			# Scroll through existing workspaces with mainMod + scroll
 			bind = $mainMod, mouse_down, workspace, e+1
 			bind = $mainMod, mouse_up, workspace, e-1
+			
+			bind = $mainMod SUPER, o, resizeactive, 25 0
+			bind = $mainMod SUPER, n, resizeactive, -25 0
+			bind = $mainMod SUPER, i, resizeactive, 0 -25
+			bind = $mainMod SUPER, e, resizeactive, 0 25
 
 			# Move/resize windows with mainMod + LMB/RMB and dragging
 			bindm = $mainMod, mouse:272, movewindow
