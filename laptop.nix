@@ -5,6 +5,7 @@
 		./configuration.nix
 		./laptop-hardware-configuration.nix
 	];
+	services.tlp.enable = true;
 	networking.hostName = "laptop";
 	hardware.opengl = {
 		enable = true;
