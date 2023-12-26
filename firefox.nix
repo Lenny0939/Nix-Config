@@ -289,6 +289,10 @@
 				*/
 			};
 			userChrome = ''
+				* {
+					font-size: 16px !important;
+					font-family: Hack !important;
+				}
 				#nav-bar {
     			transition: all 0.1s ease !important;    
     			opacity: 0; margin-top: -35px !important; 
