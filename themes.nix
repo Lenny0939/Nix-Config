@@ -1,10 +1,14 @@
-{ pkgs, ...}:
+{ inputs, nix-colors, config, pkgs, ...}:
 {
-  gtk.enable = true;
-  gtk.cursorTheme.package = pkgs.bibata-cursors;
-  gtk.cursorTheme.name = "Bibata-Modern-Ice";
-  #gtk.theme.package = pkgs.sweet;
-  #gtk.theme.name = "sweet";
-  gtk.iconTheme.package = pkgs.papirus-icon-theme;
-  gtk.iconTheme.name = "Papirus";
+	imports = [
+		inputs.nix-colors.homeManagerModules.default
+	];
+	colorScheme = inputs.nix-colors.colorSchemes.nord;
+	gtk = {
+		enable = true;
+  	cursorTheme.package = pkgs.bibata-cursors;
+  	cursorTheme.name = "Bibata-Modern-Ice";
+  	iconTheme.package = pkgs.papirus-icon-theme;
+  	iconTheme.name = "Papirus";
+	};
 }
