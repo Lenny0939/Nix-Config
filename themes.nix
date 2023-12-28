@@ -4,6 +4,9 @@
 		inputs.nix-colors.homeManagerModules.default
 	];
 	colorScheme = inputs.nix-colors.colorSchemes.nord;
+	#colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
+	#colorScheme = inputs.nix-colors.colorSchemes.catppuccin-frappe;
+	#colorScheme = inputs.nix-colors.colorSchemes.kanagawa;
 	gtk = {
 		enable = true;
   	cursorTheme.package = pkgs.bibata-cursors;

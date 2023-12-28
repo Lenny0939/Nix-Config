@@ -14,17 +14,18 @@
 			window {
 				font-size: 28px;
 				font-family: "Hack Nerd Font";
-				background-color: rgba(50,50,50,0.9);
-				color: white;
+				background-color: #${config.colorScheme.colors.base00};
+				color: #${config.colorScheme.colors.base05};
 			}
 			#entry:selected {
-				background-color: #bbccdd;
-				background: linear-gradient(90deg, #bbccdd, #cca5dd);
-				color: #333333;
+				background: linear-gradient(90deg, #${config.colorScheme.colors.base05}, #${config.colorScheme.colors.base07});
+			}
+			#text:selected {
+				color: #${config.colorScheme.colors.base01};
 			}
 			#input{
-				background-color:rgba(50,50,50,0.5);
-				color:white;
+				background-color: #${config.colorScheme.colors.base00};
+				color: #${config.colorScheme.colors.base05};
 				padding: 0.25em;
 			}
 			#entry{

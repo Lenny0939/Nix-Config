@@ -12,9 +12,9 @@
 			}
 			window#waybar {
 			background: transparent;
-			color: white;
+			color: #${config.colorScheme.colors.base05};
 			}
-
+#
 		#window {
 				font-weight: bold;
 				font-family: "Hack";
@@ -28,19 +28,19 @@
 		#workspaces button {
 				padding: 0 5px;
 				background: transparent;
-				color: white;
+				color: #${config.colorScheme.colors.base05};
 				border-top: 2px solid transparent;
 		}
 
-		#workspaces button.focused {
+		/*#workspaces button.focused {
 				color: #c9545d;
 				border-top: 2px solid #c9545d;
-		}
+		}*/
 
-		#mode {
+		/*#mode {
 				background: #64727D;
 				border-bottom: 3px solid white;
-		}
+		}*/
 
 		#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
 				padding: 0 3px;
@@ -50,59 +50,21 @@
 		#clock {
 				font-weight: bold;
 		}
-
-		#battery {
-		}
-
-		#battery icon {
-				color: red;
-		}
-
-		#battery.charging {
-		}
-
-		@keyframes blink {
+			/*		@keyframes blink {
 				to {
-						background-color: #ffffff;
-						color: black;
+					background-color: #ffffff;
+					color: black;
 				}
-		}
-
-		#battery.warning:not(.charging) {
-				color: white;
+			}
+			*/
+			#battery.warning:not(.charging) {
+				color: #${config.colorScheme.colors.base0B};
 				animation-name: blink;
 				animation-duration: 0.5s;
 				animation-timing-function: linear;
 				animation-iteration-count: infinite;
 				animation-direction: alternate;
-		}
-
-		#cpu {
-		}
-
-		#memory {
-		}
-
-		#network {
-	}
-
-	#network.disconnected {
-			background: #f53c3c;
-	}
-
-	#pulseaudio {
-	}
-
-	#pulseaudio.muted {
-	}
-
-	#custom-spotify {
-			color: rgb(102, 220, 105);
-	}
-
-	#tray {
-
-	} 
+			}
 		'';
 		settings = [{
 			layer = "top";
@@ -136,7 +98,7 @@
 				};
 			};
 			"custom/spotify" = {
-				exec = "echo $(${pkgs.playerctl}/bin/playerctl -p spotifyd metadata artist) - $(${pkgs.playerctl}/bin/playerctl -p spotifyd metadata title)";
+				exec = "while true; do echo $(${pkgs.playerctl}/bin/playerctl -p spotifyd metadata artist) - $(${pkgs.playerctl}/bin/playerctl -p spotifyd metadata title); done";
 				format = "{} ";
 			};
 		}];
