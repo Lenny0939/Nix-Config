@@ -13,6 +13,7 @@
 			url = "github:CRAG666/code_runner.nvim";
 			flake = false;
 		};
+		nix-colors.url = "github:misterio77/nix-colors";
   };
 
   /*outputs = inputs@{ nixpkgs, home-manager, ... }: {
