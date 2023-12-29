@@ -4,7 +4,7 @@
 		enable = true;
 		settings = { 
 			confirm_os_window_close = 0;
-			background_opacity = "0.9"; 
+			background_opacity = "0.7"; 
 			background = "#${config.colorScheme.colors.base00}";
 			foreground = "#${config.colorScheme.colors.base05}";
 			selection_background = "#${config.colorScheme.colors.base05}";
