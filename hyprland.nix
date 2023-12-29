@@ -65,7 +65,7 @@
 				workspace_swipe = on
 			}
 			$mainMod = ALT
-			bind =, PRINT, exec, grim -g "$(slurp -d)" - 
+			bind =, PRINT, exec, grim -g "$(slurp -d)" - | wl-copy -t image/png
 			bind = $mainMod, T, exec, kitty
 			bind = $mainMod, Z, killactive,
 			bind = $mainMod, M, exit,
