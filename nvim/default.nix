@@ -49,8 +49,9 @@
 			everforest
 			kanagawa-nvim
 			tokyonight-nvim
+			catppuccin-nvim
       {
-				plugin = tokyonight-nvim;
+				plugin = catppuccin-nvim;
 				config = toLuaFile ./plugin/other.lua;
 			}
       {
