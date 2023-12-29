@@ -2,9 +2,12 @@ require("ibl").setup()
 require "ibl".overwrite {
 	exclude = { filetypes = { "dashboard" } }
 }
-require("tokyonight").setup({
-	bold_keywords = true;
-	reduced_blue = true;
-})
+--require("nordic").setup({
+--	bold_keywords = true;
+--	reduced_blue = true;
+--})
+require("catppuccin").setup({
+	transparent_background = true;
+});
 --vim.g.everforest_transparent_background=1
-vim.cmd("colorscheme nordic")
+vim.cmd("colorscheme catppuccin")
