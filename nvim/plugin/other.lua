@@ -3,7 +3,8 @@ require "ibl".overwrite {
 	exclude = { filetypes = { "dashboard" } }
 }
 require("tokyonight").setup({
-	style = "moon",
-	transparent = true
+	bold_keywords = true;
+	reduced_blue = true;
 })
-vim.cmd("colorscheme tokyonight")
+--vim.g.everforest_transparent_background=1
+vim.cmd("colorscheme nordic")

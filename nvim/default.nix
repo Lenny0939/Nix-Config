@@ -43,11 +43,12 @@
 			nui-nvim
 			nvim-notify
 			#Best colorschemes:
-			#	- gruvbox-nvim
-			#	- nord-nvim
-			#	- everforest
-			#	- kanagawa-nvim
-			# - tokyonight-nvim
+			gruvbox-nvim
+			nord-nvim
+			nordic-nvim
+			everforest
+			kanagawa-nvim
+			tokyonight-nvim
       {
 				plugin = tokyonight-nvim;
 				config = toLuaFile ./plugin/other.lua;
