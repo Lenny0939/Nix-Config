@@ -1,9 +1,8 @@
 { inputs, config, pkgs, lib, ... }:
 {
 	imports = [
-		./all.nix
-		./configuration.nix
-		./laptop-hardware-configuration.nix
+		./modules/configuration.nix
+		./modules/laptop-hardware-configuration.nix
 	];
 	services.tlp.enable = true;
 	networking.hostName = "laptop";
