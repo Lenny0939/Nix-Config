@@ -1,9 +1,8 @@
 { inputs, config, pkgs, lib, ... }:
 {
 	imports = [
-		./all.nix
-		./configuration.nix
-		./pc-hardware-configuration.nix
+		./modules/configuration.nix
+		./modules/pc-hardware-configuration.nix
 	];
 	networking.hostName = "pc"; # Define your hostname.
 	environment.sessionVariables = rec { WLR_NO_HARDWARE_CURSORS = "1"; };

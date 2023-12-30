@@ -1,7 +1,11 @@
 { inputs, config, pkgs, ... }:
 
 {
-	imports = [ ./searx.nix ];
+	imports = [ 
+		./modules/searx.nix
+		./modules/configuration.nix
+	];
+
 	programs.hyprland = {
 		enable = true;
 		package = pkgs.hyprland.override {

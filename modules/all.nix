@@ -19,7 +19,7 @@
 		size = 16*1024;
 	}];
   users.defaultUserShell = pkgs.zsh;
-  	console = {
+  console = {
 		earlySetup = true;
 		keyMap = "colemak";
 		font = "${pkgs.terminus_font}/share/consolefonts/ter-132n.psf.gz";
