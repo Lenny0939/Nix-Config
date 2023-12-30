@@ -2,8 +2,8 @@
 
 {
 	imports = [ 
-		./modules/searx.nix
-		./modules/configuration.nix
+		./searx.nix
+		./all.nix
 	];
 
 	programs.hyprland = {
@@ -26,7 +26,7 @@
 	home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      lenny = import ./home.nix;
+      lenny = import ./home/home.nix;
     };
   };
   fonts.packages = with pkgs; [
