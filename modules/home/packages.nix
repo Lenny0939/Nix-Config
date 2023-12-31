@@ -2,15 +2,14 @@
 {  
 	nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
+		cmatrix
+		pipes
 		lf
-		playerctl
 		gh
 		lazygit
 		lua
 		searxng
-		swappy
 		spotify-tui
-		steam-tui
 		mangohud
 		grim
 		swww
