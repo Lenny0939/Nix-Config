@@ -38,14 +38,11 @@
     enable = true;
     settings = rec {
       initial_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd Hyprland";
+        #command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd Hyprland";
+				command = "${pkgs.hyprland}/bin/Hyprland";
         user = "lenny";
       };
-			direct-hyprland = {
-				command = "${pkgs.hyprland}/bin/Hyprland";
-				user = "lenny";
-			};
-      default_session = initial_session;
+			default_session = initial_session;
     };
   };
 
