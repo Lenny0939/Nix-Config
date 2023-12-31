@@ -22,8 +22,8 @@
 				gaps_in = 5
 				gaps_out = 20
 				border_size = 1
-				col.active_border = rgba(573729aa) rgba(574729aa) 45deg
-				col.inactive_border = rgba(595959aa)
+				col.active_border = rgba(${config.colorScheme.colors.base05}aa) 
+				col.inactive_border = rgba(${config.colorScheme.colors.base00}aa)
 				layout= dwindle
 			}
 
@@ -32,7 +32,7 @@
 				drop_shadow = yes
 				shadow_range = 4
 				shadow_render_power = 3
-				col.shadow = rgba(1a1a1aee)
+				col.shadow = rgba(${config.colorScheme.colors.base01}ee)
 				blur {
 					enabled = true;
 					size = 20;
