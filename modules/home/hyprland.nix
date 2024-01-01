@@ -14,10 +14,9 @@
 		}
 	) ];
 	wayland.windowManager.hyprland = {
-		/*package = pkgs.hyprland.override {
+		package = pkgs.hyprland.override {
 			debug = true;
 		};
-		*/
 		#package = pkgs.myhyprland;
 		enable = true;
 		systemd.enable = true;
