@@ -1,9 +1,24 @@
 { config, pkgs, ... }:
-{
+{   
+	nixpkgs.overlays = [ (final: prev:
+		{
+			myhyprland = prev.hyprland.overrideAttrs (old: {
+				patches = (old.patches or []) ++ [
+					(prev.fetchpatch {
+						url = "https://github.com/hyprwm/Hyprland/releases/download/v0.34.0/v0.34.0.tar.gz";
+						#hash = "sha256-09zypx60cbl2k6cfnawx0kq37fq5c99cafmq5yq37bmd4wqcy2qk";
+						hash = "";
+					})
+				];
+			});
+		}
+	) ];
 	wayland.windowManager.hyprland = {
-		package = pkgs.hyprland.override {
+		/*package = pkgs.hyprland.override {
 			debug = true;
 		};
+		*/
+		#package = pkgs.myhyprland;
 		enable = true;
 		systemd.enable = true;
 		extraConfig = ''
