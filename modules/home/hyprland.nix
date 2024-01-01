@@ -5,7 +5,7 @@
 			debug = true;
 		};
 		enable = true;
-		systemdIntegration = true;
+		systemd.enable = true;
 		extraConfig = ''
 			monitor=,preferred,auto,auto
 			exec-once = hyprctl setcursor Bibata-Modern-Ice 25 & swww init & waybar
