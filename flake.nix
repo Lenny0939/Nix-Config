@@ -9,7 +9,7 @@
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-		hyprland.url = "github:hyprwm/Hyprland";
+		hyprland.url = "github:hyprwm/Hyprland?ref=v0.34.0";
 		plugin-code_runner = {
 			url = "github:CRAG666/code_runner.nvim";
 			flake = false;

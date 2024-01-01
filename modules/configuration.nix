@@ -8,9 +8,10 @@
 
 	programs.hyprland = {
 		enable = true;
-		package = pkgs.hyprland.override {
+		/*package = pkgs.hyprland.override {
 			debug = true;
 		};
+		*/
 	};
   programs.steam = {
     enable = true;
