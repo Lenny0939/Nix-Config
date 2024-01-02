@@ -1,11 +1,11 @@
-{ inputs, config, pkgs, lib, ... }:
+{ ... }:
 {
 	imports = [
 		./modules/configuration.nix
 		./modules/pc-hardware-configuration.nix
 	];
-	networking.hostName = "pc"; # Define your hostname.
-	environment.sessionVariables = rec { WLR_NO_HARDWARE_CURSORS = "1"; };
+	networking.hostName = "pc"; 
+	environment.sessionVariables = { WLR_NO_HARDWARE_CURSORS = "1"; };
 	hardware.opengl = {
 		enable = true;
 		driSupport = true;
