@@ -7,7 +7,7 @@
 	#colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
 	colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 	#colorScheme = inputs.nix-colors.colorSchemes.kanagawa;
-	#colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-storm;
+	#colorScheme = inputs.nix-colors.colorSchemes.tokyo-city-dark;
 	#colorscheme = inputs.nix-colors.colorSchemes.everforest/*-dark-hard*/;
 	gtk = {
 		enable = true;
