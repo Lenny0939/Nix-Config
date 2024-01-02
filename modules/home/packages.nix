@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 {  
 	nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
@@ -36,7 +36,7 @@
 		fd
 		ripgrep
 		wl-clipboard
-		rnix-lsp
+		nil
 		clang-tools
 		luajitPackages.lua-lsp
     (pkgs.nerdfonts.override { fonts = [ "Hack" ]; })
