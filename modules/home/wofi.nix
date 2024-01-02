@@ -12,7 +12,7 @@
 			matching = "fuzzy";
 			prompt = "";
 			orientation = "vertical";
-			image_size = 48;
+			image_size = 28;
 			#idk what these do
 			halign = "fill";
 			no_actions = true;
