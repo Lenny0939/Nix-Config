@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
 	nixpkgs.overlays = [
 		(final: prev: {
@@ -37,6 +37,8 @@
 				plugin = nvim-scrollbar;
 				config = toLua "require(\"scrollbar\").setup()";
 			}
+			rustaceanvim
+			nvim-dap
 			comment-nvim
 			vim-illuminate
 			vim-be-good
@@ -108,17 +110,7 @@
 			telescope-fzf-native-nvim
 			neodev-nvim
 			{
-				plugin = (nvim-treesitter.withPlugins (p: [
-    			p.tree-sitter-nix
-	  			p.tree-sitter-lua
-	  			p.tree-sitter-bash
-    			p.tree-sitter-python
-	  			p.tree-sitter-c
-    			p.tree-sitter-gdscript
-					p.tree-sitter-markdown
-					p.tree-sitter-markdown_inline
-					p.tree-sitter-regex
-	  		]));
+				plugin = nvim-treesitter.withAllGrammars;
 				config = toLuaFile ./plugin/treesitter.lua;
 			}
   	];
