@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, nix-colors, ... }: 
+{ inputs, ... }: 
 {
   home.username = "lenny";
   home.homeDirectory = "/home/lenny";
@@ -20,5 +20,6 @@
 		./kitty.nix
 		./waybar.nix
 		./spotify.nix
+		./mako.nix
   ];
 }
