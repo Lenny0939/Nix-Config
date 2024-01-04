@@ -3,6 +3,7 @@
 	nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
 		rust-analyzer
+		cargo
 		rustc
 		cmatrix
 		pipes
