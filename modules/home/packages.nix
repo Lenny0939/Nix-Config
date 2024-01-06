@@ -31,6 +31,7 @@
 			/* C# */
 				mono # C# compiler
 		/* Apps */
+			spotify-tui # Spotify TUI
 			lf # File browser, not really sure how to use
 			lutris # Game collection, I only really use steam so not very useful tbh
 			# Most apps have their own modules
@@ -46,6 +47,7 @@
 			mangohud # Overlay, like MSI Afterburner
 			qmk # Keyboard software
 			brightnessctl # Brightness control
+			pulseaudio # Volume control
 			(pkgs.nerdfonts.override { fonts = [ "Hack" ]; }) # Font
   ];
 }
