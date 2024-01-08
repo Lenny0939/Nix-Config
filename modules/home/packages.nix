@@ -19,7 +19,7 @@
 			/* Rust */
 				cargo # Rust package manager, really helpful for dev
 				rust-analyzer # Dependency for rustaceanvim, LSP server for rust
-				rustc # Rust
+				rustc # Rust compiler
 			/* C */
 				gcc # C compiler
 			/* Git */
