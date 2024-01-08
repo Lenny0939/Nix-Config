@@ -1,9 +1,10 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.o.clipboard = 'unnamedplus'
+vim.o.cursorline = true;
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.signcolumn = 'yes'
+vim.o.signcolumn = 'number'
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.updatetime = 300
@@ -32,4 +33,3 @@ vim.keymap.set('n', '<leader>gb', builtin.diagnostics, {desc = "Search for error
 --vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true, silent = false })
 --vim.keymap.set('n', 'n', 'nzzzv', { noremap = true, silent = false })
 --vim.keymap.set('n', 'N', 'Nzzzv', { noremap = true, silent = false })
-
