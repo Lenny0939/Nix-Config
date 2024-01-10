@@ -1,18 +1,5 @@
 { config, pkgs, ... }:
 {   
-	nixpkgs.overlays = [ (final: prev:
-		{
-			myhyprland = prev.hyprland.overrideAttrs (old: {
-				patches = (old.patches or []) ++ [
-					(prev.fetchpatch {
-						url = "https://github.com/hyprwm/Hyprland/releases/download/v0.34.0/v0.34.0.tar.gz";
-						#hash = "sha256-09zypx60cbl2k6cfnawx0kq37fq5c99cafmq5yq37bmd4wqcy2qk";
-						hash = "";
-					})
-				];
-			});
-		}
-	) ];
 	wayland.windowManager.hyprland = {
 		package = pkgs.hyprland.override {
 			debug = true;
@@ -71,6 +58,7 @@
 				pseudotile = yes
 				preserve_split = yes
 				no_gaps_when_only = 1
+				#no_gaps_when_only = 2
 			}
 			master {
 				new_is_master = true
