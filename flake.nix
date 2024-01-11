@@ -16,27 +16,6 @@
 		};
 		nix-colors.url = "github:misterio77/nix-colors";
   };
-
-  /*outputs = inputs@{ nixpkgs, home-manager, ... }: {
-    nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.lenny = import ./home.nix;
-
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
-          }
-        ];
-      };
-    };
-  };
-  */
   outputs = { self, nixos, nixpkgs, home-manager, hyprland, ... }@inputs:
     let
       system = "x86_64-linux";
@@ -48,20 +27,34 @@
     	};
     in {
     	nixosConfigurations = {
-      	laptop = nixpkgs.lib.nixosSystem {
+      	laptop-no-distractions = nixpkgs.lib.nixosSystem {
         	specialArgs = { inherit inputs system; };
 					modules = [
 	  				./laptop.nix
 					];
   			};
+      	laptop= nixpkgs.lib.nixosSystem {
+        	specialArgs = { inherit inputs system; };
+					modules = [
+	  				./laptop.nix
+						./steam.nix
+					];
+  			};
 
-				pc = nixpkgs.lib.nixosSystem {
+				pc-no-distractions = nixpkgs.lib.nixosSystem {
         	specialArgs = { inherit inputs system; };
 					modules = [
 	  				./pc.nix
 					];
   			};
 
+      	pc = nixpkgs.lib.nixosSystem {
+        	specialArgs = { inherit inputs system; };
+					modules = [
+	  				./laptop.nix
+						./steam.nix
+					];
+  			};
 				server = nixpkgs.lib.nixosSystem {
         	specialArgs = { inherit inputs system; };
 					modules = [

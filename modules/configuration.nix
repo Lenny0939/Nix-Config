@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
 	imports = [ 
@@ -8,16 +8,7 @@
 
 	programs.hyprland = {
 		enable = true;
-		/*package = pkgs.hyprland.override {
-			debug = true;
-		};
-		*/
 	};
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-  };
   services.pipewire = {
     enable = true;
     alsa.enable = true;

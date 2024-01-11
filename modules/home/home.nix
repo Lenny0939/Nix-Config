@@ -12,11 +12,9 @@
 		./git.nix
     ./hyprland.nix
     ./packages.nix
-		./mangohud.nix
     ./zsh.nix
     ./themes.nix
     ./nvim
-    ./firefox.nix
 		./kitty.nix
 		./waybar.nix
 		./spotify.nix

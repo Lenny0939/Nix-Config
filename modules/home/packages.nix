@@ -2,13 +2,6 @@
 {  
 	nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
-		/* Useless Rice Stuff */
-			peaclock # Clock
-			cmatrix # Matrix effect
-			pipes # Cool pipes screensaver thingo
-			cava # Cool audio visualiser
-			neofetch # System info fetcher
-			bottom # Task manager except cool
 		/* Coding stuff */
 			/* Neovim Dependencies */
 				fd # idk, I think it may be related to fuzzy
@@ -33,7 +26,8 @@
 		/* Apps */
 			spotify-tui # Spotify TUI
 			lf # File browser, not really sure how to use
-			lutris # Game collection, I only really use steam so not very useful tbh
+			bottom # Task manager except cool
+			neofetch # System info fetcher
 			# Most apps have their own modules
 		/* Services */
 			/* Notifications */
@@ -43,8 +37,7 @@
 				slurp # Screen selector
 				wl-clipboard # Copies stuff, like screenshots
 		/* Miscellaneous */
-			swww # Wallpaper engine, works really well
-			mangohud # Overlay, like MSI Afterburner
+			swww # Wallpaper
 			qmk # Keyboard software
 			brightnessctl # Brightness control
 			pulseaudio # Volume control
