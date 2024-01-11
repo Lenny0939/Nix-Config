@@ -37,7 +37,7 @@
         	specialArgs = { inherit inputs system; };
 					modules = [
 	  				./laptop.nix
-						./steam.nix
+						./distractions.nix
 					];
   			};
 
@@ -52,7 +52,7 @@
         	specialArgs = { inherit inputs system; };
 					modules = [
 	  				./laptop.nix
-						./steam.nix
+						./distractions.nix
 					];
   			};
 				server = nixpkgs.lib.nixosSystem {
