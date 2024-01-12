@@ -14,7 +14,8 @@
     ./packages.nix
     ./zsh.nix
     ./themes.nix
-    ./nvim
+    #./nvim
+		./nvim/nixvim.nix
 		./kitty.nix
 		./waybar.nix
 		./spotify.nix
