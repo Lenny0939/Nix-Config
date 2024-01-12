@@ -37,7 +37,7 @@
 	  				./laptop.nix
 					];
   			};
-      	laptop= nixpkgs.lib.nixosSystem {
+      	laptop = nixpkgs.lib.nixosSystem {
         	specialArgs = { inherit inputs system; };
 					modules = [
 	  				./laptop.nix
@@ -55,7 +55,7 @@
       	pc = nixpkgs.lib.nixosSystem {
         	specialArgs = { inherit inputs system; };
 					modules = [
-	  				./laptop.nix
+	  				./pc.nix
 						./modules/distractions.nix
 					];
   			};
@@ -71,6 +71,7 @@
 					modules = [
 						(nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
 	  				./laptop.nix
+						./modules/distractions.nix
 					];
   			};
 	  	};
