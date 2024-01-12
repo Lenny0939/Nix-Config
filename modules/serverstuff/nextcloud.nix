@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-
 	environment.etc."nextcloud-admin-pass".text = "password";
 	services.nextcloud = {
 		enable = true;
