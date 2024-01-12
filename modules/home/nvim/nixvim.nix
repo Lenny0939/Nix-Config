@@ -99,6 +99,17 @@
       }
 			{
         mode = "n";
+        key = "<leader>fg";
+        options.silent = true;
+        action = "<cmd>Telescope git_files<CR>";
+      }
+			{
+			  mode = "n";
+				key = "<leader>pv";
+				action = "<cmd>Oil";
+			}
+			{
+        mode = "n";
         key = "<C-d>";
         options.silent = false;
 				options.noremap = true;
