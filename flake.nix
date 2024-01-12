@@ -15,6 +15,10 @@
 			flake = false;
 		};
 		nix-colors.url = "github:misterio77/nix-colors";
+		nixvim = {
+			url = "github:nix-community/nixvim";
+    	inputs.nixpkgs.follows = "nixpkgs";
+		};
   };
   outputs = { self, nixos, nixpkgs, home-manager, hyprland, ... }@inputs:
     let
