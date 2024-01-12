@@ -106,7 +106,7 @@
 			{
 			  mode = "n";
 				key = "<leader>pv";
-				action = "<cmd>Oil";
+				action = "<cmd>Oil<CR>";
 			}
 			{
         mode = "n";
