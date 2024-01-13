@@ -4,7 +4,10 @@
     enable = true;
     #colorschemes.base16-catppuccin-mocha.enable = true;
 		#colorschemes.base16.enable = true;
-		colorschemes.catppuccin.enable = true;
+		colorschemes.catppuccin = {
+		  enable = true;
+			transparentBackground = true;
+		};
 		globals.mapleader = " ";
 		options = {
 			clipboard = "unnamedplus";

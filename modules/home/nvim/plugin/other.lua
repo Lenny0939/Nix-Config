@@ -7,7 +7,7 @@ require "ibl".overwrite {
 --	reduced_blue = true;
 --})
 require("catppuccin").setup({
-	transparent_background = true;
+	transparentBackground = true;
 });
 --vim.g.everforest_transparent_background=1
 vim.cmd("colorscheme catppuccin")
