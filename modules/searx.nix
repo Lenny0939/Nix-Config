@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ lib, ... }:
 {
 	services.searx = {
 		enable = true;    
@@ -21,6 +21,24 @@
 				center_alignment = true;
 				hotkeys = "vim";
 			};
+			engines = [
+			{ name = "duckduckgo";
+				disabled = true;
+			}
+			{ name = "qwant";
+				disabled = true;
+			}
+			{ name = "wikidata";
+				disabled = true;
+			}
+			{ name = "lingva";
+				disabled = true;
+			}
+			{
+				name = "dictzone";
+				disabled = true;
+			}
+			];
 		};
 	};
 }
