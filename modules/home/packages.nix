@@ -14,7 +14,7 @@
 				rust-analyzer # Dependency for rustaceanvim, LSP server for rust
 				rustc # Rust compiler
 			/* C */
-				gcc # C compiler
+				clang # C compiler
 			/* Git */
 				gh # Github cli
 				git # Version control system
