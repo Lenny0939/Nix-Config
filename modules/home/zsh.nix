@@ -1,12 +1,12 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   programs.zsh = {
     enable = true;
     shellAliases = {
-      update = "sudo nixos-rebuild switch --flake ~/nix#$(hostname -s)";
+      rebuild = "sudo nixos-rebuild switch --flake ~/nix#$(hostname -s)";
 			detnsw = "nmcli --ask con up detnsw";
       wifi = "nmcli --ask dev wifi connect";
-			#nixtest = "sudo nixos-rebuild test --flake ~/nix";
+      test = "sudo nixos-rebuild test --flake ~/nix#$(hostname -s)";
     };
     plugins = [
     {
@@ -42,7 +42,7 @@
 			source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 		'';
 		*/
-		initExtra = "neofetch";
+		initExtra = "fastfetch";
   };  
 	programs.starship = {
     enable = true;
