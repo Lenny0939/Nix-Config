@@ -9,7 +9,7 @@
 			width = 420;
 			height = 550;
 			location = "center";
-			matching = "fuzzy";
+			#matching = "fuzzy";
 			prompt = "";
 			orientation = "vertical";
 			image_size = 28;
