@@ -31,11 +31,12 @@
 				lualine.enable = true;
 				notify.enable = true;
 				noice.enable = true;
-				#neoscroll-nvim.enable = true;
 			/* CMP/snippets */
 				cmp_luasnip.enable = true;
-				luasnip.enable = true;
-				#friendly-snippets.enable = true;
+				luasnip = {
+				  enable = true;
+					fromVscode = [{}];
+				};
 				nvim-cmp = {
 					enable = true;
 					autoEnableSources = true;
@@ -73,6 +74,7 @@
 					servers = {
 						nil_ls.enable = true;
 						clangd.enable = true;
+						# Rust-analyzer automatically enabled by rustaceanvim
 					};
 				};
 			/* Makes code look nicer */
@@ -92,6 +94,7 @@
 		extraPlugins = with pkgs.vimPlugins; [
 		  vim-be-good
 			rustaceanvim
+			friendly-snippets
 		];
 		keymaps = [
 			{
