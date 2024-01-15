@@ -8,7 +8,7 @@
   imports = [
     inputs.hyprland.homeManagerModules.default
 		inputs.nixvim.homeManagerModules.nixvim
-		./neofetch.nix
+		./fastfetch.nix
 		./wofi.nix
 		./git.nix
     ./hyprland.nix
