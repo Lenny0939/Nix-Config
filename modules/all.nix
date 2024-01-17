@@ -6,12 +6,14 @@
 	programs.zsh.enable = true;
 	programs.neovim.enable = true;
 	programs.neovim.defaultEditor = true;
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  #boot.plymouth.enable = true;
-  #boot.plymouth.theme = "breeze";
-  boot.initrd.systemd.enable = true;
-  boot.loader.timeout = null;
+  boot = {
+	  loader = {
+		  systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+      timeout = null;
+		};
+    initrd.systemd.enable = true;
+	};
   systemd.services.NetworkManager-wait-online.enable = false;
 	powerManagement.enable = true;
 	swapDevices = [ {
@@ -29,10 +31,6 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   networking = {
 	  networkmanager.enable = true;
-		firewall = {
-		  enable = true;
-		  allowedTCPPorts = [ 8888 ];
-		};
 	};
   time.timeZone = "Australia/Sydney";
   i18n.defaultLocale = "en_AU.UTF-8";
