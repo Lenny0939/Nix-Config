@@ -5,7 +5,6 @@
 			enable = true;
 			externalInterface = "eth0";
 			internalInterfaces = [ "wg0" ];
-			firewall.allowedUDPPorts = [ 51820 ];
 		};
 		wireguard.interfaces = {
 			wg0 = {
@@ -17,7 +16,7 @@
 				postShutdown = ''
 					${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o
 				'';
-				privateKeyFile = "~/.secrets/wireguard";
+				privateKeyFile = "secret";
 				peers = [
 					{
 						/* CHANGE THIS!!! */
