@@ -5,6 +5,6 @@
 		enable = true;
 		package = pkgs.nextcloud28;
 		hostName = "localhost";
-		config.adminpassFile = "/etc/nextcloud-admin-pass";
+		config.adminpassFile = "path to secrets";
 	};
 }
