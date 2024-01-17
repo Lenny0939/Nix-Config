@@ -27,7 +27,13 @@
 	};
   security.rtkit.enable = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  networking.networkmanager.enable = true;
+  networking = {
+	  networkmanager.enable = true;
+		firewall = {
+		  enable = true;
+		  allowedTCPPorts = [ 8888 ];
+		};
+	};
   time.timeZone = "Australia/Sydney";
   i18n.defaultLocale = "en_AU.UTF-8";
   users.users.lenny = {
