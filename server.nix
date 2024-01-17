@@ -1,43 +1,19 @@
-{ pkgs, ... }:
+{ inputs, ... }:
 {
 	imports = [
 		./all.nix
 		./server-hardware-configuration.nix
-		./searx.nix
+		#./modules/searx.nix
+		#./modules/serverstuff/nextcloud.nix
+		#./modules/serverstuff/wireguard-server.nix
+		#./modules/serverstuff/vaultwarden.nix
+		#./modules/serverstuff/blocky.nix
+		#./modules/serverstuff/dashy.nix
 	];
-	environment.etc."nextcloud-admin-pass".text = "password";
-	services.nextcloud = {
-		enable = true;
-		package = pkgs.nextcloud28;
-		hostName = "localhost";
-		config.adminpassFile = "/etc/nextcloud-admin-pass";
-	};
-	networking = {
-		nat = {
-			enable = true;
-			externalInterface = "eth0";
-			internalInterfaces = [ "wg0" ];
-			firewall.allowedUDPPorts = [ 51820 ];
-		};
-		wireguard.interfaces = {
-			wg0 = {
-				ips = ["10.100.0.1/24"];
-				listenPort = 51820;
-				postSetup = ''
-					${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o
-				'';
-				postShutdown = ''
-					${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o
-				'';
-				privateKeyFile = "~/.secrets/wireguard";
-				peers = [
-					{
-						/* CHANGE THIS!!! */
-						publicKey = "{password}";
-						allowedIPs = [ "10.100.0.2/32"];
-					}
-				];
-			};
-		};
-	};
+	home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      lenny = import ./modules/home/server-home.nix;
+    };
+  };
 }

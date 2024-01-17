@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 {
 	services.searx = {
 		enable = true;    
@@ -8,13 +8,13 @@
 			};
       server = {
         port = 8888;
-        bind_address = "127.0.0.1";
+        #bind_address = "172.20.10.11";
+				bin_address = "localhost";
         secret_key = "secretkey";
       };
 			search = {
 				safe_search = 2;
 				autocomplete = "duckduckgo";
-				#public_instance = true;
     	};
 			ui = {
 				infinite_scroll = true;
