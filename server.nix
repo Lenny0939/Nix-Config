@@ -16,4 +16,13 @@
       lenny = import ./modules/home/server-home.nix;
     };
   };
+	networking.firewall = {
+		enable = true;
+		allowedTCPPorts = [
+			8888
+			80
+			443
+		];
+		allowedUDPPorts = [ 51820 ];
+	};
 }
