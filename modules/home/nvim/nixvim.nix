@@ -29,7 +29,10 @@
 			/* UI */
 				oil.enable = true;
 				lualine.enable = true;
-				notify.enable = true;
+				notify = {
+					enable = true;
+					backgroundColour = "#000000";
+				};
 				noice.enable = true;
 			/* CMP/snippets */
 				cmp_luasnip.enable = true;
@@ -43,22 +46,26 @@
 					sources = [
 						{name = "nvim_lsp";}
 						{name = "luasnip";}
-						{name = "fuzzy_path";}
+						{name = "path";}
 						{name = "buffer";}
 					];
 					mapping = {
 						"<CR>" = "cmp.mapping.confirm({ select = true })";
 						"<Tab>" = {
-							action = ''
-					function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif luasnip.expand_or_locally_jumpable() then
-                luasnip.expand_or_jump()
-            else
-                fallback()
-            end
-						end
+							action = /* lua */ ''
+								function(fallback)
+									if cmp.visible() then
+										cmp.select_next_item()
+									elseif require('luasnip').expandable() then
+										require('luasnip').expand()
+									elseif require('luasnip').expand_or_jumpable() then
+										require('luasnip').expand_or_jump()
+									--elseif check_backspace() then
+									--	fallback()
+									else
+										fallback()
+									end
+								end
 							'';
 							modes = [ "i" "s" ];
 						};
