@@ -31,11 +31,10 @@
 		/* Services */
 			/* Notifications */
 				libnotify # Notification system I think?
-			/* Screenshot */
-				grim # Actual screenshotter
-				slurp # Screen selector
-				wl-clipboard # Copies stuff, like screenshots
 		/* Miscellaneous */
+			hyprshot # Screenshot
+		  nix-search-cli
+			mdbook
 			swww # Wallpaper
 			qmk # Keyboard software
 			brightnessctl # Brightness control
