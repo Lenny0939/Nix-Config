@@ -6,5 +6,3 @@ TODO
     - Nextcloud (just needs secrets)
     - Wireguard (just needs secrets)
 # ANNOYING THINGS
-    - Weird neovim glitch when tabbing
-    - Weird neovim glitch when notify
