@@ -13,6 +13,7 @@
       timeout = null;
 		};
     initrd.systemd.enable = true;
+		binfmt.emulatedSystems = [ "aarch64-linux" ];
 	};
   systemd.services.NetworkManager-wait-online.enable = false;
 	powerManagement.enable = true;
