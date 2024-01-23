@@ -15,6 +15,7 @@
 				rustc # Rust compiler
 			/* C */
 				clang # C compiler
+				gnumake # idk exactly
 			/* Git */
 				gh # Github cli
 				git # Version control system
