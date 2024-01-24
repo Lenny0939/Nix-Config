@@ -8,8 +8,8 @@
 			};
       server = {
         port = 8888;
-        #bind_address = "172.20.10.11";
-				bin_address = "localhost";
+        #bind_address = "192.168.0.180";
+				bind_address = "localhost";
         secret_key = "secretkey";
       };
 			search = {
