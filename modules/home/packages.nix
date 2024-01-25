@@ -15,7 +15,6 @@
 				rustc # Rust compiler
 			/* C */
 				clang # C compiler
-				gnumake # idk exactly
 			/* Git */
 				gh # Github cli
 				git # Version control system
@@ -35,12 +34,11 @@
 				libnotify # Notification system I think?
 		/* Miscellaneous */
 			hyprshot # Screenshot
+			pavucontrol
 		  nix-search-cli
-			mdbook
 			swww # Wallpaper
 			qmk # Keyboard software
 			brightnessctl # Brightness control
-			pulseaudio # Volume control
 			(pkgs.nerdfonts.override { fonts = [ "Hack" ]; }) # Font
   ];
 }
