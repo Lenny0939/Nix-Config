@@ -6,6 +6,7 @@
 			upstream.default = [
 				"https://one.one.one.one/dns-query" # Using Cloudflare's DNS over HTTPS server for resolving queries.
 			];
+			
 			# For initially solving DoH/DoT Requests when no system Resolver is available.
 			bootstrap.Dns = {
 				upstream = "https://one.one.one.one/dns-query";

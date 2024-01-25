@@ -5,5 +5,6 @@
 		fd
 		ripgrep
 		nil
+		git
 	];
 }

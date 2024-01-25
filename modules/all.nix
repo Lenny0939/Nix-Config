@@ -6,15 +6,6 @@
 	programs.zsh.enable = true;
 	programs.neovim.enable = true;
 	programs.neovim.defaultEditor = true;
-  boot = {
-	  loader = {
-		  systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-      timeout = null;
-		};
-    initrd.systemd.enable = true;
-		binfmt.emulatedSystems = [ "aarch64-linux" ];
-	};
   systemd.services.NetworkManager-wait-online.enable = false;
 	powerManagement.enable = true;
 	swapDevices = [ {
@@ -30,12 +21,10 @@
 	};
   security.rtkit.enable = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  networking = {
-	  networkmanager.enable = true;
-	};
   time.timeZone = "Australia/Sydney";
   i18n.defaultLocale = "en_AU.UTF-8";
   users.users.lenny = {
+		networkmanager.enable = true;
     isNormalUser = true;
     description = "Lenny";
     extraGroups = [ "networkmanager" "wheel" ];

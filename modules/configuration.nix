@@ -2,9 +2,19 @@
 
 {
 	imports = [ 
+		./searx.nix
 		./all.nix
 	];
 
+  boot = {
+	  loader = {
+		  systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+      timeout = null;
+		};
+    initrd.systemd.enable = true;
+		binfmt.emulatedSystems = [ "aarch64-linux" ];
+	};
 	programs.hyprland = {
 		enable = true;
 	};
