@@ -24,6 +24,8 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+	#networking.nameservers = [ "192.168.0.11 "];
+	networking.nameservers = [ "1.1.1.1"];
 	services.blueman.enable = true;
 	hardware.bluetooth.enable = true;
 	home-manager = {
