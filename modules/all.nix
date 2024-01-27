@@ -24,11 +24,11 @@
   time.timeZone = "Australia/Sydney";
   i18n.defaultLocale = "en_AU.UTF-8";
   users.users.lenny = {
-		networkmanager.enable = true;
     isNormalUser = true;
     description = "Lenny";
     extraGroups = [ "networkmanager" "wheel" ];
   };
+	networking.networkmanager.enable = true;
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "24.05";
 }
