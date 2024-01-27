@@ -34,6 +34,7 @@
 				libnotify # Notification system I think?
 		/* Miscellaneous */
 			hyprshot # Screenshot
+			wl-clipboard
 			pavucontrol
 		  nix-search-cli
 			swww # Wallpaper

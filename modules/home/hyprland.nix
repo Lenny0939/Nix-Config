@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 let
 	startup = pkgs.pkgs.writeShellScriptBin "startup" /* sh */ ''
-		swww init
-		waybar &
-		hyprctl setcursor Bibata-Modern-Ice 25 
+		${pkgs.swww}/bin/swww init
+		${pkgs.waybar}/bin/waybar
+		${pkgs.hyprctl}/bin/hyprctl setcursor Bibata-Modern-Ice 25 
 	'';
 in
 {   
@@ -74,25 +74,25 @@ in
 			"$mainMod" = "ALT";
 
 			bind = [
-				", PRINT, exec, hyprshot -m region --clipboard-only"
-				"$mainMod, PRINT, exec, hyprshot -m output --clipboard-only"
-				"$mainMod, T, exec, kitty"
+				", PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
+				"$mainMod, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m output --clipboard-only"
+				"$mainMod, T, exec, ${pkgs.kitty}/bin/kitty"
 				"$mainMod, Z, killactive,"
 				"$mainMod, M, exit,"
 				"$mainMod, V, togglefloating"
-				"$mainMod, R, exec, wofi"
+				"$mainMod, R, exec, ${pkgs.wofi}/bin/wofi"
 				"$mainMod, H, togglesplit,"
-				"$mainMod, B, exec, firefox"
+				"$mainMod, B, exec, ${pkgs.firefox}/bin/firefox"
 				"$mainMod, A, fullscreen"
 				#"$mainMod, C, exec, rofi -show calculator
 				#"$mainMod, semicolon, exec, rofi -show power-menu -modi power-menu:/home/lenny/.local/bin/rofi-power-menu
 				#"$mainMod, K, exec, ~/.local/bin/rofi-wifi-menu.sh
-				", XF86MonBrightnessUp, exec, brightnessctl set -e +5%"
-				", XF86MonBrightnessDown, exec, brightnessctl set -e 5%-"
-				", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +10%"
-				", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -10%"
-				", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
-				", XF86AudioMicMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+				", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set -e +5%"
+				", XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set -e 5%-"
+				", XF86AudioRaiseVolume, exec, ${pkgs.pactl}/bin/pactl set-sink-volume @DEFAULT_SINK@ +10%"
+				", XF86AudioLowerVolume, exec, ${pkgs.pactl}/bin/pactl set-sink-volume @DEFAULT_SINK@ -10%"
+				", XF86AudioMute, exec, ${pkgs.pactl}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle"
+				", XF86AudioMicMute, exec, ${pkgs.pactl}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle"
 
 				# Move focus with mainMod + arrow keys
 				"$mainMod, n, movefocus, l"
