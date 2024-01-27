@@ -20,5 +20,6 @@
 		./waybar.nix
 		./spotify.nix
 		./mako.nix
+		./lf.nix
   ];
 }
