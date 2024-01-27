@@ -25,7 +25,6 @@
 				mono # C# compiler
 		/* Apps */
 			spotify-tui # Spotify TUI
-			lf # File browser, not really sure how to use
 			bottom # Task manager except cool
 			speedtest-cli
 			# Most apps have their own modules
