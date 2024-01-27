@@ -3,7 +3,7 @@ let
 	startup = pkgs.pkgs.writeShellScriptBin "startup" /* sh */ ''
 		${pkgs.swww}/bin/swww init
 		${pkgs.waybar}/bin/waybar
-		${pkgs.hyprctl}/bin/hyprctl setcursor Bibata-Modern-Ice 25 
+		${pkgs.hyprland}/bin/hyprctl setcursor Bibata-Modern-Ice 25 
 	'';
 in
 {   
@@ -89,10 +89,10 @@ in
 				#"$mainMod, K, exec, ~/.local/bin/rofi-wifi-menu.sh
 				", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set -e +5%"
 				", XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set -e 5%-"
-				", XF86AudioRaiseVolume, exec, ${pkgs.pactl}/bin/pactl set-sink-volume @DEFAULT_SINK@ +10%"
-				", XF86AudioLowerVolume, exec, ${pkgs.pactl}/bin/pactl set-sink-volume @DEFAULT_SINK@ -10%"
-				", XF86AudioMute, exec, ${pkgs.pactl}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle"
-				", XF86AudioMicMute, exec, ${pkgs.pactl}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+				", XF86AudioRaiseVolume, exec, ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +10%"
+				", XF86AudioLowerVolume, exec, ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -10%"
+				", XF86AudioMute, exec, ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle"
+				", XF86AudioMicMute, exec, ${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle"
 
 				# Move focus with mainMod + arrow keys
 				"$mainMod, n, movefocus, l"
