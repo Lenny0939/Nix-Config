@@ -25,18 +25,21 @@
 				}}
 			'';
 			open-editor = /* bash */ ''$$EDITOR $f'';
-			unarchive = /* bash */ ''
+			unarchive = /* bash */ '' 
+			''${{
 				case "$f" in 
 					*.zip) ${pkgs.unzip}/bin/unzip "$f" ;;
 					*.tar.gz) ${pkgs.gnutar}/bin/tar -xzvf "$f";;
 					*.tar.bz2) ${pkgs.gnutar}/bin/tar -xjvf "$f";;
 					*.tar) ${pkgs.gnutar}/bin/tar -xvf "$f";;
 					*.7z) ${pkgs.p7zip}/bin/7z e "$f";;
-					*) echo "Unsupported format" ;;
+					*) echo "Unsupported format" ;; 
+				esac
+			}}
 			'';
 		};
 		keybindings = {
-			"<enter>" = "open-editor";
+			"<enter>" = "open";
 			o = "mkfile";
 			O = "mkdir";
 			"." = "set hidden!";
@@ -44,5 +47,31 @@
 			"gn" = "cd ~/nix";
 			"au" = "unarchive";
 		};
+		extraConfig = 
+    let 
+      previewer = 
+        pkgs.writeShellScriptBin "preview.sh" ''
+        file=$1
+        w=$2
+        h=$3
+        x=$4
+        y=$5
+        
+        if [[ "$( ${pkgs.file}/bin/file -Lb --mime-type "$file")" =~ ^image ]]; then
+            ${pkgs.kitty}/bin/kitty +kitten icat --transfer-mode file --stdin no --place "''${w}x''${h}@''${x}x''${y}" "''$file" < /dev/null > /dev/tty
+						#kitten icat --silent --stdin no --transfer-mode file --place "''${w}x''${h}@''${x}x''${y}" "$file" < /dev/null > /dev/tty
+            exit 1
+        fi
+        
+        ${pkgs.pistol}/bin/pistol "$file"
+      '';
+      cleaner = pkgs.writeShellScriptBin "clean.sh" ''
+        ${pkgs.kitty}/bin/kitty +kitten icat --clear --stdin no --silent --transfer-mode file < /dev/null > /dev/tty
+      '';
+    in
+    ''
+      set cleaner ${cleaner}/bin/clean.sh
+      set previewer ${previewer}/bin/preview.sh
+    '';
 	};
 }
