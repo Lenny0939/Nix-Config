@@ -39,6 +39,7 @@
 			swww # Wallpaper
 			qmk # Keyboard software
 			brightnessctl # Brightness control
+			easyeffects
 			(pkgs.nerdfonts.override { fonts = [ "Hack" ]; }) # Font
   ];
 }
