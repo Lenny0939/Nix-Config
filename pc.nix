@@ -17,4 +17,5 @@
 		open = false;
 		#nvidiaSettings = true;
 	};
+	options.fontsize = 16;
 }

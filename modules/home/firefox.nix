@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
 	programs.firefox = {
 		enable = true;
@@ -290,8 +290,8 @@
 			};
 			userChrome = /* css */''
 				* {
-					font-size: 16px !important;
-					font-family: Hack !important;
+					font-size: ${toString config.fontsize}px !important;
+					font-family: ${config.font} !important;
 				}
 				#nav-bar {
     			transition: all 0.1s ease !important;    

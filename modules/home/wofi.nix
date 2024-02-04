@@ -6,13 +6,13 @@
 			insensitive= true;
 			allow_images = true;
 			mode = "drun";
-			width = 420;
-			height = 550;
+			#width = config.fontsize * 30;
+			height = config.fontsize * 40;
 			location = "center";
 			#matching = "fuzzy";
 			prompt = "";
 			orientation = "vertical";
-			image_size = 28;
+			image_size = config.fontsize * 3;
 			#idk what these do
 			halign = "fill";
 			no_actions = true;
@@ -20,10 +20,10 @@
 			filter_rate = 100;
 			allow_markup = true;
 		};
-		style = ''
+		style = /* css */ ''
 			* {
-					font-family: 'Hack Nerd Font', monospace;
-					font-size: 28px;
+					font-family: ${config.font}, monospace;
+					font-size: ${toString (config.fontsize * 2)}px;
 			 }
 
 			 /* Window */

@@ -2,12 +2,12 @@
 {
 	programs.waybar = {
 		enable = true;
-		style = ''
+		style = /* css */ ''
 			* {
 				border: none;
 				border-radius: 0;
-				font-family: "Hack Nerd Font";
-				font-size: 16px;
+				font-family: ${config.font};
+				font-size: ${toString config.fontsize};
 				min-height: 0;
 			}
 			window#waybar {

@@ -1,5 +1,8 @@
 { config, ... }:
 {
+	imports = [
+		../fonts.nix
+	];
 	programs.kitty = {
 		enable = true;
 		settings = { 
@@ -37,8 +40,8 @@
 			#colorscheme = "tokyo_night_storm";
 		};
 		font = {
-			name = "Hack Nerd Font";
-			size = 11;
+			name = config.font;
+			size = config.fontsize;
 		};
 		shellIntegration.enableZshIntegration = true;
 	};
