@@ -21,5 +21,5 @@
 		./spotify.nix
 		./mako.nix
 		./lf.nix
-  ];
+	];
 }
