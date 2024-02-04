@@ -40,6 +40,7 @@
 			qmk # Keyboard software
 			brightnessctl # Brightness control
 			easyeffects
+			trashy
 			(pkgs.nerdfonts.override { fonts = [ "Hack" ]; }) # Font
   ];
 }

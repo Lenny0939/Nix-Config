@@ -24,6 +24,25 @@
 					$EDITOR $ans
 				}}
 			'';
+			trash = /* bash */ ''
+			''${{
+				files=$(printf "$fx" | tr '\n' ';')
+				while [ "$files" ]; do
+					file=$${files%%;*}
+
+					${pkgs.trashy}/bin/trashy put "$(basename "$file")"
+					if [ "$files" = "$file" ]; then
+						files='''
+					else
+						files="''${files#*;}"
+					fi
+				done
+			}}
+			'';
+			restore-trash = /* bash */ ''
+			''${{
+				trash-restore
+			}}'';
 			open-editor = /* bash */ ''$$EDITOR $f'';
 			unarchive = /* bash */ '' 
 			''${{
@@ -46,6 +65,11 @@
 			"gd" = "cd ~/Downloads";
 			"gn" = "cd ~/nix";
 			"au" = "unarchive";
+			d = "";
+			x = "cut";
+			y = "copy";
+			"dd" = "trash";
+			"dr" = "trash-restore";
 		};
 		extraConfig = 
     let 
