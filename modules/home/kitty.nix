@@ -11,7 +11,7 @@
 			background = "#${config.colorScheme.colors.base00}";
 			foreground = "#${config.colorScheme.colors.base05}";
 			selection_background = "#${config.colorScheme.colors.base05}";
-			selection_foregorund = "#${config.colorScheme.colors.base00}";
+			selection_foreground = "#${config.colorScheme.colors.base00}";
 			url_color = "#${config.colorScheme.colors.base04}";
 			cursor = "#${config.colorScheme.colors.base05}";
 			active_border_color = "#${config.colorScheme.colors.base03}";
