@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 let
 	startup = pkgs.pkgs.writeShellScriptBin "startup" /* sh */ ''
+		${pkgs.hyprland}/bin/hyprctl setcursor Bibata-Modern-Ice 25 
 		${pkgs.swww}/bin/swww init
 		${pkgs.waybar}/bin/waybar
-		${pkgs.hyprland}/bin/hyprctl setcursor Bibata-Modern-Ice 25 
 	'';
 in
 {   
