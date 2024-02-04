@@ -7,7 +7,7 @@
 				border: none;
 				border-radius: 0;
 				font-family: ${config.font};
-				font-size: ${toString config.fontsize};
+				font-size: ${toString (config.fontsize * 1.5)}px;
 				min-height: 0;
 			}
 			window#waybar {
@@ -17,7 +17,6 @@
 #
 		#window {
 				font-weight: bold;
-				font-family: "Hack";
 		}
 		/*
 		#workspaces {

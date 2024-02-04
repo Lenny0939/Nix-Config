@@ -6,7 +6,7 @@
 			insensitive= true;
 			allow_images = true;
 			mode = "drun";
-			#width = config.fontsize * 30;
+			width = config.fontsize * 30;
 			height = config.fontsize * 40;
 			location = "center";
 			#matching = "fuzzy";

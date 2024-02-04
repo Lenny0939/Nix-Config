@@ -24,7 +24,7 @@ in
 			};
 			general = with config.colorScheme.colors; {
 				gaps_in = 5;
-				gaps_out = 20;
+				gaps_out = 0;
 				border_size = 1;
 				"col.active_border" = "rgba(${base05}ff)"; 
 				"col.inactive_border" = "rgba(${base00}ff)"; 
