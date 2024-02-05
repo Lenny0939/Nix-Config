@@ -26,22 +26,12 @@
 			'';
 			trash = /* bash */ ''
 			''${{
-				files=$(printf "$fx" | tr '\n' ';')
-				while [ "$files" ]; do
-					file=$${files%%;*}
-
-					${pkgs.trashy}/bin/trashy put "$(basename "$file")"
-					if [ "$files" = "$file" ]; then
-						files='''
-					else
-						files="''${files#*;}"
-					fi
-				done
+				${pkgs.trashy}/bin/trash "$f"
 			}}
 			'';
 			restore-trash = /* bash */ ''
 			''${{
-				trash-restore
+				${pkgs.trashy}/bin/trash restore
 			}}'';
 			open-editor = /* bash */ ''$$EDITOR $f'';
 			unarchive = /* bash */ '' 
@@ -69,7 +59,7 @@
 			x = "cut";
 			y = "copy";
 			"dd" = "trash";
-			"dr" = "trash-restore";
+			"dr" = "restore-trash";
 		};
 		extraConfig = 
     let 

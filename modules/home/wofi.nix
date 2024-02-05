@@ -6,13 +6,13 @@
 			insensitive= true;
 			allow_images = true;
 			mode = "drun";
-			width = config.fontsize * 30;
-			height = config.fontsize * 40;
+			width = 400 * config.scaling;
+			height = 500 * config.scaling;
 			location = "center";
 			#matching = "fuzzy";
 			prompt = "";
 			orientation = "vertical";
-			image_size = config.fontsize * 3;
+			image_size = 24 * config.scaling;
 			#idk what these do
 			halign = "fill";
 			no_actions = true;
@@ -23,7 +23,7 @@
 		style = /* css */ ''
 			* {
 					font-family: ${config.font}, monospace;
-					font-size: ${toString (config.fontsize * 2)}px;
+					font-size: ${toString (24 * config.scaling)}px;
 			 }
 
 			 /* Window */

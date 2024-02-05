@@ -5,8 +5,7 @@
 		./modules/pc-hardware-configuration.nix
 		./modules/fonts.nix
 	];
-	home-manager.users.lenny.fontsize = 16;
-	#fontsize = 24;
+	home-manager.users.lenny.scaling = 16;
 	networking.hostName = "pc"; 
 	environment.sessionVariables = { WLR_NO_HARDWARE_CURSORS = "1"; };
 	hardware.opengl = {

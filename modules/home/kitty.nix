@@ -41,7 +41,7 @@
 		};
 		font = {
 			name = config.font;
-			size = config.fontsize;
+			size = config.scaling * 12;
 		};
 		shellIntegration.enableZshIntegration = true;
 	};

@@ -290,7 +290,7 @@
 			};
 			userChrome = /* css */''
 				* {
-					font-size: ${toString config.fontsize}px !important;
+					font-size: ${toString (16 * config.scaling)}px !important;
 					font-family: ${config.font} !important;
 				}
 				#nav-bar {
@@ -301,44 +301,44 @@
 				#titlebar:hover~#nav-bar, #nav-bar:hover, #nav-bar:focus-within { 
   	  		opacity: 1; margin-top: 0px !important; 
 				}  
-.tabbrowser-tab[fadein]:not([pinned]):not([style*="max-width"])
-{
-	max-width: 10000px !important;
-}
-.tabbrowser-tab[fadein]:not([pinned]) {
- max-width: 300px !important;
- overflow: hidden;
- }
-.titlebar-buttonbox-container{ display:none }
-#back-button,
-#forward-button {
-    display:none !important;
-}
-#reload-button { display: none !important; }
-.tab-close-button{ display: none !important }
-	#tabbrowser-tabs {
-    --proton-tab-block-margin: 0;
-    --tab-border-radius: 0;
-  }
+				.tabbrowser-tab[fadein]:not([pinned]):not([style*="max-width"])
+				{
+					max-width: 10000px !important;
+				}
+				.tabbrowser-tab[fadein]:not([pinned]) {
+				 max-width: 300px !important;
+				 overflow: hidden;
+				 }
+				.titlebar-buttonbox-container{ display:none }
+				#back-button,
+				#forward-button {
+						display:none !important;
+				}
+				#reload-button { display: none !important; }
+				.tab-close-button{ display: none !important }
+					#tabbrowser-tabs {
+						--proton-tab-block-margin: 0;
+						--tab-border-radius: 0;
+					}
 
-  .tab-background {
-    box-shadow: none !important;
-    margin: 0 !important;
-  }
+					.tab-background {
+						box-shadow: none !important;
+						margin: 0 !important;
+					}
 
-  #tabbrowser-tabs .tab-background > .tab-context-line {
-    margin: 0 !important;
-  }
+					#tabbrowser-tabs .tab-background > .tab-context-line {
+						margin: 0 !important;
+					}
 
-  .tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-context-line {
-    height: 1px !important;
-  }
-  
-  .tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-context-line + .tab-loading-burst.proton {
-    background-color: var(--identity-icon-color);
-    opacity: 0.1;
-  }
-}
+					.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-context-line {
+						height: 1px !important;
+					}
+					
+					.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-context-line + .tab-loading-burst.proton {
+						background-color: var(--identity-icon-color);
+						opacity: 0.1;
+					}
+				}
 			'';
 		};
 	};
