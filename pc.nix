@@ -4,8 +4,9 @@
 		./modules/configuration.nix
 		./modules/pc-hardware-configuration.nix
 		./modules/fonts.nix
+		./modules/scaling.nix
 	];
-	home-manager.users.lenny.scaling = 16;
+	home-manager.users.lenny.scaling = 2.0;
 	networking.hostName = "pc"; 
 	environment.sessionVariables = { WLR_NO_HARDWARE_CURSORS = "1"; };
 	hardware.opengl = {

@@ -10,6 +10,7 @@
 		inputs.nixvim.homeManagerModules.nixvim
 		./fastfetch.nix
 		./wofi.nix
+		#arsoetn
 		./git.nix
     ./hyprland.nix
     ./packages.nix
