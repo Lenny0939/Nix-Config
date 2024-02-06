@@ -7,7 +7,7 @@
 				border: none;
 				border-radius: 0;
 				font-family: ${config.font};
-				font-size: ${toString (24 * config.scaling)}px;
+				font-size: ${toString (16 * config.scaling)}px;
 				min-height: 0;
 			}
 			window#waybar {
