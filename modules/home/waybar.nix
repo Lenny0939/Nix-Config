@@ -68,7 +68,7 @@
 		settings = [{
 			layer = "top";
 			position = "top";
-			height = 30;
+			height = 31;
 			modules-left = ["hyprland/workspaces" "clock"];
 			modules-center = ["hyprland/window" ];
 			modules-right = ["custom/spotify" "pulseaudio" "battery" ];
@@ -76,7 +76,8 @@
 				format = "{name}";
 			};
 			clock = {
-				format-alt = "{:%Y-%m-%d}";
+				format = "{:%I:%M %p}";
+				format-alt = "{:%d-%m-%y}";
 			};
 			battery = {
 				bat = "BAT0";
