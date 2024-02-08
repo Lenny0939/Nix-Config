@@ -4,10 +4,11 @@
     enable = true;
     shellAliases = {
       rebuild = "sudo nixos-rebuild switch --flake ~/nix#$(hostname -s)";
-			detnsw = "${pkgs.networkmanager}/bin/nmcli --ask dev wifi connect --ask con up detnsw";
+			detnsw = "${pkgs.networkmanager}/bin/nmcli --ask con up detnsw";
       wifi = "${pkgs.networkmanager}/bin/nmcli --ask dev wifi connect";
       test = "sudo nixos-rebuild test --flake ~/nix#$(hostname -s)";
-			ff = "cd $(${pkgs.fd}/bin/fd --type d | ${pkgs.fzf}/bin/fzf)";
+			ff = "cd $(${pkgs.fd}/bin/fd . ~ --type d | ${pkgs.fzf}/bin/fzf)";
+			ef = "$EDITOR $(${pkgs.fzf}/bin/fzf)";
     };
     plugins = [
     {
