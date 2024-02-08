@@ -34,7 +34,7 @@
 				${pkgs.trashy}/bin/trash restore
 			}}'';
 			open-editor = /* bash */ ''$$EDITOR $f'';
-			find-dir = /* bash */ ''$lf -remote "send $id cd $(${pkgs.fd}/bin/fd --type d | ${pkgs.fzf}/bin/fzf)"'';
+			find-dir = /* bash */ ''$lf -remote "send $id cd $(${pkgs.fd}/bin/fd . ~ --type d | ${pkgs.fzf}/bin/fzf)"'';
 			unarchive = /* bash */ '' 
 			''${{
 				case "$f" in 
