@@ -4,41 +4,43 @@
   home.packages = with pkgs; [
 		/* Coding stuff */
 			/* Neovim Dependencies */
-				fd # idk, I think it may be related to fuzzy
+				fd # lists files, needed for telescope and also cool finding thingo
 				ripgrep # grep alternative, uses fuzzy finding
-				nil # Nix language server. SO GOOD
+				nil # Nix language server
 				clang-tools # C language server
-				luajitPackages.lua-lsp # Lua language server
 			/* Rust */
-				cargo # Rust package manager, really helpful for dev
+				cargo
 				rust-analyzer # Dependency for rustaceanvim, LSP server for rust
-				rustc # Rust compiler
+				rustc
 			/* C */
-				clang # C compiler
+				gnumake
+				clang
 			/* Git */
-				gh # Github cli
-				git # Version control system
+				gh 
+				git 
 				lazygit # TUI for git, pretty cool but no idea how to use
 			/* Godot */
-    		godot_4 # Game engine
+    		godot_4 
 			/* C# */
-				mono # C# compiler
+				mono 
 		/* Apps */
-			spotify-tui # Spotify TUI
+			spotify-tui 
 			bottom # Task manager except cool
 			speedtest-cli
+			discord
+			pavucontrol
 			# Most apps have their own modules
 		/* Services */
 			/* Notifications */
-				libnotify # Notification system I think?
+				libnotify
 		/* Miscellaneous */
-			hyprshot # Screenshot
+			hyprshot 
+			fzf
 			wl-clipboard
-			pavucontrol
 		  nix-search-cli
-			swww # Wallpaper
-			qmk # Keyboard software
-			brightnessctl # Brightness control
+			swww 
+			qmk 
+			brightnessctl 
 			easyeffects
 			trashy
 			(pkgs.nerdfonts.override { fonts = [ "Hack" ]; }) # Font
