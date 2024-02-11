@@ -29,6 +29,8 @@
 			speedtest-cli
 			discord
 			pavucontrol
+			yt-dlp
+			audacity
 			# Most apps have their own modules
 		/* Services */
 			/* Notifications */
