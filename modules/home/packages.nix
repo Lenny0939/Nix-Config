@@ -25,6 +25,7 @@
 				mono 
 		/* Apps */
 			spotify-tui 
+			tetrio-desktop
 			bottom # Task manager except cool
 			speedtest-cli
 			discord
