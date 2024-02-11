@@ -5,7 +5,7 @@
 		settings = {
 			global = {
 				username = "8e1gctsj9m4vyqsupbimkn1xy";
-				password = import ./spotifypassword;
+				password = /home/lenny/nix/modules/home/spotifypassword;
 			};
 		};
 	};
