@@ -7,7 +7,7 @@
 			pipes # Cool pipes screensaver thingo
 			cava # Cool audio visualiser
 		/* Gaming */
-			lutris
+			#lutris
 			mangohud # Overlay, like MSI Afterburner
 	];
 }
