@@ -2,7 +2,7 @@
 
 {
 	imports = [ 
-		./searx.nix
+		#./searx.nix
 		./all.nix
 	];
 
