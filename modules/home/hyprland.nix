@@ -13,6 +13,7 @@ in
 		settings = {
 			#monitor = "preferred,auto,auto";
 			exec-once = "${startup}/bin/startup";
+			misc.disable_hyprland_logo = true;
 			input = {
 				kb_layout = "us,us";
 				kb_variant = "colemak,"; 
