@@ -23,7 +23,7 @@ in
 					natural_scroll = "yes";
 				};
 			};
-			general = with config.colorScheme.colors; {
+			general = with config.colorScheme.palette; {
 				gaps_in = 5;
 				gaps_out = 0;
 				border_size = 1;
@@ -32,7 +32,7 @@ in
 				layout = "dwindle";
 			};
 
-			decoration = with config.colorScheme.colors; {
+			decoration = with config.colorScheme.palette; {
 				rounding = 7;
 				drop_shadow = "yes";
 				shadow_range = 4;
