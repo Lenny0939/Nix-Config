@@ -3,9 +3,9 @@
 {
 	imports = [ 
 		#./searx.nix
+		./home/spotify.nix
 		./homework.nix
 		./all.nix
-		./distractions.nix
 	];
 
 	nix.optimise.automatic = true;
