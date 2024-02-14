@@ -12,7 +12,7 @@
 			}
 			window#waybar {
 			background: transparent;
-			color: #${config.colorScheme.colors.base05};
+			color: #${config.colorScheme.palette.base05};
 			}
 #
 		#window {
@@ -27,7 +27,7 @@
 		#workspaces button {
 				padding: 0 5px;
 				background: transparent;
-				color: #${config.colorScheme.colors.base05};
+				color: #${config.colorScheme.palette.base05};
 				border-top: 2px solid transparent;
 		}
 
@@ -57,7 +57,7 @@
 			}
 			*/
 			#battery.warning:not(.charging) {
-				color: #${config.colorScheme.colors.base0B};
+				color: #${config.colorScheme.palette.base0B};
 				animation-name: blink;
 				animation-duration: 0.5s;
 				animation-timing-function: linear;
@@ -77,7 +77,7 @@
 			};
 			clock = {
 				format = "{:%I:%M %p}";
-				format-alt = "{:%d-%m-%y}";
+				format-alt = "{:%d/%m/%y}";
 			};
 			battery = {
 				bat = "BAT0";
