@@ -19,6 +19,8 @@
 			url = "github:nix-community/nixvim";
     	inputs.nixpkgs.follows = "nixpkgs";
 		};
+		#inputs.sops-nix.url = "github:Mic92/sops-nix";
+		sops-nix.url = "github:Mic92/sops-nix";
   };
   outputs = { self, nixos, nixpkgs, home-manager, hyprland, ... }@inputs:
     let

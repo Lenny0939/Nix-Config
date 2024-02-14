@@ -2,6 +2,7 @@
 {
 	imports = [
     inputs.home-manager.nixosModules.home-manager
+		inputs.sops-nix.nixosModules.sops
 	];
 	programs.zsh.enable = true;
 	programs.neovim.enable = true;
@@ -28,6 +29,11 @@
     description = "Lenny";
     extraGroups = [ "networkmanager" "wheel" ];
   };
+	sops = {
+		defaultSopsFile = ../secrets/secrets.yaml;
+		age.keyFile = "/home/lenny/.config/sops/age/key.txt";
+		secrets.spotifypassword = { };
+	};
 	networking.networkmanager.enable = true;
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "24.05";
