@@ -3,7 +3,9 @@
 {
 	imports = [ 
 		#./searx.nix
+		./homework.nix
 		./all.nix
+		./distractions.nix
 	];
 
 	nix.optimise.automatic = true;
@@ -15,6 +17,7 @@
 		};
     initrd.systemd.enable = true;
 		binfmt.emulatedSystems = [ "aarch64-linux" ];
+		kernelPackages = pkgs.linuxPackages_latest;
 	};
 	programs.hyprland = {
 		enable = true;
