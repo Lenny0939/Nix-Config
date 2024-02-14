@@ -46,6 +46,7 @@
 		*/
 		initExtra = "fastfetch";
   };  
+	programs.zoxide.enable = true;
 	programs.starship = {
     enable = true;
     #settings = pkgs.lib.importTOML ./starship.toml;
