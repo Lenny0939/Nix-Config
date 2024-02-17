@@ -1,0 +1,7 @@
+{ ... }: {
+	sops = {
+		defaultSopsFile = ../secrets/secrets.yaml;
+		age.keyFile = "/home/lenny/.config/sops/age/key.txt";
+		secrets.spotifypassword = {};
+	};
+}

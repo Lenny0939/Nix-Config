@@ -84,6 +84,7 @@ in
 				"$mainMod, R, exec, ${pkgs.wofi}/bin/wofi"
 				"$mainMod, H, togglesplit,"
 				"$mainMod, B, exec, ${pkgs.firefox}/bin/firefox"
+				"$mainMod, S, exec, ${pkgs.kitty}/bin/kitty --hold ${pkgs.neovim}/bin/nvim $(${pkgs.fzf}/bin/fzf))"
 				"$mainMod, A, fullscreen"
 				#"$mainMod, C, exec, rofi -show calculator
 				#"$mainMod, semicolon, exec, rofi -show power-menu -modi power-menu:/home/lenny/.local/bin/rofi-power-menu

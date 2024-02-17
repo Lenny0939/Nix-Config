@@ -6,6 +6,7 @@
 		./home/spotify.nix
 		./homework.nix
 		./all.nix
+		inputs.sops-nix.nixosModules.sops
 	];
 
 	nix.optimise.automatic = true;
