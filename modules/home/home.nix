@@ -18,7 +18,7 @@
 		./nixvim.nix
 		./kitty.nix
 		./waybar.nix
-		./spotify.nix
+		#./spotify.nix
 		./mako.nix
 		./lf.nix
 	];
