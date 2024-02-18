@@ -11,12 +11,14 @@
 		};
 		services."homework-notify" = {
 			script = ''
-				${pkgs.libnotify}/bin/notify-send "HOMEWORK" "$(${pkgs.coreutils}/bin/cat /home/lenny/School/TODO.md)"
+				${pkgs.libnotify}/bin/notify-send "HOMEWORK" "$(${pkgs.coreutils}/bin/cat /home/lenny/nix/TODO.md)"
 			'';
+			/*
 			serviceConfig = {
 				User = "lenny";
 				Environment = "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/%U/bus";
 			};
+			*/
 		};
 	};
 }
