@@ -1,7 +1,7 @@
 { config, ... }:
 {
 	imports = [
-		../fonts.nix
+		../modules/fonts.nix
 	];
 	programs.kitty = {
 		enable = true;

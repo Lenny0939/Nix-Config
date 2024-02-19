@@ -6,7 +6,7 @@
 		../modules/fonts.nix
 	];
 	#home-manager.users.lenny.
-	home-manager.users.lenny.wayland.windowManager.hyprland.settings.monitor = "preferred,auto,auto,1.5";
+	home-manager.users.lenny.wayland.windowManager.hyprland.settings.monitor = ",preferred,auto,2";
 	networking.hostName = "aragorn"; 
 	environment.sessionVariables = { WLR_NO_HARDWARE_CURSORS = "1"; };
 	hardware.opengl = {
