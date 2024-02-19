@@ -8,8 +8,7 @@
 		inputs.nixvim.homeManagerModules.nixvim
 		./fastfetch.nix
 		./git.nix
-    ./server-packages.nix
-    ./zsh.nix
+    ./packages-frodo.nix
     ./nixvim.nix
   ];
 }

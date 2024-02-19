@@ -2,13 +2,19 @@
 
 {
 	imports = [ 
-		#./searx.nix
-		./home/spotify.nix
-		./homework.nix
-		./all.nix
 		inputs.sops-nix.nixosModules.sops
+		#./searx.nix
+		#./home/spotify.nix
+		./modules/homework.nix
+		./configuration.nix
 	];
 
+	programs.zsh.enable = true;
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
 	nix.optimise.automatic = true;
   boot = {
 	  loader = {

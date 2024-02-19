@@ -1,14 +1,14 @@
 { inputs, lib, pkgs, ... }:
 {
 	imports = [
-		./modules/all.nix
-		./modules/serverstuff/server-hardware-configuration.nix
-		./modules/searx.nix
-		#./modules/serverstuff/nextcloud.nix
-		#./modules/serverstuff/wireguard-server.nix
-		#./modules/serverstuff/vaultwarden.nix
-		./modules/serverstuff/blocky.nix
-		#./modules/serverstuff/dashy.nix
+		../configuration.nix
+		./hardware-configuration-frodo.nix
+		./searx.nix
+		#./nextcloud.nix
+		#./wireguard-server.nix
+		#./vaultwarden.nix
+		./blocky.nix
+		#./dashy.nix
 	];
 	nix.settings = {
     substituters = [
@@ -38,10 +38,11 @@
 	home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      lenny = import ./modules/home/server-home.nix;
+      lenny = import ./home-frodo.nix;
     };
   };
 	networking = {
+		#hostname = "frodo";
 		firewall = {
 			enable = true;
 			allowedTCPPorts = [

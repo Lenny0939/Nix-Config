@@ -1,11 +1,11 @@
 { pkgs, ... }:
 {
 	imports = [
-		./modules/configuration.nix
-		./modules/laptop-hardware-configuration.nix
+		../gui.nix
+		./hardware-configuration-legolas.nix
 	];
 	services.tlp.enable = true;
-	networking.hostName = "laptop";
+	networking.hostName = "legolas";
 	hardware.opengl = {
 		enable = true;
 		extraPackages = with pkgs; [

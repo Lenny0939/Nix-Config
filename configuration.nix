@@ -2,9 +2,8 @@
 {
 	imports = [
     inputs.home-manager.nixosModules.home-manager
-		./sops.nix
+		./modules/sops.nix
 	];
-	programs.zsh.enable = true;
 	programs.neovim.enable = true;
 	programs.neovim.defaultEditor = true;
   systemd.services.NetworkManager-wait-online.enable = false;

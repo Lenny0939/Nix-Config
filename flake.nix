@@ -19,7 +19,6 @@
 			url = "github:nix-community/nixvim";
     	inputs.nixpkgs.follows = "nixpkgs";
 		};
-		#inputs.sops-nix.url = "github:Mic92/sops-nix";
 		sops-nix.url = "github:Mic92/sops-nix";
   };
   outputs = { self, nixos, nixpkgs, home-manager, hyprland, ... }@inputs:
@@ -27,38 +26,22 @@
       system = "x86_64-linux";
     in {
     	nixosConfigurations = {
-      	laptop-no-distractions = nixpkgs.lib.nixosSystem {
+      	legolas = nixpkgs.lib.nixosSystem {
         	specialArgs = { inherit inputs system; };
 					modules = [
-	  				./laptop.nix
+	  				./legolas/legolas.nix
 					];
   			};
-      	laptop = nixpkgs.lib.nixosSystem {
+      	aragorn = nixpkgs.lib.nixosSystem {
         	specialArgs = { inherit inputs system; };
 					modules = [
-	  				./laptop.nix
-						./modules/distractions.nix
+	  				./aragorn/aragorn.nix
 					];
   			};
-
-				pc-no-distractions = nixpkgs.lib.nixosSystem {
+				frodo = nixpkgs.lib.nixosSystem {
         	specialArgs = { inherit inputs system; };
 					modules = [
-	  				./pc.nix
-					];
-  			};
-
-      	pc = nixpkgs.lib.nixosSystem {
-        	specialArgs = { inherit inputs system; };
-					modules = [
-	  				./pc.nix
-						./modules/distractions.nix
-					];
-  			};
-				server = nixpkgs.lib.nixosSystem {
-        	specialArgs = { inherit inputs system; };
-					modules = [
-	  				./server.nix
+	  				./frodo/frodo.nix
 					];
   			};
 
@@ -66,8 +49,7 @@
         	specialArgs = { inherit inputs system; };
 					modules = [
 						(nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
-	  				./laptop.nix
-						./modules/distractions.nix
+	  				./legolas/legolas.nix
 					];
   			};
 	  	};
