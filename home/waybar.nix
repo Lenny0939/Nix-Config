@@ -1,4 +1,16 @@
 {config, pkgs, ... }:
+let 
+	musicCheck = pkgs.pkgs.writeShellScriptBin "musicCheck" /* bash */ ''
+		while true
+			do
+			if [ "$(${pkgs.playerctl}/bin/playerctl status)" = "Playing" ] 
+			then
+				echo $(${pkgs.playerctl}/bin/playerctl --player=%any,firefox metadata title) by $(${pkgs.playerctl}/bin/playerctl --player=%any,firefox metadata artist) 
+			else echo
+			fi
+		done
+	'';
+in
 {
 	programs.waybar = {
 		enable = true;
@@ -7,7 +19,7 @@
 				border: none;
 				border-radius: 0;
 				font-family: ${config.font};
-				font-size: ${toString (16 * config.scaling)}px;
+				font-size: 16px;
 				min-height: 0;
 			}
 			window#waybar {
@@ -41,7 +53,7 @@
 				border-bottom: 3px solid white;
 		}*/
 
-		#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
+		#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-music, #tray, #mode {
 				padding: 0 3px;
 				margin: 0 2px;
 		}
@@ -71,7 +83,7 @@
 			height = 31;
 			modules-left = ["hyprland/workspaces" "clock"];
 			modules-center = ["hyprland/window" ];
-			modules-right = ["custom/spotify" "pulseaudio" "battery" ];
+			modules-right = ["custom/music" "pulseaudio" "battery" ];
 			"hyprland/workspaces" = {
 				format = "{name}";
 			};
@@ -97,9 +109,9 @@
 					default = ["" ""];
 				};
 			};
-			"custom/spotify" = {
-				exec = "while true; do echo $(${pkgs.playerctl}/bin/playerctl -p spotifyd metadata artist) - $(${pkgs.playerctl}/bin/playerctl -p spotifyd metadata title); done";
-				format = "{} ";
+			"custom/music" = {
+				exec = "${musicCheck}/bin/musicCheck";
+				format = "{} ";
 			};
 		}];
 	};
