@@ -3,7 +3,7 @@ let
 	musicCheck = pkgs.pkgs.writeShellScriptBin "musicCheck" /* bash */ ''
 		while true
 			do
-			if [ "$(${pkgs.playerctl}/bin/playerctl status)" = "Playing" ] 
+			if [ "$(${pkgs.playerctl}/bin/playerctl --player=%any,firefox status)" = "Playing" ] 
 			then
 				echo $(${pkgs.playerctl}/bin/playerctl --player=%any,firefox metadata title) by $(${pkgs.playerctl}/bin/playerctl --player=%any,firefox metadata artist) 
 			else echo
