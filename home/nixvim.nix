@@ -2,8 +2,6 @@
 {
   programs.nixvim = {
     enable = true;
-    #colorschemes.base16-catppuccin-mocha.enable = true;
-		#colorschemes.base16.enable = true;
 		colorschemes.catppuccin = {
 		  enable = true;
 			transparentBackground = true;
@@ -60,8 +58,6 @@
 										require('luasnip').expand()
 									elseif require('luasnip').expand_or_jumpable() then
 										require('luasnip').expand_or_jump()
-									--elseif check_backspace() then
-									--	fallback()
 									else
 										fallback()
 									end
@@ -82,11 +78,7 @@
 				};
 			/* Makes code look nicer */
 				illuminate.enable = true;
-				nvim-colorizer.enable = true;
 				treesitter.enable = true;
-			/* Helps with learning */
-				#vim-be-good.enable = true;
-				which-key.enable = true;
 			/* QOL */
 				nvim-autopairs.enable = true;
 				indent-blankline.enable = true;
