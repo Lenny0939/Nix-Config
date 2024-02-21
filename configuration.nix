@@ -3,6 +3,7 @@
 	imports = [
     inputs.home-manager.nixosModules.home-manager
 		./modules/sops.nix
+		./frodo/searx.nix
 	];
 	programs.neovim.enable = true;
 	programs.neovim.defaultEditor = true;
