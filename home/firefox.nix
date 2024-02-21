@@ -35,7 +35,8 @@
 					};
 				};
 				force = true;
-				default = "SearX";
+				#default = "SearX";
+				default = "Google";
 			};
 			settings = {
 				/****************************************************************************
