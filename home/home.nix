@@ -8,6 +8,7 @@
   imports = [
     inputs.hyprland.homeManagerModules.default
 		inputs.nixvim.homeManagerModules.nixvim
+		./bat.nix
 		./mangohud.nix
 		./firefox.nix
 		./fastfetch.nix

@@ -21,7 +21,7 @@
 		};
     plugins = {
 			/* Rust */
-				#rustaceanvim.enable = true;
+				rustaceanvim.enable = true;
 			/* Telescope */
 				telescope.enable = true;
 			/* UI */

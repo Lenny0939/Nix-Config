@@ -11,14 +11,11 @@
 			#lutris
 			mangohud # Overlay, like MSI Afterburner
 		/* Coding stuff */
-			/* Neovim Dependencies */
-				fd # lists files, needed for telescope and also cool finding thingo
-				ripgrep # grep alternative, uses fuzzy finding
+			/* LSP Language Servers */
 				nil # Nix language server
 				clang-tools # C language server
 			/* Rust */
 				cargo
-				rust-analyzer # Dependency for rustaceanvim, LSP server for rust
 				rustc
 			/* C */
 				gnumake
@@ -31,6 +28,11 @@
     		godot_4 
 			/* C# */
 				mono 
+		/* Utilities */
+			fd # lists files, needed for telescope and also cool finding thingo
+			ripgrep # grep alternative, uses fuzzy finding
+			fzf
+			lsd
 		/* Apps */
 			spotify-tui 
 			spotify
@@ -47,7 +49,6 @@
 				libnotify
 		/* Miscellaneous */
 			hyprshot 
-			fzf
 			wl-clipboard
 		  nix-search-cli
 			swww 
