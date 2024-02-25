@@ -8,6 +8,7 @@ let
 				echo $(${pkgs.playerctl}/bin/playerctl --player=%any,firefox metadata title) by $(${pkgs.playerctl}/bin/playerctl --player=%any,firefox metadata artist) 
 			else echo
 			fi
+			sleep 1
 		done
 	'';
 in
@@ -111,7 +112,8 @@ in
 			};
 			"custom/music" = {
 				exec = "${musicCheck}/bin/musicCheck";
-				format = "{} ";
+				#exec = "echo test";
+				format = " {}";
 			};
 		}];
 	};
