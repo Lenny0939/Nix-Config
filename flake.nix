@@ -4,16 +4,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos.url = "nixpkgs/nixos-unstable";
-		#nixpkgs.url = "github:nixos/nixpkgs/master";
 		home-manager = {
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 		hyprland.url = "github:hyprwm/Hyprland";
-		plugin-code_runner = {
-			url = "github:CRAG666/code_runner.nvim";
-			flake = false;
-		};
 		nix-colors.url = "github:misterio77/nix-colors";
 		nixvim = {
 			url = "github:nix-community/nixvim";
