@@ -8,6 +8,7 @@
 		};
 		globals.mapleader = " ";
 		options = {
+			linebreak = true;
 			clipboard = "unnamedplus";
 			cursorline = true;
 			number = true;
@@ -137,6 +138,20 @@
 				options.noremap = true;
         action = "N/*  */zz";
       }
+			{
+				mode = "n";
+				key = "<Down>";
+        options.silent = false;
+				options.noremap = true;
+				action = "gj";
+			}
+			{
+				mode = "n";
+				key = "<Up>";
+        options.silent = false;
+				options.noremap = true;
+				action = "gk";
+			}
 		];
   };
 }
