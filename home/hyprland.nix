@@ -33,7 +33,7 @@ in
 			};
 
 			decoration = with config.colorScheme.palette; {
-				rounding = 7;
+				#rounding = 7;
 				drop_shadow = "yes";
 				shadow_range = 4;
 				shadow_render_power = 3;
