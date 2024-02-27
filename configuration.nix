@@ -2,7 +2,7 @@
 {
 	imports = [
     inputs.home-manager.nixosModules.home-manager
-		./modules/sops.nix
+		#./modules/sops.nix
 		./frodo/searx.nix
 	];
 	programs.neovim.enable = true;

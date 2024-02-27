@@ -2,7 +2,7 @@
 {
 	imports = [
 		../configuration.nix
-		./hardware-configuration-frodo.nix
+		#./hardware-configuration-frodo.nix
 		./searx.nix
 		../nixos-arm/sd-image-opiz2.nix
 		#./nextcloud.nix
@@ -11,6 +11,7 @@
 		./blocky.nix
 		#./dashy.nix
 	];
+	nixpkgs.hostPlatform = "aarch64";
 	nix.settings = {
     substituters = [
       "https://sunxi64.cachix.org"
