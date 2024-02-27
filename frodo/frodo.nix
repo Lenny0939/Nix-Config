@@ -4,6 +4,7 @@
 		../configuration.nix
 		./hardware-configuration-frodo.nix
 		./searx.nix
+		../nixos-arm/sd-image-opiz2.nix
 		#./nextcloud.nix
 		#./wireguard-server.nix
 		#./vaultwarden.nix

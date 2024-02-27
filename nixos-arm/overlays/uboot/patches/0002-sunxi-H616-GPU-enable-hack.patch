@@ -1,0 +1,25 @@
+From 494a8c5a9237ad6ca6851b51a22b6e86d0b6d54b Mon Sep 17 00:00:00 2001
+From: K <kayo@illumium.org>
+Date: Mon, 6 Dec 2021 10:51:32 +0500
+Subject: [PATCH 2/3] sunxi: H616 GPU enable hack
+
+---
+ arch/arm/mach-sunxi/clock_sun50i_h6.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm/mach-sunxi/clock_sun50i_h6.c b/arch/arm/mach-sunxi/clock_sun50i_h6.c
+index 7926394cf7..f12f962530 100644
+--- a/arch/arm/mach-sunxi/clock_sun50i_h6.c
++++ b/arch/arm/mach-sunxi/clock_sun50i_h6.c
+@@ -16,6 +16,8 @@ void clock_init_safe(void)
+ 		/* this seems to enable PLLs on H616 */
+ 		setbits_le32(&prcm->sys_pwroff_gating, 0x10);
+ 		setbits_le32(&prcm->res_cal_ctrl, 2);
++		/* enable GPU */
++		writel(0, 0x7010254);
+ 	}
+ 
+ 	clrbits_le32(&prcm->res_cal_ctrl, 1);
+-- 
+2.36.0
+

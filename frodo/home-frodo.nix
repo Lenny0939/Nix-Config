@@ -6,9 +6,9 @@
   programs.home-manager.enable = true;
   imports = [
 		inputs.nixvim.homeManagerModules.nixvim
-		./fastfetch.nix
-		./git.nix
+		../home/fastfetch.nix
+		../home/git.nix
     ./packages-frodo.nix
-    ./nixvim.nix
+    ../home/nixvim.nix
   ];
 }
