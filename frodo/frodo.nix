@@ -11,7 +11,7 @@
 		./blocky.nix
 		#./dashy.nix
 	];
-	nixpkgs.hostPlatform = "aarch64";
+	nixpkgs.hostPlatform = "aarch64-linux";
 	nix.settings = {
     substituters = [
       "https://sunxi64.cachix.org"
