@@ -3,7 +3,6 @@
 	imports = [
     inputs.home-manager.nixosModules.home-manager
 		#./modules/sops.nix
-		./frodo/searx.nix
 	];
 	programs.neovim.enable = true;
 	programs.neovim.defaultEditor = true;
@@ -13,7 +12,6 @@
 		device = "/var/lib/swapfile";
 		size = 16*1024;
 	}];
-  users.defaultUserShell = pkgs.zsh;
   console = {
 		earlySetup = true;
 		keyMap = "colemak";
