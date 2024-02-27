@@ -3,13 +3,15 @@
 {
 	imports = [ 
 		inputs.sops-nix.nixosModules.sops
-		#./searx.nix
+		./frodo/searx.nix
 		#./home/spotify.nix
 		./modules/homework.nix
 		./configuration.nix
+		./modules/printer.nix
 	];
 
 	programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
