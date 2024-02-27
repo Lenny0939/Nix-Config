@@ -35,6 +35,7 @@
 				noice.enable = true;
 			/* CMP/snippets */
 				cmp_luasnip.enable = true;
+				friendly-snippets.enable = true;
 				luasnip = {
 				  enable = true;
 					fromVscode = [{}];
@@ -87,11 +88,6 @@
 			/* Dependencies */
 				dap.enable = true;
 		};
-		extraPlugins = with pkgs.vimPlugins; [
-		  vim-be-good
-			rustaceanvim
-			friendly-snippets
-		];
 		keymaps = [
 			{
         mode = "n";
