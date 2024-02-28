@@ -82,9 +82,9 @@ in
 			layer = "top";
 			position = "top";
 			height = 31;
-			modules-left = ["hyprland/workspaces" "clock"];
-			modules-center = ["hyprland/window" ];
-			modules-right = ["custom/music" "pulseaudio" "battery" ];
+			modules-left = ["hyprland/workspaces" "battery" ];
+			modules-center = ["clock" ];
+			modules-right = ["custom/music" "pulseaudio" ];
 			"hyprland/workspaces" = {
 				format = "{name}";
 			};
@@ -99,7 +99,8 @@ in
 					critical = 15;
 				};
 				format = "{icon} {capacity}%";
-				format-icons = ["" "" "" "" ""];
+				format-charging = "󰂄 {capacity}";
+				format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
 			};
 			pulseaudio = {
 				format = "{icon} {volume}%";
