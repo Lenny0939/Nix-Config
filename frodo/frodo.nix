@@ -44,7 +44,7 @@
     };
   };
 	networking = {
-		hostname = "frodo";
+		hostName = "frodo";
 		firewall = {
 			enable = true;
 			allowedTCPPorts = [

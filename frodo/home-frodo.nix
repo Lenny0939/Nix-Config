@@ -10,5 +10,6 @@
 		../home/git.nix
     ./packages-frodo.nix
     ../home/nixvim.nix
+		../home/zsh.nix
   ];
 }
