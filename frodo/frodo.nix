@@ -44,7 +44,7 @@
     };
   };
 	networking = {
-		#hostname = "frodo";
+		hostname = "frodo";
 		firewall = {
 			enable = true;
 			allowedTCPPorts = [
@@ -52,6 +52,7 @@
 				80
 				443
 				53
+				23
 			];
 			allowedUDPPorts = [ 
 				51820 
