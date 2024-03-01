@@ -28,6 +28,8 @@
     		godot_4 
 			/* C# */
 				mono 
+			/* Python */
+				python3
 		/* Utilities */
 			fd # lists files, needed for telescope and also cool finding thingo
 			ripgrep # grep alternative, uses fuzzy finding
