@@ -3,7 +3,6 @@
 {
 	imports = [ 
 		inputs.sops-nix.nixosModules.sops
-		./frodo/searx.nix
 		#./home/spotify.nix
 		./modules/homework.nix
 		./configuration.nix

@@ -27,9 +27,9 @@
 
 					"SearX" = {
 						urls = [{
-							template = "http://localhost:8888/search?q={searchTerms}";
+							template = "http://192.168.0.11:8888/search?q={searchTerms}";
 						}];
-						iconUpdateURL = "http://localhost:8888/favicon.ico";
+						iconUpdateURL = "http://192.168.0.11:8888/favicon.ico";
 						updateInterval = 24 * 60 * 60 * 1000;
 						definedAliases = [ "@sx" ];
 					};

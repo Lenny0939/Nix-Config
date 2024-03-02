@@ -4,12 +4,12 @@
 		enable = true;    
 		settings = {
 			general = {
-				instance_name = "Lenny's epic search engine";
+				instance_name = "Searxchog";
 			};
       server = {
         port = 8888;
-        #bind_address = "192.168.0.11";
-				bind_address = "localhost";
+        bind_address = "192.168.0.11";
+				#bind_address = "localhost";
         secret_key = "secretkey";
       };
 			search = {
