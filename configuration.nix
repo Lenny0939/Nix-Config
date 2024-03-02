@@ -4,6 +4,8 @@
     inputs.home-manager.nixosModules.home-manager
 		#./modules/sops.nix
 	];
+	programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
 	programs.neovim.enable = true;
 	programs.neovim.defaultEditor = true;
   systemd.services.NetworkManager-wait-online.enable = false;

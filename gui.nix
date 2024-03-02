@@ -10,8 +10,6 @@
 		./modules/printer.nix
 	];
 
-	programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
