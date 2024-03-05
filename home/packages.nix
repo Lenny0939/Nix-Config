@@ -35,6 +35,7 @@
 			ripgrep # grep alternative, uses fuzzy finding
 			fzf
 			lsd
+			ncdu
 		/* Apps */
 			spotify-tui 
 			spotify
@@ -58,6 +59,7 @@
 			brightnessctl 
 			easyeffects
 			trashy
+			shipwright
 			(pkgs.nerdfonts.override { fonts = [ "Hack" ]; }) # Font
   ];
 }
