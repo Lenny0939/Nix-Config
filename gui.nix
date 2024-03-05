@@ -14,7 +14,6 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
-	nix.optimise.automatic = true;
   boot = {
 	  loader = {
 		  systemd-boot.enable = true;
@@ -22,7 +21,6 @@
       timeout = null;
 		};
     initrd.systemd.enable = true;
-		binfmt.emulatedSystems = [ "aarch64-linux" ];
 		kernelPackages = pkgs.linuxPackages_latest;
 	};
 	programs.hyprland = {
