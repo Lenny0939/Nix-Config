@@ -2,8 +2,12 @@
 {
   home.username = "lenny";
   home.homeDirectory = "/home/lenny";
-  home.stateVersion = "24.05"; 
- 
+	home.stateVersion = "24.05"; 
+  nix.gc = {
+		automatic = true;
+		frequency = "weekly";
+		options = "--delete-older-than 30d";
+	};
 	programs.home-manager.enable = true;
   imports = [
     inputs.hyprland.homeManagerModules.default
