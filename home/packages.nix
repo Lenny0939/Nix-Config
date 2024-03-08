@@ -45,6 +45,7 @@
 			discord
 			pavucontrol
 			yt-dlp
+			yuzu
 			audacity
 			# Most apps have their own modules
 		/* Services */
