@@ -3,6 +3,7 @@ let
 	startup = pkgs.pkgs.writeShellScriptBin "startup" /* sh */ ''
 		${pkgs.hyprland}/bin/hyprctl setcursor Bibata-Modern-Ice 25 
 		${pkgs.swww}/bin/swww init
+		${pkgs.easyeffects}/bin/easyeffects --gapplication-service
 		${pkgs.waybar}/bin/waybar
 	'';
 in
@@ -11,8 +12,8 @@ in
 		enable = true;
 		systemd.enable = true;
 		settings = {
-			#monitor = "preferred,auto,auto";
 			exec-once = "${startup}/bin/startup";
+			xwayland.force_zero_scaling = true;
 			misc.disable_hyprland_logo = true;
 			input = {
 				kb_layout = "us,us";
