@@ -3,8 +3,8 @@ let
 	startup = pkgs.pkgs.writeShellScriptBin "startup" /* sh */ ''
 		${pkgs.hyprland}/bin/hyprctl setcursor Bibata-Modern-Ice 25 
 		${pkgs.swww}/bin/swww init
-		${pkgs.easyeffects}/bin/easyeffects --gapplication-service
 		${pkgs.waybar}/bin/waybar
+		${pkgs.easyeffects}/bin/easyeffects --gapplication-service
 	'';
 in
 {   
