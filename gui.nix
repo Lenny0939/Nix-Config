@@ -1,17 +1,19 @@
 { inputs, pkgs, lib, ... }:
 let
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+	steam-session = "${pkgs.xorg.xinit}/bin/startx steam -tenfoot";
   hyprland-session = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/share/wayland-sessions";
 in
 {
 	imports = [ 
 		inputs.sops-nix.nixosModules.sops
-		./home/spotify.nix
+		#./home/spotify.nix
 		./modules/homework.nix
 		./configuration.nix
 		./modules/printer.nix
 	];
 
+	services.xserver.enable = true;
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
@@ -54,10 +56,10 @@ in
     enable = true;
     settings = {
       default_session = {
-        #command = "${tuigreet} --time --remember --remember-session --sessions ${hyprland-session}";
-				command = "Hyprland";
-        #user = "greeter";
-				user = "lenny";
+        command = "${tuigreet} --time --remember --remember-session --sessions ${hyprland-session}, ${steam-session}";
+				#command = "Hyprland";
+        user = "greeter";
+				#user = "lenny";
       };
     };
   };

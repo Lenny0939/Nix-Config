@@ -52,6 +52,7 @@
 			/* Notifications */
 				libnotify
 		/* Miscellaneous */
+			xorg.xinit
 			hyprshot 
 			wl-clipboard
 		  nix-search-cli
