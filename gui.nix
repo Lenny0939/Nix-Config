@@ -1,9 +1,12 @@
 { inputs, pkgs, lib, ... }:
-
+let
+  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+  hyprland-session = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/share/wayland-sessions";
+in
 {
 	imports = [ 
 		inputs.sops-nix.nixosModules.sops
-		#./home/spotify.nix
+		./home/spotify.nix
 		./modules/homework.nix
 		./configuration.nix
 		./modules/printer.nix
@@ -47,18 +50,32 @@
 		hack-font
 		(nerdfonts.override { fonts = ["Hack"]; })
   ];
-
   services.greetd = {
     enable = true;
-    settings = rec {
-      initial_session = {
-        #command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd Hyprland";
-				command = "${pkgs.hyprland}/bin/Hyprland";
-        user = "lenny";
+    settings = {
+      default_session = {
+        #command = "${tuigreet} --time --remember --remember-session --sessions ${hyprland-session}";
+				command = "Hyprland";
+        #user = "greeter";
+				user = "lenny";
       };
-			default_session = initial_session;
     };
   };
 
+  # this is a life saver.
+  # literally no documentation about this anywhere.
+  # might be good to write about this...
+  # https://www.reddit.com/r/NixOS/comments/u0cdpi/tuigreet_with_xmonad_how/
+  /* systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal"; # Without this errors will spam on screen
+    # Without these bootlogs will spam on screen
+    TTYReset = true;
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
+  };
+  */
   system.stateVersion = "24.05";
 }
