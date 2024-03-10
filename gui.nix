@@ -53,15 +53,20 @@ in
   services.greetd = {
     enable = true;
     settings = {
-			hyprland-session = "${hyprland-session}";
-			steam-session = "${steam-session}";
-      default_session = {
+			hyprland-session = {
+				command = "${hyprland-session}";
+				user = "lenny";
+			};
+			steam-session = {
+				command = "${steam-session}";
+				user = "lenny";
+			};
+			tuigreet = {
         command = "${tuigreet} --time --remember --remember-session --sessions /home/lenny/sessions";
-				#command = "Hyprland";
         user = "greeter";
-				#user = "lenny";
-      };
-    };
+			};
+      default_session = hyprland-session;
+		};
   };
 
   # this is a life saver.
