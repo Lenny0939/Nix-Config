@@ -1,7 +1,7 @@
 { inputs, pkgs, lib, ... }:
 let
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-	steam-session = "${pkgs.xorg.xinit}/bin/startx steam -tenfoot";
+	steam-session = "${pkgs.xorg.xinit}/bin/startx /home/lenny/.xinitrc";
   hyprland-session = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/share/wayland-sessions";
 in
 {
@@ -55,8 +55,10 @@ in
   services.greetd = {
     enable = true;
     settings = {
+			hyprland-session = "${hyprland-session}";
+			steam-session = "${steam-session}";
       default_session = {
-        command = "${tuigreet} --time --remember --remember-session --sessions ${hyprland-session}, ${steam-session}";
+        command = "${tuigreet} --time --remember --remember-session --sessions /home/lenny/sessions";
 				#command = "Hyprland";
         user = "greeter";
 				#user = "lenny";
