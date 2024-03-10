@@ -28,7 +28,7 @@
   console = {
 		earlySetup = true;
 		keyMap = "colemak";
-		font = "${pkgs.terminus_font}/share/consolefonts/ter-v32n.psf.gz";
+		font = "${pkgs.terminus_font}/share/consolefonts/ter-i32b.psf.gz";
 		packages = with pkgs; [ terminus_font ];
 	};
   security.rtkit.enable = true;
