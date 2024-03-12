@@ -25,6 +25,7 @@
 		./nixvim.nix
 		./kitty.nix
 		./waybar.nix
+		./eww/eww.nix
 		#./spotify.nix
 		./mako.nix
 		./lf.nix
