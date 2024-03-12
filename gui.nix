@@ -53,7 +53,7 @@ in
   services.greetd = {
     enable = true;
     settings = {
-			hyprland-session = {
+			initial_session = {
 				command = "${hyprland-session}";
 				user = "lenny";
 			};
@@ -65,7 +65,10 @@ in
         command = "${tuigreet} --time --remember --remember-session --sessions /home/lenny/sessions";
         user = "greeter";
 			};
-      default_session = hyprland-session;
+      default_session = {
+				command = "Hyprland";
+				user = "lenny";
+			};
 		};
   };
 
