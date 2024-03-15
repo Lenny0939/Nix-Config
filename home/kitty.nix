@@ -14,8 +14,6 @@
 			selection_foreground = "#${config.colorScheme.palette.base00}";
 			url_color = "#${config.colorScheme.palette.base04}";
 			cursor = "#${config.colorScheme.palette.base05}";
-			active_border_color = "#${config.colorScheme.palette.base03}";
-			inactive_border_color = "#${config.colorScheme.palette.base01}";
 			active_tab_background = "#${config.colorScheme.palette.base00}";
 			active_tab_foreground = "#${config.colorScheme.palette.base05}";
 			inactive_tab_background = "#${config.colorScheme.palette.base01}";
@@ -37,7 +35,6 @@
 			color13 = "#${config.colorScheme.palette.base06}";
 			color14 = "#${config.colorScheme.palette.base0F}";
 			color15 = "#${config.colorScheme.palette.base07}";
-			#colorscheme = "tokyo_night_storm";
 		};
 		font = {
 			name = config.font;
