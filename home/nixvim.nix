@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   programs.nixvim = {
     enable = true;
@@ -85,6 +85,8 @@
 				nvim-autopairs.enable = true;
 				indent-blankline.enable = true;
 				comment-nvim.enable = true;
+			/* Color preview */
+				nvim-colorizer.enable = true;
 			/* Dependencies */
 				dap.enable = true;
 		};
