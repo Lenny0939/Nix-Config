@@ -40,11 +40,13 @@
 					];
   			};
 
-				live = nixpkgs.lib.nixosSystem {
+				live = nixos.lib.nixosSystem {
         	specialArgs = { inherit inputs system; };
+					system = "x86_64-linux";
 					modules = [
-						(nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
+						"${nixos}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
 	  				./legolas/legolas.nix
+						./iso.nix
 					];
   			};
 	  	};
