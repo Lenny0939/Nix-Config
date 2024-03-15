@@ -42,6 +42,7 @@
 			tetrio-desktop
 			bottom # Task manager except cool
 			speedtest-cli
+			acpi
 			discord
 			pavucontrol
 			yt-dlp
@@ -52,6 +53,7 @@
 			/* Notifications */
 				libnotify
 		/* Miscellaneous */
+			playerctl
 			xorg.xinit
 			hyprshot 
 			wl-clipboard
@@ -61,6 +63,7 @@
 			brightnessctl 
 			easyeffects
 			trashy
+			eww-wayland
 			shipwright
 			(pkgs.nerdfonts.override { fonts = [ "Hack" ]; }) # Font
   ];
