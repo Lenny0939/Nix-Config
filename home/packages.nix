@@ -37,7 +37,6 @@
 			lsd
 			ncdu
 		/* Apps */
-			spotify-tui 
 			spotify
 			tetrio-desktop
 			bottom # Task manager except cool
@@ -46,7 +45,6 @@
 			discord
 			pavucontrol
 			yt-dlp
-			yuzu
 			audacity
 			# Most apps have their own modules
 		/* Services */
@@ -63,7 +61,7 @@
 			brightnessctl 
 			easyeffects
 			trashy
-			eww-wayland
+			eww
 			shipwright
 			(pkgs.nerdfonts.override { fonts = [ "Hack" ]; }) # Font
   ];
