@@ -40,34 +40,15 @@
 				  enable = true;
 					fromVscode = [{}];
 				};
-				nvim-cmp = {
+				cmp = {
 					enable = true;
 					autoEnableSources = true;
-					sources = [
+					settings.sources = [
 						{name = "nvim_lsp";}
 						{name = "luasnip";}
 						{name = "path";}
 						{name = "buffer";}
 					];
-					mapping = {
-						"<CR>" = "cmp.mapping.confirm({ select = true })";
-						"<Tab>" = {
-							action = /* lua */ ''
-								function(fallback)
-									if cmp.visible() then
-										cmp.select_next_item()
-									elseif require('luasnip').expandable() then
-										require('luasnip').expand()
-									elseif require('luasnip').expand_or_jumpable() then
-										require('luasnip').expand_or_jump()
-									else
-										fallback()
-									end
-								end
-							'';
-							modes = [ "i" "s" ];
-						};
-					};
 				};
 			/* LSP */
 				lsp = {
@@ -149,6 +130,27 @@
         options.silent = false;
 				options.noremap = true;
 				action = "gk";
+			}
+			{
+				mode = [ "i" "s" ];
+				key = "<CR>" ;
+				action = "cmp.mapping.confirm({ select = true })";
+			}
+			{
+				key = "<Tab>";
+				action = /* lua */ ''
+						function(fallback)
+							if cmp.visible() then
+								cmp.select_next_item()
+							elseif require('luasnip').expandable() then
+								require('luasnip').expand()
+							elseif require('luasnip').expand_or_jumpable() then
+								require('luasnip').expand_or_jump()
+							else
+								fallback()
+							end
+						end
+					'';
 			}
 		];
   };
