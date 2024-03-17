@@ -14,11 +14,6 @@
 			selection_foreground = "#${config.colorScheme.palette.base00}";
 			url_color = "#${config.colorScheme.palette.base04}";
 			cursor = "#${config.colorScheme.palette.base05}";
-			active_tab_background = "#${config.colorScheme.palette.base00}";
-			active_tab_foreground = "#${config.colorScheme.palette.base05}";
-			inactive_tab_background = "#${config.colorScheme.palette.base01}";
-			inactive_tab_foreground = "#${config.colorScheme.palette.base04}";
-			tab_bar_background = "#${config.colorScheme.palette.base01}";
 			color0 = "#${config.colorScheme.palette.base00}";
 			color1 = "#${config.colorScheme.palette.base08}";
 			color2 = "#${config.colorScheme.palette.base0B}";
@@ -38,7 +33,6 @@
 		};
 		font = {
 			name = config.font;
-			size = config.scaling * 12;
 		};
 		shellIntegration.enableZshIntegration = true;
 	};
