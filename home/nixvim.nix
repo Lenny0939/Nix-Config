@@ -43,12 +43,26 @@
 				cmp = {
 					enable = true;
 					autoEnableSources = true;
-					settings.sources = [
-						{name = "nvim_lsp";}
-						{name = "luasnip";}
-						{name = "path";}
-						{name = "buffer";}
-					];
+					settings = { 
+						sources = [
+							{name = "nvim_lsp";}
+							{name = "luasnip";}
+							{name = "path";}
+							{name = "buffer";}
+						];
+						mapping = {
+						__raw = /* lua */ ''
+								cmp.mapping.preset.insert({
+									['<C-b>'] = cmp.mapping.scroll_docs(-4),
+									['<C-f>'] = cmp.mapping.scroll_docs(4),
+									['<C-Space>'] = cmp.mapping.complete(),
+									['<C-e>'] = cmp.mapping.abort(),
+									['<CR>'] = cmp.mapping.confirm({ select = true }),
+									['Tab'] = cmp.select_next_item(),
+								})
+						'';
+						};
+					};
 				};
 			/* LSP */
 				lsp = {
@@ -115,7 +129,7 @@
         key = "N";
         options.silent = false;
 				options.noremap = true;
-        action = "N/*  */zz";
+        action = "Nzz";
       }
 			{
 				mode = "n";
@@ -130,27 +144,6 @@
         options.silent = false;
 				options.noremap = true;
 				action = "gk";
-			}
-			{
-				mode = [ "i" "s" ];
-				key = "<CR>" ;
-				action = "cmp.mapping.confirm({ select = true })";
-			}
-			{
-				key = "<Tab>";
-				action = /* lua */ ''
-						function(fallback)
-							if cmp.visible() then
-								cmp.select_next_item()
-							elseif require('luasnip').expandable() then
-								require('luasnip').expand()
-							elseif require('luasnip').expand_or_jumpable() then
-								require('luasnip').expand_or_jump()
-							else
-								fallback()
-							end
-						end
-					'';
 			}
 		];
   };
