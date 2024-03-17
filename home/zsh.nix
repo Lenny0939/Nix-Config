@@ -8,7 +8,7 @@
 			wifi = ''${pkgs.networkmanager}/bin/nmcli --ask dev wifi connect $(${pkgs.networkmanager}/bin/nmcli --ask dev wifi list | ${pkgs.coreutils}/bin/tail -n +2 | ${pkgs.gnused}/bin/sed 's/\*//g' | ${pkgs.gawk}/bin/awk '{ print $2" "$5" "$6" "$7 "%" }' | ${pkgs.fzf}/bin/fzf | ${pkgs.gawk}/bin/awk '{ print $1 }')'';
       test = "sudo nixos-rebuild test --flake ~/nix#$(hostname -s)";
 			ff = "$EDITOR $(${pkgs.fzf}/bin/fzf --preview '${pkgs.bat}/bin/bat {}')";
-			rebuildclean = "sudo nixos-rebuild switch --flake /home/lenny/nix#$(${pkgs.hostname}/bin/hostname -s) --upgrade && nix-collect-garbage sudo nix-collect-garbage -d && sudo nix-store --optimise";
+			rebuildclean = "sudo nixos-rebuild switch --flake /home/lenny/nix#$(${pkgs.hostname}/bin/hostname -s) --upgrade && nix-collect-garbage -d && sudo nix-collect-garbage -d && sudo nix-store --optimise";
 			upgrade = "nix flake update ~/nix && sudo nixos-rebuild switch";
 			gyat = "git";
 			cd = "z";
