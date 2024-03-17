@@ -2,7 +2,7 @@
 let
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
 	steam-session = "${pkgs.xorg.xinit}/bin/startx /home/lenny/.xinitrc";
-  hyprland-session = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/share/wayland-sessions";
+  hyprland-session = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/share/wayland-sessions/hyprland.desktop";
 in
 {
 	imports = [ 
@@ -23,7 +23,7 @@ in
 	  loader = {
 		  systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-      timeout = null;
+      #timeout = null;
 		};
     initrd.systemd.enable = true;
 		kernelPackages = pkgs.linuxPackages_latest;
@@ -52,9 +52,11 @@ in
   ];
   services.greetd = {
     enable = true;
-    settings = {
-			initial_session = {
+    settings = rec {
+			/*
+			hyprland-session = {
 				command = "${hyprland-session}";
+				#command = "${pkgs.hyprland}/bin/Hyprland";
 				user = "lenny";
 			};
 			steam-session = {
@@ -62,9 +64,10 @@ in
 				user = "lenny";
 			};
 			tuigreet = {
-        command = "${tuigreet} --time --remember --remember-session --sessions /home/lenny/sessions";
+        command = "${tuigreet} --time --remember --remember-session --sessions ${hyprland-session}";
         user = "greeter";
 			};
+			*/
       default_session = {
 				command = "Hyprland";
 				user = "lenny";
