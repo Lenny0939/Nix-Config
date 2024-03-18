@@ -23,7 +23,7 @@ in
 	  loader = {
 		  systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-      #timeout = null;
+      timeout = null;
 		};
     initrd.systemd.enable = true;
 		kernelPackages = pkgs.linuxPackages_latest;
