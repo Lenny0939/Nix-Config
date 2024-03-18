@@ -53,7 +53,7 @@ in
 				"$mainMod, V, togglefloating"
 				"$mainMod, R, exec, ${pkgs.wofi}/bin/wofi"
 				"$mainMod, H, togglesplit,"
-				"$mainMod, B, exec, ${pkgs.firefox}/bin/firefox"
+				"$mainMod, B, exec, ${pkgs.latest.firefox-nightly-bin}/bin/firefox-nightly"
 				"$mainMod, S, exec, ${pkgs.kitty}/bin/kitty --hold ${pkgs.neovim}/bin/nvim $(${pkgs.fzf}/bin/fzf))"
 				"$mainMod, A, fullscreen"
 				#"$mainMod, C, exec, rofi -show calculator
