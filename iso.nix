@@ -1,5 +1,10 @@
-{ lib, ... }: 
+{ modulesPath, lib, ... }: 
 {
+	imports = [
+		"${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
+		./gui.nix
+	];
+	nixpkgs.hostPlatform = "x86_64-linux";
 	networking.wireless.enable = lib.mkForce false;
-	users.users."root".password = lib.mkForce "password";
+	isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 }
