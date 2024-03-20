@@ -12,7 +12,8 @@
   imports = [
     inputs.hyprland.homeManagerModules.default
 		inputs.nixvim.homeManagerModules.nixvim
-		./bat.nix
+		inputs.stylix.homeManagerModules.stylix
+		inputs.nix-colors.homeManagerModules.default
 		./mangohud.nix
 		./firefox.nix
 		./fastfetch.nix
@@ -24,7 +25,6 @@
     ./themes.nix
 		./nixvim.nix
 		./kitty.nix
-		./waybar.nix
 		./eww/eww.nix
 		#./spotify.nix
 		./mako.nix
