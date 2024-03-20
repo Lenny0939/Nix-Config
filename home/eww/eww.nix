@@ -19,10 +19,6 @@ done
 '';
 in
 {
-	#programs.eww = {
-	#	enable = true;
-	#	package = pkgs.eww-wayland;
-	#};
 	xdg.configFile."eww/eww.yuck".text = /* yuck */ ''
 		(defwidget bar [screen]
 			(centerbox :orientation "v"
@@ -40,7 +36,7 @@ in
 			(workspaces))
 
 		(defwidget workspaces []
-			(box :orientation "v" :style "color: #${config.colorScheme.palette.base0D}"
+			(box :orientation "v" :style "color: #${config.lib.stylix.colors.base0D}"
 				"''${workspace1}"
 				"''${workspace2}"
 				"''${workspace3}"
@@ -56,7 +52,7 @@ in
 		(defwidget time []
 			(box :orientation "v" 
 					 :class "time"
-					 :style "color: #${config.colorScheme.palette.base0C}"
+					 :style "color: #${config.lib.stylix.colors.base0C}"
 				hour min))
 
 
@@ -88,7 +84,7 @@ in
 
 				;(metric :icon "" "''${round(EWW_CPU.avg, 0)}%")
 
-				(box :class "metric" :style "color: #${config.colorScheme.palette.base09}"(date))))
+				(box :class "metric" :style "color: #${config.lib.stylix.colors.base09}"(date))))
 
 		(defwidget music-button []
 			(button :onclick "playerctl play-pause"
@@ -108,7 +104,7 @@ in
 									 :valign "fill"
 									 :vexpand true
 							(button 
-								(label :style "font-size: 1.2em; color: #${config.colorScheme.palette.base06}"
+								(label :style "font-size: 1.2em; color: #${config.lib.stylix.colors.base06}"
 											 :text "󰁹"))			 
 									 "''${round(EWW_BATTERY.BAT0.capacity,0)}%")))
 
@@ -131,7 +127,7 @@ in
 							 :valign "fill"
 							 :vexpand true
 				(button 
-          (label :style "font-size: 1.2em; color: #${config.colorScheme.palette.base0B}"
+          (label :style "font-size: 1.2em; color: #${config.lib.stylix.colors.base0B}"
                  :text "󰕾"))			 
 								 "''${volume}%"))))
 
