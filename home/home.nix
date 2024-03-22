@@ -13,7 +13,6 @@
     inputs.hyprland.homeManagerModules.default
 		inputs.nixvim.homeManagerModules.nixvim
 		inputs.stylix.homeManagerModules.stylix
-		inputs.nix-colors.homeManagerModules.default
 		./mangohud.nix
 		./firefox.nix
 		./fastfetch.nix
