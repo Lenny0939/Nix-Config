@@ -1,11 +1,11 @@
 { config, pkgs, ... }:
 let
-	startup = pkgs.pkgs.writeShellScriptBin "startup" /* sh */ ''
-		${pkgs.hyprland}/bin/hyprctl setcursor Bibata-Modern-Ice 25 
-		${pkgs.swww}/bin/swww init
-		${pkgs.swww}/bin/swww img ${config.stylix.image}
-		${pkgs.eww-wayland}/bin/eww open bar_1
-		${pkgs.easyeffects}/bin/easyeffects --gapplication-service
+	startup = with pkgs; pkgs.pkgs.writeShellScriptBin "startup" /* sh */ ''
+		${hyprland}/bin/hyprctl setcursor Bibata-Modern-Ice 25 
+		${swww}/bin/swww init
+		${swww}/bin/swww img ${config.stylix.image}
+		${eww}/bin/eww open bar_1
+		${easyeffects}/bin/easyeffects --gapplication-service
 	'';
 in
 {   
