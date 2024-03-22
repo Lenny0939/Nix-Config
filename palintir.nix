@@ -6,5 +6,6 @@
 	];
 	nixpkgs.hostPlatform = "x86_64-linux";
 	networking.wireless.enable = lib.mkForce false;
+	networking.hostname = "palintir";
 	isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 }

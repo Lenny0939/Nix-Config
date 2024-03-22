@@ -43,7 +43,7 @@
 				iso = nixpkgs.lib.nixosSystem {
         	specialArgs = { inherit inputs system; };
 					modules = [
-						./iso.nix
+						./palintir.nix
 					];
   			};
 	  	};
