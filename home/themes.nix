@@ -1,6 +1,5 @@
-{ inputs, pkgs, ...}:
+{ pkgs, ...}:
 {
-	colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 	gtk = {
 		enable = true;
   	cursorTheme.package = pkgs.bibata-cursors;
