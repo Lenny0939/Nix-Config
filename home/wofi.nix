@@ -20,7 +20,7 @@
 			filter_rate = 100;
 			allow_markup = true;
 		};
-		style = /* css */ ''
+		style = with config.lib.stylix.colors; /* css */ ''
 			* {
 					font-family: ${config.font}, monospace;
 					font-size: 24px;
@@ -30,9 +30,9 @@
 			 window {
 					margin: 0px;
 					padding: 10px;
-					border: 1px #${config.colorScheme.palette.base07};
+					border: 1px #${base07};
 					border-radius: 5px;
-					background-color: #${config.colorScheme.palette.base00};
+					background-color: #${base00};
 					animation: slideIn 0.5s ease-in-out both;
 			 }
 
@@ -52,7 +52,7 @@
 					margin: 5px;
 					padding: 10px;
 					border: none;
-					background: #${config.colorScheme.palette.base00};
+					background: #${base00};
 					animation: fadeIn 0.5s ease-in-out both;
 			 }
 
@@ -72,7 +72,7 @@
 					margin: 5px;
 					padding: 10px;
 					border: none;
-					background-color: #${config.colorScheme.palette.base00};
+					background-color: #${base00};
 			 }
 
 			 /* Scroll */
@@ -87,31 +87,31 @@
 					margin: 5px;
 					padding: 10px;
 					border: none;
-					color: #${config.colorScheme.palette.base05};
-					background-color: #${config.colorScheme.palette.base01};
+					color: #${base05};
+					background-color: #${base01};
 					animation: fadeIn 0.5s ease-in-out both;
 			 }
 
 			 /* Text */
 			 #text:selected {
-				color: #${config.colorScheme.palette.base05};
+				color: #${base05};
 			 }
 			 #text {
 					margin: 5px;
 					padding: 10px;
 					border: none;
-					color: #${config.colorScheme.palette.base05};
+					color: #${base05};
 					animation: fadeIn 0.5s ease-in-out both;
 			 }
 
 			 /* Selected Entry */
 			 #entry:selected {
-				 background: linear-gradient(90deg, #${config.colorScheme.palette.base05}, #${config.colorScheme.palette.base07});
+				 background: linear-gradient(90deg, #${base05}, #${base07});
 				 border-radius: 5px;
 			 }
 
 			 #entry:selected #text {
-					color: #${config.colorScheme.palette.base00};
+					color: #${base00};
 			 }
 		'';
 	};
