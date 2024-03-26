@@ -46,6 +46,7 @@
 			pavucontrol
 			yt-dlp
 			audacity
+			qmk
 			# Most apps have their own modules
 		/* Services */
 			/* Notifications */
