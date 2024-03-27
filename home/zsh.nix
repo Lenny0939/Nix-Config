@@ -9,8 +9,8 @@ in
       rebuild = "sudo nixos-rebuild switch --flake ${configDir}#$(${pkgs.hostname}/bin/hostname)";
       test = "sudo nixos-rebuild test --flake ${configDir}#$(${pkgs.hostname}/bin/hostname)";
 			detnsw = "${pkgs.networkmanager}/bin/nmcli --ask con up detnsw";
-			wifi = ''${pkgs.networkmanager}/bin/nmcli --ask dev wifi connect $(${pkgs.networkmanager}/bin/nmcli --ask dev wifi list | ${pkgs.coreutils}/bin/tail -n +2 | ${pkgs.gnused}/bin/sed 's/\*//g' | ${pkgs.gawk}/bin/awk '{ print $2" "$5" "$6" "$7 "%" }' | ${pkgs.fzf}/bin/fzf | ${pkgs.gawk}/bin/awk '{ print $1 }')'';
-			ff = "${pkgs.fzf}/bin/fzf --bind 'enter:become($EDITOR {})'";
+			wifi = ''${pkgs.networkmanager}/bin/nmcli --ask dev wifi list | ${pkgs.coreutils}/bin/tail -n +2 | ${pkgs.gnused}/bin/sed 's/\*//g' | ${pkgs.gawk}/bin/awk '{ print $2" "$5" "$6" "$7 "%" }' | ${pkgs.fzf}/bin/fzf --bind 'enter:become(${pkgs.networkmanager}/bin/nmcli --ask dev wifi connect)' | ${pkgs.gawk}/bin/awk '{ print $1 }' '';
+			ff = "${pkgs.fzf}/bin/fzf --preview '${pkgs.pistol}/bin/pistol {}' --bind 'enter:become($EDITOR {})'";
 			clean = "nix-collect-garbage -d && sudo nix-collect-garbage -d && sudo nix-store --optimise";
 			upgrade = "nix flake update ${./..}";
 			gyat = "git";
@@ -60,6 +60,6 @@ in
   };
 	home.sessionVariables = {
 		FZF_DEFAULT_COMMAND = "fd --type f";
-		FZF_DEFAULT_OPTS = "--layout=reverse --inline-info --preview '${pkgs.pistol}/bin/pistol {}'";
+		FZF_DEFAULT_OPTS = "--layout=reverse";
 	};
 }
