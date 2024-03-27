@@ -77,7 +77,7 @@
 			/* QOL */
 				nvim-autopairs.enable = true;
 				indent-blankline.enable = true;
-				comment-nvim.enable = true;
+				comment.enable = true;
 			/* Color preview */
 				nvim-colorizer.enable = true;
 			/* Dependencies */
