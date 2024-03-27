@@ -1,7 +1,6 @@
 { pkgs, lib, config, ... }: {
   imports = [
     ./modules/board/orangepi-3-lts/sd-image.nix
-		../frodo/frodo.nix
   ];
 
   sdImage = {
