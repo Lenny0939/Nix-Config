@@ -32,13 +32,15 @@
 				python3
 		/* Utilities */
 			fd # lists files, needed for telescope and also cool finding thingo
-			ripgrep # grep alternative, uses fuzzy finding
+			ripgrep # grep alternative
 			fzf
 			lsd
 			ncdu
+			bat
 		/* Apps */
 			spotify
 			tetrio-desktop
+			qmk
 			bottom # Task manager except cool
 			speedtest-cli
 			acpi
