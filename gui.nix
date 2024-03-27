@@ -6,7 +6,6 @@ let
 in
 {
 	imports = [ 
-		inputs.sops-nix.nixosModules.sops
 		#./home/spotify.nix
 		./modules/homework.nix
 		./configuration.nix

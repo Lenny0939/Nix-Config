@@ -2,9 +2,14 @@
 {
 	imports = [
 		../configuration.nix
-		#./hardware-configuration-frodo.nix
 		./searx.nix
-		../nixos-arm/sd-image-opiz2.nix
+		../nixos-arm/sd-image-opi3lts.nix
+		/* pkgs.fetchFromGitHub {
+		  owner = "katyo";
+		  repo = "nixos-arm";
+		  rev = "master";
+		  hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+		} */
 		#./nextcloud.nix
 		#./wireguard-server.nix
 		#./vaultwarden.nix
