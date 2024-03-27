@@ -32,6 +32,7 @@ in
 				layout = "dwindle";
 			};
 
+			animation = "global,1,5,default";
 			dwindle = {
 				pseudotile = "yes";
 				preserve_split = "yes";
@@ -49,17 +50,14 @@ in
 				", PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
 				"$mainMod, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m output --clipboard-only"
 				"$mainMod, T, exec, ${pkgs.kitty}/bin/kitty"
+				"$mainMod, S, exec, ${pkgs.kitty}/bin/kitty --hold ${pkgs.fzf}/bin/fzf --bind 'enter:become($EDITOR {})'"
 				"$mainMod, Z, killactive,"
 				"$mainMod, M, exit,"
 				"$mainMod, V, togglefloating"
 				"$mainMod, R, exec, ${pkgs.wofi}/bin/wofi"
 				"$mainMod, H, togglesplit,"
 				"$mainMod, B, exec, ${pkgs.latest.firefox-nightly-bin}/bin/firefox-nightly"
-				"$mainMod, S, exec, ${pkgs.kitty}/bin/kitty --hold ${pkgs.neovim}/bin/nvim $(${pkgs.fzf}/bin/fzf))"
 				"$mainMod, A, fullscreen"
-				#"$mainMod, C, exec, rofi -show calculator
-				#"$mainMod, semicolon, exec, rofi -show power-menu -modi power-menu:/home/lenny/.local/bin/rofi-power-menu
-				#"$mainMod, K, exec, ~/.local/bin/rofi-wifi-menu.sh
 				", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set -e +5%"
 				", XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set -e 5%-"
 				", XF86AudioRaiseVolume, exec, ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +10%"
