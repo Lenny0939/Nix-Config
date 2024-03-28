@@ -1,9 +1,8 @@
 { ... }:
 {
 	imports = [
-		../gui.nix
+		../../modules/gui.nix
 		./hardware-configuration-aragorn.nix
-		../modules/fonts.nix
 	];
 	home-manager.users.lenny.wayland.windowManager.hyprland.settings.monitor = ",highres,auto,1.6";
 	networking.hostName = "aragorn"; 

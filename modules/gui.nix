@@ -7,9 +7,9 @@ in
 {
 	imports = [ 
 		#./home/spotify.nix
-		./modules/homework.nix
+		../modules/homework.nix
 		./configuration.nix
-		./modules/printer.nix
+		../modules/printer.nix
 	];
 
 	services.xserver.enable = true;
@@ -42,7 +42,7 @@ in
 	home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      lenny = import ./home/home.nix;
+      lenny = import ../home/home.nix;
     };
   };
   fonts.packages = with pkgs; [

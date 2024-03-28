@@ -1,15 +1,14 @@
 { inputs, lib, pkgs, ... }:
 {
 	imports = [
-		../configuration.nix
+		../../modules/configuration.nix
 		./searx.nix
-		../nixos-arm/sd-image-opi3lts.nix
-		/* pkgs.fetchFromGitHub {
-		  owner = "katyo";
-		  repo = "nixos-arm";
-		  rev = "master";
-		  hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-		} */
+		../../nixos-arm/sd-image-opi3lts.nix
+		/* (builtins.fetchGit {
+		  url = "https://github.com/katyo/nixos-arm.git";
+		  ref = "master";
+		  rev = "ef5e339bcb8274c1127a1434d0c5f3ad80ea3692";
+		}) */
 		#./nextcloud.nix
 		#./wireguard-server.nix
 		#./vaultwarden.nix

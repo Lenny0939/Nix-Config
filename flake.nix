@@ -24,26 +24,26 @@
       	legolas = nixpkgs.lib.nixosSystem {
         	specialArgs = { inherit inputs system; };
 					modules = [
-	  				./legolas/legolas.nix
+	  				./machines/legolas/legolas.nix
 					];
   			};
       	aragorn = nixpkgs.lib.nixosSystem {
         	specialArgs = { inherit inputs system; };
 					modules = [
-	  				./aragorn/aragorn.nix
+	  				./machines/aragorn/aragorn.nix
 					];
   			};
 				frodo = nixpkgs.lib.nixosSystem {
         	specialArgs = { inherit inputs system; };
 					modules = [
-	  				./frodo/frodo.nix
+	  				./machines/frodo/frodo.nix
 					];
   			};
 
 				iso = nixpkgs.lib.nixosSystem {
         	specialArgs = { inherit inputs system; };
 					modules = [
-						./palintir.nix
+						./machines/palintir/palintir.nix
 					];
   			};
 	  	};

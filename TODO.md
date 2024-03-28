@@ -4,5 +4,4 @@
     - Nextcloud (just needs secrets)
     - Wireguard (just needs secrets)
 # ANNOYING THINGS
-    - Fix slow boot in aragorn
     - Fix audio in aragorn

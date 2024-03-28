@@ -3,7 +3,7 @@
 	imports = [
     inputs.home-manager.nixosModules.home-manager
 		inputs.sops-nix.nixosModules.sops
-		./modules/sops.nix
+		../modules/sops.nix
 	];
 	programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;

@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
 	imports = [
-		../gui.nix
+		../../modules/gui.nix
 		./hardware-configuration-legolas.nix
 	];
 	services.tlp.enable = true;
