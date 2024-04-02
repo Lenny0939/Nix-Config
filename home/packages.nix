@@ -11,9 +11,6 @@
 			#lutris
 			mangohud # Overlay, like MSI Afterburner
 		/* Coding stuff */
-			/* LSP Language Servers */
-				nil # Nix language server
-				clang-tools # C language server
 			/* Rust */
 				cargo
 				rustc

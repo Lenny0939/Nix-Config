@@ -68,6 +68,8 @@
 					servers = {
 						nil_ls.enable = true;
 						clangd.enable = true;
+						bashls.enable = true;
+						html.enable = true;
 						# Rust-analyzer automatically enabled by rustaceanvim
 					};
 				};
