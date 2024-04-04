@@ -46,6 +46,7 @@
 			yt-dlp
 			audacity
 			qmk
+			figma-linux
 			# Most apps have their own modules
 		/* Services */
 			/* Notifications */
