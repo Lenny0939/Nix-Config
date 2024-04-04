@@ -11,8 +11,10 @@
 	programs.home-manager.enable = true;
   imports = [
     inputs.hyprland.homeManagerModules.default
+    inputs.hyprlock.homeManagerModules.default
 		inputs.nixvim.homeManagerModules.nixvim
 		inputs.stylix.homeManagerModules.stylix
+		./hyprlock.nix
 		./mangohud.nix
 		./firefox.nix
 		./fastfetch.nix

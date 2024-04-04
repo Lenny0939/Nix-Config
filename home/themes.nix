@@ -8,7 +8,7 @@
   	iconTheme.name = "Papirus";
 	};
 	stylix = {
-		image = ./wallpaper.jpeg;
+		image = ./wallpaper.png;
 		base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 		opacity.terminal = 0.0;
 		fonts = {

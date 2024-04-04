@@ -30,6 +30,7 @@ in
 	programs.hyprland = {
 		enable = true;
 	};
+	security.pam.services.hyprlock = {};
   services.pipewire = {
     enable = true;
     alsa.enable = true;
