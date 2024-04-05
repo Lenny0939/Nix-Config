@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 let
 	startup = with pkgs; pkgs.pkgs.writeShellScriptBin "startup" /* sh */ ''
 		${hyprland}/bin/hyprctl setcursor Bibata-Modern-Ice 25 
@@ -9,6 +9,13 @@ let
 	'';
 in
 {   
+	imports = [
+		inputs.hyprland.homeManagerModules.default
+    inputs.hyprlock.homeManagerModules.default
+    inputs.hypridle.homeManagerModules.default
+		./hyprlock.nix
+		./hypridle.nix
+	];
 	wayland.windowManager.hyprland = {
 		enable = true;
 		systemd.enable = true;

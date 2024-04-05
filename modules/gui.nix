@@ -27,10 +27,9 @@ in
     initrd.systemd.enable = true;
 		kernelPackages = pkgs.linuxPackages_latest;
 	};
-	programs.hyprland = {
-		enable = true;
-	};
+	programs.hyprland.enable = true;
 	security.pam.services.hyprlock = {};
+	systemd.user.services.hypridle.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;

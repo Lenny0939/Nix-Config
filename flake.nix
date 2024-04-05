@@ -10,6 +10,7 @@
 		};
 		hyprland.url = "github:hyprwm/Hyprland";
 		hyprlock.url = "github:hyprwm/Hyprlock";
+		hypridle.url = "github:hyprwm/Hypridle";
 		stylix.url = "github:danth/stylix";
 		nixvim = {
 			url = "github:nix-community/nixvim";
@@ -17,7 +18,7 @@
 		};
 		sops-nix.url = "github:Mic92/sops-nix";
   };
-  outputs = { self, nixos, nixpkgs, home-manager, hyprland, hyprlock, ... }@inputs:
+  outputs = { self, nixos, nixpkgs, home-manager, hyprland, hypridle, hyprlock, ... }@inputs:
     let
       system = "x86_64-linux";
     in {

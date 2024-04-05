@@ -3,7 +3,7 @@
   programs.nixvim = {
     enable = true;
 		globals.mapleader = " ";
-		options = {
+		opts = {
 			linebreak = true;
 			clipboard = "unnamedplus";
 			cursorline = true;

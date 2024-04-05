@@ -10,17 +10,14 @@
 	};
 	programs.home-manager.enable = true;
   imports = [
-    inputs.hyprland.homeManagerModules.default
-    inputs.hyprlock.homeManagerModules.default
 		inputs.nixvim.homeManagerModules.nixvim
 		inputs.stylix.homeManagerModules.stylix
-		./i3.nix
 		./mangohud.nix
 		./firefox.nix
 		./fastfetch.nix
 		./wofi.nix
 		./git.nix
-    ./hyprland.nix
+    ./hyprland/hyprland.nix
     ./packages.nix
     ./zsh.nix
     ./themes.nix
