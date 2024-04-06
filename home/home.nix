@@ -14,7 +14,7 @@
     inputs.hyprlock.homeManagerModules.default
 		inputs.nixvim.homeManagerModules.nixvim
 		inputs.stylix.homeManagerModules.stylix
-		./hyprlock.nix
+		./i3.nix
 		./mangohud.nix
 		./firefox.nix
 		./fastfetch.nix
