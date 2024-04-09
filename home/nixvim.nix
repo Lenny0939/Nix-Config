@@ -15,6 +15,7 @@
 			updatetime = 300;
 			termguicolors = true;
 			mouse = "a";
+			scrolloff = 1000;
 		};
     plugins = {
 			/* Rust */
@@ -103,20 +104,6 @@
 				key = "<leader>pv";
 				action = "<cmd>Oil<CR>";
 			}
-			{
-        mode = "n";
-        key = "<C-d>";
-        options.silent = false;
-				options.noremap = true;
-        action = "<C-d>zz";
-      }
-			{
-        mode = "n";
-        key = "<C-u>";
-        options.silent = false;
-				options.noremap = true;
-        action = "<C-u>zz";
-      }
 			{
         mode = "n";
         key = "n";
