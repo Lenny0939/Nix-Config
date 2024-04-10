@@ -10,6 +10,7 @@ in
 		../modules/homework.nix
 		./configuration.nix
 		../modules/printer.nix
+		../modules/keyd.nix
 	];
 
 	services.xserver.enable = true;
