@@ -13,8 +13,8 @@
 		opacity.terminal = 0.0;
 		fonts = {
 			monospace = {
-				package = (pkgs.nerdfonts.override { fonts = ["Hack"]; });
-				name = "Hack Nerd Font";
+				package = (pkgs.nerdfonts.override { fonts = ["Iosevka"]; });
+				name = "Iosevka";
 			};
 		};
 		cursor = {
