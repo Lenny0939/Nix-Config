@@ -4,6 +4,7 @@
     inputs.home-manager.nixosModules.home-manager
 		inputs.sops-nix.nixosModules.sops
 		../modules/sops.nix
+		../modules/nh.nix
 	];
 	programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
@@ -16,11 +17,6 @@
 		size = 16*1024;
 	}];
 	nix = { 
-		gc = {
-			automatic = true;
-			dates = "weekly";
-			options = "--delete-older-than 30d";
-		};
 		optimise = {
 			automatic = true;
 			dates = ["weekly"];
