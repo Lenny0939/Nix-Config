@@ -20,13 +20,8 @@
 			/* Git */
 				gh 
 				git 
-				lazygit # TUI for git, pretty cool but no idea how to use
 			/* Godot */
     		godot_4 
-			/* C# */
-				mono 
-			/* Python */
-				python3
 		/* Utilities */
 			fd # lists files, needed for telescope and also cool finding thingo
 			ripgrep # grep alternative
@@ -36,7 +31,6 @@
 			bat
 		/* Apps */
 			spotify
-			tetrio-desktop
 			qmk
 			bottom # Task manager except cool
 			speedtest-cli
@@ -53,7 +47,6 @@
 				libnotify
 		/* Miscellaneous */
 			playerctl
-			xorg.xinit
 			hyprshot 
 			wl-clipboard
 		  nix-search-cli
@@ -62,8 +55,6 @@
 			brightnessctl 
 			easyeffects
 			trashy
-			eww
-			shipwright
 			(pkgs.nerdfonts.override { fonts = [ "Hack" ]; }) # Font
   ];
 }
