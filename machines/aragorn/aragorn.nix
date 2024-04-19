@@ -3,7 +3,7 @@
 	imports = [
 		../../modules/gui.nix
 		./hardware-configuration-aragorn.nix
-		../../modules/ollama.nix
+		#../../modules/ollama.nix
 	];
 	home-manager.users.lenny.wayland.windowManager.hyprland.settings.monitor = ",highres,auto,1.6";
 	networking.hostName = "aragorn"; 
@@ -18,4 +18,5 @@
 		modesetting.enable = true;
 		open = false;
 	};
+	boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 }
