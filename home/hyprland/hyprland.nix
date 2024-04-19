@@ -1,11 +1,9 @@
 { config, pkgs, inputs, ... }:
 let
 	startup = with pkgs; pkgs.pkgs.writeShellScriptBin "startup" /* sh */ ''
-		${hyprland}/bin/hyprctl setcursor Bibata-Modern-Ice 25 
 		${swww}/bin/swww-daemon --format xrgb
-		${swww}/bin/swww img ${config.stylix.image}
 		${eww}/bin/eww open bar_1
-		${easyeffects}/bin/easyeffects --gapplication-service
+		${swww}/bin/swww img ${config.stylix.image}
 	'';
 in
 {   
@@ -63,7 +61,7 @@ in
 				"$mainMod, V, togglefloating"
 				"$mainMod, S, exec, ${pkgs.wofi}/bin/wofi"
 				"$mainMod, H, togglesplit,"
-				"$mainMod, B, exec, ${pkgs.latest.firefox-nightly-bin}/bin/firefox-nightly"
+				"$mainMod, B, exec, ${pkgs.firefox-beta}/bin/firefox-beta"
 				"$mainMod, A, fullscreen"
 				"$mainMod, M, exec, ${pkgs.hyprlock}/bin/hyprlock"
 				", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set -e +5%"

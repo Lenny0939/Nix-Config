@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 {
-	nixpkgs.overlays =
+	/* nixpkgs.overlays =
   let
     moz-rev = "master";
     moz-url = builtins.fetchTarball { 
@@ -10,10 +10,10 @@
     nightlyOverlay = (import "${moz-url}/firefox-overlay.nix");
   in [
     nightlyOverlay
-  ];
+  ]; */
 	programs.firefox = {
 		enable = true;
-		package = pkgs.latest.firefox-nightly-bin;
+		package = pkgs.firefox-beta;
 		profiles.lenchog = {
 			search = {
 				engines = {
