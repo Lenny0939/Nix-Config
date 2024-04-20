@@ -31,6 +31,28 @@
 					main = {
 						capslock = "backspace";
 					};
+					global = {
+						default_layout = "colemak";
+					};
+					"colemak:layout" = {
+						e = "f";
+						r = "p";
+						t = "g";
+						y = "j";
+						u = "l";
+						i = "u";
+						o = "y";
+						p = "semicolon";
+						s = "r";
+						d = "s";
+						f = "t";
+						g = "d";
+						j = "n";
+						k = "e";
+						l = "i";
+						semicolon = "o";
+						n = "k";
+					};
 					rightalt = {
 						h = "left";
 						j = "down";
