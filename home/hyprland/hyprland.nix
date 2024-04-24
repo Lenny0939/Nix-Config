@@ -1,8 +1,8 @@
 { config, pkgs, inputs, ... }:
 let
 	startup = with pkgs; pkgs.pkgs.writeShellScriptBin "startup" /* sh */ ''
-		${swww}/bin/swww-daemon --format xrgb
 		${eww}/bin/eww open bar_1
+		${swww}/bin/swww-daemon --format xrgb
 		${swww}/bin/swww img ${config.stylix.image}
 	'';
 in
@@ -24,7 +24,7 @@ in
 			input = {
 				kb_layout = "us,us";
 				kb_variant = ",colemak"; 
-				kb_options = "grp:ctrl_alt_toggle, shift:both_capslock_cancel";
+				kb_options = "caps:backspace, grp:ctrl_alt_toggle, shift:both_capslock_cancel";
 				follow_mouse = 1;
 				touchpad = {
 					natural_scroll = "yes";
