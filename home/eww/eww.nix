@@ -19,6 +19,7 @@ done
 '';
 in
 {
+	home.packages = [ pkgs.eww ];
 	xdg.configFile."eww/eww.yuck".text = /* yuck */ ''
 		(defwidget bar [screen]
 			(centerbox :orientation "v"
