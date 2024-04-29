@@ -23,7 +23,7 @@ in
 	  loader = {
 		  systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-      timeout = null;
+      timeout = lib.mkForce null;
 		};
     initrd.systemd.enable = true;
 		kernelPackages = pkgs.linuxPackages_latest;
@@ -31,12 +31,6 @@ in
 	programs.hyprland.enable = true;
 	security.pam.services.hyprlock = {};
 	systemd.user.services.hypridle.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 	networking.nameservers = [ "192.168.0.11" "1.1.1.1" ];
 	services.blueman.enable = true;
 	hardware.bluetooth.enable = true;
