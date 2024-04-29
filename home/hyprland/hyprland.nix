@@ -12,7 +12,6 @@ in
     inputs.hyprlock.homeManagerModules.default
     inputs.hypridle.homeManagerModules.default
 		./hyprlock.nix
-		./hypridle.nix
 	];
 	wayland.windowManager.hyprland = {
 		enable = true;

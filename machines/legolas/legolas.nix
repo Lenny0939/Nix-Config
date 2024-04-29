@@ -12,4 +12,5 @@
 			intel-media-driver
 		];
 	};
+	home-manager.users.lenny.imports = [ ../../home/hyprland/hypridle.nix ];
 }
