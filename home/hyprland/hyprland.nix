@@ -1,6 +1,7 @@
 { config, pkgs, inputs, ... }:
 let
 	startup = with pkgs; pkgs.pkgs.writeShellScriptBin "startup" /* sh */ ''
+		${hyprlock}/bin/hyprlock
 		${eww}/bin/eww open bar_1
 		${swww}/bin/swww-daemon --format xrgb
 		${swww}/bin/swww img ${config.stylix.image}
