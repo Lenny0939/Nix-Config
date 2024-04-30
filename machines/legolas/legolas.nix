@@ -13,4 +13,10 @@
 		];
 	};
 	home-manager.users.lenny.imports = [ ../../home/hyprland/hypridle.nix ];
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+	};
 }
