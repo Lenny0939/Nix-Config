@@ -16,17 +16,24 @@ in
 	services.xserver.enable = true;
   programs.steam = {
     enable = true;
+		gamescopeSession.enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
+	programs.gamemode.enable = true;
   boot = {
 	  loader = {
 		  systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
       timeout = lib.mkForce null;
 		};
+		consoleLogLevel = 0;
     initrd.systemd.enable = true;
 		kernelPackages = pkgs.linuxPackages_latest;
+		plymouth = {
+			enable = true;
+			theme = "breeze";
+		};
 	};
 	programs.hyprland.enable = true;
 	security.pam.services.hyprlock = {};
