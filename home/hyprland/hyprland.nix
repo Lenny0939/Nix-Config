@@ -1,10 +1,8 @@
 { config, pkgs, inputs, ... }:
 let
-	startup = with pkgs; pkgs.pkgs.writeShellScriptBin "startup" /* sh */ ''
-		${hyprlock}/bin/hyprlock
+	startup = with pkgs; pkgs.pkgs.writeShellScriptBin "startup" /* bash */ ''
 		${eww}/bin/eww open bar_1
-		${swww}/bin/swww-daemon --format xrgb
-		${swww}/bin/swww img ${config.stylix.image}
+		${hyprlock}/bin/hyprlock
 	'';
 in
 {   
@@ -12,8 +10,14 @@ in
 		inputs.hyprland.homeManagerModules.default
     inputs.hyprlock.homeManagerModules.default
     inputs.hypridle.homeManagerModules.default
+    inputs.hyprpaper.homeManagerModules.default
 		./hyprlock.nix
 	];
+	services.hyprpaper = {
+		enable = true;
+		preloads = [ "${config.stylix.image}" ];
+		wallpapers = [ "eDP-1,${config.stylix.image}"];
+	};
 	wayland.windowManager.hyprland = {
 		enable = true;
 		systemd.enable = true;
