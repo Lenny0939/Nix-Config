@@ -29,8 +29,10 @@
 			lsd
 			ncdu
 			bat
+			nix-output-monitor
 		/* Apps */
 			spotify
+			blanket
 			qmk
 			bottom # Task manager except cool
 			speedtest-cli
