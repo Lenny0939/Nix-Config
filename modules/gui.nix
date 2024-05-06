@@ -28,15 +28,11 @@ in
       timeout = lib.mkForce null;
 		};
 		consoleLogLevel = 0;
-    initrd = {
-			verbose = false;
-			systemd.enable = true;
-		};
+    initrd.systemd.enable = true;
 		kernelPackages = pkgs.linuxPackages_latest;
-		kernelParams = [ "quiet" "udev.log_level=0" ];
 		plymouth = {
 			enable = true;
-			theme = "bgrt";
+			theme = "breeze";
 		};
 	};
 	programs.hyprland.enable = true;

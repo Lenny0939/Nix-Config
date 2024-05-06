@@ -16,7 +16,7 @@ in
 	services.hyprpaper = {
 		enable = true;
 		preloads = [ "${config.stylix.image}" ];
-		wallpapers = [ "eDP-1,${config.stylix.image}" "HDMI-A-1,${config.stylix.image}"];
+		wallpapers = [ "eDP-1,${config.stylix.image}"];
 	};
 	wayland.windowManager.hyprland = {
 		enable = true;
