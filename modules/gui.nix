@@ -34,10 +34,6 @@ in
 		};
 		kernelPackages = pkgs.linuxPackages_latest;
 		kernelParams = [ "quiet" "udev.log_level=0" ];
-		plymouth = {
-			enable = true;
-			theme = "breeze";
-		};
 	};
 	programs.hyprland.enable = true;
 	security.pam.services.hyprlock = {};
