@@ -7,14 +7,13 @@ let audio = pkgs.writeShellScriptBin "audio" /* bash */ ''
 		do ${pkgs.pamixer}/bin/pamixer --get-volume | cut -d " " -f1;
 	done
 '';
-workspaces = pkgs.writeShellScriptBin "workspaces" /* bash */ ''
-while(true); do
-	if [[ $(${pkgs.hyprland}/bin/hyprctl workspaces | grep "workspace ID" | awk '{ print $3 }' | grep -m1 "$1") = $1 ]]; then
+workspaces = with pkgs; writeShellScriptBin "workspaces" /* bash */ ''
+${pkgs.socat}/bin/socat -u UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | while read -r line; do
+	if [[ $(hyprctl workspaces -j | ${pkgs.jq}/bin/jq '.[] | select(.id=='"$1"')') ]]; then
 		echo ◆
 	else 
 		echo ◇
 	fi
-	sleep 0.2
 done
 '';
 in
