@@ -7,16 +7,15 @@ let
 in
 {   
 	imports = [
-		inputs.hyprland.homeManagerModules.default
-    inputs.hyprlock.homeManagerModules.default
-    inputs.hypridle.homeManagerModules.default
-    inputs.hyprpaper.homeManagerModules.default
+		 inputs.hyprland.homeManagerModules.default
 		./hyprlock.nix
 	];
 	services.hyprpaper = {
 		enable = true;
-		preloads = [ "${config.stylix.image}" ];
-		wallpapers = [ "eDP-1,${config.stylix.image}" "HDMI-A-1,${config.stylix.image}"];
+		settings = {
+			preload = [ "${config.stylix.image}" ];
+			wallpaper = [ "eDP-1,${config.stylix.image}" "HDMI-A-1,${config.stylix.image}"];
+		};
 	};
 	wayland.windowManager.hyprland = {
 		enable = true;
@@ -76,22 +75,22 @@ in
 				", XF86AudioMicMute, exec, ${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle"
 
 				# Move focus with mainMod + arrow keys
-				"$mainMod, j, movefocus, l"
-				"$mainMod, semicolon, movefocus, r"
-				"$mainMod, l, movefocus, u"
-				"$mainMod, k, movefocus, d"
+				"$mainMod, h, movefocus, l"
+				"$mainMod, j, movefocus, d"
+				"$mainMod, k, movefocus, u"
+				"$mainMod, l, movefocus, r"
 		
 				# Resize windows with mainMod + SUPER + arrow keys
-				"$mainMod SUPER, semicolon, resizeactive, 25 0"
-				"$mainMod SUPER, j, resizeactive, -25 0"
-				"$mainMod SUPER, l, resizeactive, 0 -25"
-				"$mainMod SUPER, k, resizeactive, 0 25"
+				"$mainMod SUPER, h, resizeactive, -25 0"
+				"$mainMod SUPER, j, resizeactive, 0 25"
+				"$mainMod SUPER, k, resizeactive, 0 -25"
+				"$mainMod SUPER, l, resizeactive, 25 0"
 
 				# Move windows with mainMod + shift + arrow keys
-				"$mainMod SHIFT, j, movewindow, l"
-				"$mainMod SHIFT, semicolon, movewindow, r"
-				"$mainMod SHIFT, l, movewindow, u"
-				"$mainMod SHIFT, k, movewindow, d"
+				"$mainMod SHIFT, h, movewindow, l"
+				"$mainMod SHIFT, j, movewindow, d"
+				"$mainMod SHIFT, k, movewindow, u"
+				"$mainMod SHIFT, l, movewindow, r"
 
 				# Switch workspaces with mainMod + [0-9]
 				"$mainMod, q, workspace, 1"
