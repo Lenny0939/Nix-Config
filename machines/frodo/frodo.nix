@@ -37,9 +37,6 @@
 		];
 		initrd.availableKernelModules = [ "sunxi-mmc"];
 	};
-	services.openssh = {
-		enable = true;
-	};
 	hardware.firmware = [ pkgs.uwe5622-firmware ];
 	home-manager = {
     extraSpecialArgs = { inherit inputs; };

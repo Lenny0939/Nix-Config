@@ -22,6 +22,9 @@
 			dates = ["weekly"];
 		};
 	};
+	services.openssh = {
+		enable = true;
+	};
   console = {
 		earlySetup = true;
 		keyMap = "colemak";
