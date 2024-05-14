@@ -2,6 +2,8 @@
 {
 	config.services.hypridle = {
 		enable = true;
+		settings = {
+			
 		lockCmd = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
 		beforeSleepCmd = "loginctl lock-session";
 		afterSleepCmd = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
@@ -25,5 +27,6 @@
 				onTimeout = "systemctl suspend";
 			}
 		];
+		};
 	};
 }
