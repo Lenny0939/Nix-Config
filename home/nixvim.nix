@@ -82,7 +82,13 @@
 				indent-blankline.enable = true;
 				comment.enable = true;
 			/* Color preview */
-				nvim-colorizer.enable = true;
+				nvim-colorizer = {
+					enable = true;
+					userDefaultOptions = {
+						names = false;
+						mode = "virtualtext";
+					};
+				};
 			/* Dependencies */
 				dap.enable = true;
 		};
