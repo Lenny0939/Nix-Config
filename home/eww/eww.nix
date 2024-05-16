@@ -220,7 +220,7 @@ in
 
 		window {
 			background: #181825;
-			color: #cdd6f4;
+			color: #${config.lib.stylix.colors.base05};
 			font-size: 14px;
 
 			& > * {
@@ -234,10 +234,10 @@ in
 				margin: 3px;
 				padding-left: 1px;
 				&.inactive {
-					color: #45475a;
+					color: #${config.lib.stylix.colors.base03};
 				}
 				&.active {
-					color: #a6e3a1;
+					color: #${config.lib.stylix.colors.base0B};
 				}
 				&.occupied {
 					font-size: 1.01rem;
@@ -257,8 +257,8 @@ in
 		}
 
 		.volume-metric {
-			background-color: #1e1e2e;
-			color: #cdd6f4;
+			background-color: #${config.lib.stylix.colors.base00};
+			color: #${config.lib.stylix.colors.base05};
 			padding: 0;
 
 			.volume-top > scale {
@@ -271,13 +271,12 @@ in
 
 			scale trough highlight {
 				all: unset;
-				//background-color: #8ec07c;
-				background-color: #cdd6f4;
+				background-color: #${config.lib.stylix.colors.base05};
 				border-bottom-right-radius: 5px;
 			}
 			scale trough {
 				all: unset;
-				background-color: #585b70;
+				background-color: #${config.lib.stylix.colors.base04};
 				min-width: 34px;
 				min-height: 2px;
 			}
@@ -288,7 +287,7 @@ in
 		}
 
 		.metric {
-			background-color: #1e1e2e;
+			background-color: #${config.lib.stylix.colors.base00};
 			padding: 5px 2px;
 		}
 		.metric-icon {
@@ -299,18 +298,7 @@ in
 		.time {
 			padding-top: 7px;
 			padding-bottom: 7px;
-			color: #cdd6f4;
-		}
-
-
-
-
-
-		.music_popup {
-			all: unset;
-			background-color: #1e1e2e;
-			padding: 0px 20px;
-			margin: 0;
+			color: #${config.lib.stylix.colors.base05};
 		}
 	'';
 }
