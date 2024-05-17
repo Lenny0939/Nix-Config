@@ -22,4 +22,5 @@
 			name = "Bibata-Modern-Ice";
 		};
 	};
+	blur = false;
 }

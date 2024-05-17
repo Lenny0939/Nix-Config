@@ -9,12 +9,15 @@ in
 	imports = [
 		 inputs.hyprland.homeManagerModules.default
 		./hyprlock.nix
+		../../modules/blur.nix
 	];
 	services.hyprpaper = {
 		enable = true;
 		settings = {
 			preload = [ "${config.stylix.image}" ];
 			wallpaper = [ "eDP-1,${config.stylix.image}" "HDMI-A-1,${config.stylix.image}"];
+			splash = false;
+			ipc = true;
 		};
 	};
 	wayland.windowManager.hyprland = {
@@ -41,6 +44,9 @@ in
 			};
 
 			animation = "global,1,5,default";
+			decoration.blur = {
+				enabled = config.blur;
+			};
 			dwindle = {
 				pseudotile = "yes";
 				preserve_split = "yes";
