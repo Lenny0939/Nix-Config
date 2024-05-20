@@ -32,7 +32,6 @@ in
 			verbose = false;
 			systemd.enable = true;
 		};
-		kernelPackages = pkgs.linuxPackages_latest;
 		kernelParams = [ "quiet" "udev.log_level=0" ];
 	};
 	programs.hyprland.enable = true;
@@ -47,10 +46,6 @@ in
       lenny = import ../home/home.nix;
     };
   };
-  fonts.packages = with pkgs; [
-		hack-font
-		(nerdfonts.override { fonts = ["Hack"]; })
-  ];
   services.greetd = {
     enable = true;
     settings = rec {

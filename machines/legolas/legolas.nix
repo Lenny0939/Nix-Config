@@ -12,6 +12,7 @@
 			intel-media-driver
 		];
 	};
+	boot.kernelPackages = pkgs.linuxPackages_latest;
 	home-manager.users.lenny.imports = [ ../../home/hyprland/hypridle.nix ];
   services.pipewire = {
     enable = true;
