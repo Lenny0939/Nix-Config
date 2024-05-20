@@ -27,6 +27,7 @@
     plugins = {
 			/* Rust */
 				rustaceanvim.enable = true;
+			godot.enable = true;
 			/* Telescope */
 				telescope.enable = true;
 			/* UI */
@@ -78,6 +79,7 @@
 						clangd.enable = true;
 						bashls.enable = true;
 						html.enable = true;
+						gdscript.enable = true;
 						# Rust-analyzer automatically enabled by rustaceanvim
 					};
 				};
