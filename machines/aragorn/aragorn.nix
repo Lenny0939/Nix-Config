@@ -13,6 +13,10 @@
 		driSupport = true;
 		driSupport32Bit = true;
 	};
+	services.resilio = {
+		enable = true;
+		enableWebUI = true;
+	};
   services.pipewire = {
     enable = true;
     alsa.enable = true;
