@@ -24,6 +24,7 @@
 	};
 	services.openssh = {
 		enable = true;
+		settings.PermitRootLogin = "yes";
 	};
   console = {
 		earlySetup = true;
