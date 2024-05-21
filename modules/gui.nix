@@ -21,6 +21,10 @@ in
     dedicatedServer.openFirewall = true;
   };
 	programs.gamemode.enable = true;
+	services.usbmuxd = {
+		enable = true;
+		package = pkgs.usbmuxd2;
+	};
   boot = {
 	  loader = {
 		  systemd-boot.enable = true;
