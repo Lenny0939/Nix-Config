@@ -33,6 +33,7 @@ in
 			systemd.enable = true;
 		};
 		kernelParams = [ "quiet" "udev.log_level=0" ];
+		kernelPackages = pkgs.linuxPackages_zen;
 	};
 	programs.hyprland.enable = true;
 	security.pam.services.hyprlock = {};
