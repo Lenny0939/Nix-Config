@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
 	imports = [
 		../../modules/gui.nix
@@ -130,6 +130,7 @@
 	hardware.nvidia = {
 		modesetting.enable = true;
 		open = false;
+		package = config.boot.kernelPackages.nvidiaPackages.beta;
 	};
 	boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 }
