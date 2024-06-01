@@ -22,7 +22,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-		extraConfig.pipewire."sink-eq6" = {
+		/* extraConfig.pipewire."sink-eq6" = {
 			context.objects = [
 				{
 					name = "libpipewire-module-filter-chain";
@@ -124,7 +124,7 @@
         };
     }
 ];
-				};
+				}; */
 		};
 	services.xserver.videoDrivers = ["nvidia"];
 	hardware.nvidia = {

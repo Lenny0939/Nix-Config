@@ -3,6 +3,7 @@ let
 	startup = with pkgs; pkgs.pkgs.writeShellScriptBin "startup" /* bash */ ''
 		${eww}/bin/eww open bar_1
 		${hyprlock}/bin/hyprlock
+		${easyeffects}/bin/easyeffects --gapplication-service
 	'';
 in
 {   
