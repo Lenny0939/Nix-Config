@@ -8,9 +8,10 @@
   	iconTheme.name = "Papirus";
 	};
 	stylix = {
-		image = ../wallpapers/castle.png;
-		base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-		opacity.terminal = 0.7;
+		image = ../wallpapers/valley.png;
+		#base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+		base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+		opacity.terminal = 0.8;
 		fonts = {
 			monospace = {
 				package = (pkgs.nerdfonts.override { fonts = ["Iosevka"]; });

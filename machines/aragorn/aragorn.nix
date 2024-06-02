@@ -5,7 +5,7 @@
 		./hardware-configuration-aragorn.nix
 		#../../modules/ollama.nix
 	];
-	home-manager.users.lenny.wayland.windowManager.hyprland.settings.monitor = ",highres,auto,1";
+	home-manager.users.lenny.wayland.windowManager.hyprland.settings.monitor = ",highres,auto,1.6";
 	networking.hostName = "aragorn"; 
 	environment.sessionVariables = { WLR_NO_HARDWARE_CURSORS = "1"; };
 	hardware.opengl = {

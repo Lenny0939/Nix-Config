@@ -3,11 +3,10 @@
   programs.nixvim = {
     enable = true;
 		globals.mapleader = " ";
-		colorschemes.gruvbox = {
+		colorschemes.nord = {
 			enable = true;
 			settings = {
-				terminal_colors = true;
-				transparent_mode = true;
+				disable_background = true;
 			};
 		};
 		opts = {

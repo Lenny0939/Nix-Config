@@ -13,6 +13,7 @@ in
 		#../modules/keyd.nix
 	];
 
+	virtualisation.docker.enable = true;
 	services.xserver.enable = true;
   programs.steam = {
     enable = true;
