@@ -219,7 +219,7 @@ in
 		}
 
 		window {
-			background: #181825;
+			background: #${config.lib.stylix.colors.base00};
 			color: #${config.lib.stylix.colors.base05};
 			font-size: 14px;
 
@@ -257,7 +257,7 @@ in
 		}
 
 		.volume-metric {
-			background-color: #${config.lib.stylix.colors.base00};
+			background-color: #${config.lib.stylix.colors.base01};
 			color: #${config.lib.stylix.colors.base05};
 			padding: 0;
 
@@ -276,7 +276,7 @@ in
 			}
 			scale trough {
 				all: unset;
-				background-color: #${config.lib.stylix.colors.base04};
+				background-color: #${config.lib.stylix.colors.base03};
 				min-width: 34px;
 				min-height: 2px;
 			}
@@ -287,7 +287,7 @@ in
 		}
 
 		.metric {
-			background-color: #${config.lib.stylix.colors.base00};
+			background-color: #${config.lib.stylix.colors.base01};
 			padding: 5px 2px;
 		}
 		.metric-icon {
