@@ -44,7 +44,11 @@ in
 				layout = "dwindle";
 			};
 
-			animation = "global,1,5,default";
+			animation = [ 
+				"global,1,5,default" 
+				"workspaces,1,5,default,slidevert"
+				"windows,1,5,default,slide"
+			];
 			decoration.blur = {
 				enabled = config.blur;
 			};
