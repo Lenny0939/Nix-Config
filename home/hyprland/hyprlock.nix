@@ -34,6 +34,7 @@
 			label = [
 			{
 				text = "$TIME";
+				color = "rgba(${config.lib.stylix.colors.base01}ee)";
 				font_size = 64;
 				font_family = "${config.stylix.fonts.monospace.name}";
 				position = "0, 50";
@@ -42,6 +43,7 @@
 			}
 			{
 				text = "Hey <span size=\"larger\">Nerd</span>";
+				color = "rgba(${config.lib.stylix.colors.base01}ee)";
 				font_size = 20;
 				font_family = "${config.stylix.fonts.monospace.name}";
 				position = "0, -20";
