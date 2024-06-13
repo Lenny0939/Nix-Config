@@ -8,7 +8,6 @@ let
 in
 {   
 	imports = [
-		 inputs.hyprland.homeManagerModules.default
 		./hyprlock.nix
 		../../modules/blur.nix
 	];

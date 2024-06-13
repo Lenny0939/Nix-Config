@@ -8,7 +8,6 @@
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-		hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 		stylix.url = "github:danth/stylix";
 		nixvim = {
 			url = "github:nix-community/nixvim";
@@ -16,7 +15,7 @@
 		};
 		sops-nix.url = "github:Mic92/sops-nix";
   };
-  outputs = { self, nixos, nixpkgs, home-manager, hyprland, ... }@inputs:
+  outputs = { self, nixos, nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
     in {
