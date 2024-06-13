@@ -43,6 +43,7 @@
 			audacity
 			qmk
 			figma-linux
+			prismlauncher
 			# Most apps have their own modules
 		/* Services */
 			/* Notifications */
