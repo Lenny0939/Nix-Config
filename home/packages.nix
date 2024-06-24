@@ -23,6 +23,8 @@
 			/* Godot */
     		godot_4 
 		/* Utilities */
+			zip
+			unzip
 			fd # lists files, needed for telescope and also cool finding thingo
 			ripgrep # grep alternative
 			fzf
