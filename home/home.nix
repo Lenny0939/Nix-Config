@@ -12,6 +12,8 @@
   imports = [
 		inputs.nixvim.homeManagerModules.nixvim
 		inputs.stylix.homeManagerModules.stylix
+		inputs.ssbm.homeManagerModule
+		./ssbm.nix
 		./mangohud.nix
 		./firefox.nix
 		./fastfetch.nix

@@ -14,6 +14,10 @@
     	inputs.nixpkgs.follows = "nixpkgs";
 		};
 		sops-nix.url = "github:Mic92/sops-nix";
+		ssbm = {
+			url = "github:lytedev/ssbm-nix";
+			inputs.nixpkgs.follows= "nixpkgs";
+		};
   };
   outputs = { self, nixos, nixpkgs, home-manager, ... }@inputs:
     let
