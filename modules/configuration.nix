@@ -3,11 +3,9 @@
 	imports = [
     inputs.home-manager.nixosModules.home-manager
 		inputs.sops-nix.nixosModules.sops
-		inputs.ssbm.nixosModule
 		../modules/sops.nix
 		../modules/nh.nix
 	];
-	ssbm.overlay.enable = true;
 	programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 	programs.neovim.enable = true;
