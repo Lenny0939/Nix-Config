@@ -11,8 +11,10 @@ in
 		./configuration.nix
 		../modules/printer.nix
 		#../modules/keyd.nix
+		inputs.ssbm.nixosModule
 	];
 
+	ssbm.overlay.enable = true;
 	virtualisation.docker.enable = true;
 	services.xserver.enable = true;
   programs.steam = {
