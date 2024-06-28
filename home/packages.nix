@@ -60,6 +60,5 @@
 			brightnessctl 
 			easyeffects
 			trashy
-			(pkgs.nerdfonts.override { fonts = [ "Hack" ]; }) # Font
   ];
 }

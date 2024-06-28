@@ -33,7 +33,7 @@
 					border: 1px #${base07};
 					border-radius: 5px;
 					background-color: #${base00};
-					animation: slideIn 0.5s ease-in-out both;
+					//animation: slideIn 0.5s ease-in-out both;
 			 }
 
 			 /* Slide In */

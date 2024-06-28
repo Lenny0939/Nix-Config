@@ -215,7 +215,7 @@ in
 	xdg.configFile."eww/eww.scss".text = /* scss */ ''
 		* {
 			all: unset;
-			font-family: Hack Nerd Font;
+			font-family: ${config.stylix.fonts.monospace.name};
 		}
 
 		window {
