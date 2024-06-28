@@ -22,7 +22,7 @@
 		};
 		style = with config.lib.stylix.colors; /* css */ ''
 			* {
-					font-family: ${config.font}, monospace;
+					font-family: ${config.stylix.fonts.monospace.name}, monospace;
 					font-size: 24px;
 			 }
 

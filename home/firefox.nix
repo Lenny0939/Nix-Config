@@ -302,8 +302,7 @@
 			};
 			userChrome = /* css */''
 				* {
-					font-size: ${toString (16 * config.scaling)}px !important;
-					font-family: ${config.font} !important;
+					font-family: ${config.stylix.fonts.monospace.name} !important;
 				}
 				#nav-bar {
     			transition: all 0.1s ease !important;    

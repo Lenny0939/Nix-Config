@@ -1,8 +1,5 @@
 { ... }:
 {
-	imports = [
-		../modules/fonts.nix
-	];
 	programs.kitty = {
 		enable = true;
 		settings = { 

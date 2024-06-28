@@ -18,7 +18,7 @@
 		fonts = {
 			monospace = {
 				package = (pkgs.nerdfonts.override { fonts = ["Iosevka"]; });
-				name = "Iosevka";
+				name = "Iosevka Light";
 			};
 		};
 		cursor = {
