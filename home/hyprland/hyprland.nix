@@ -34,6 +34,7 @@ in
 				follow_mouse = 1;
 				touchpad = {
 					natural_scroll = "yes";
+					disable_while_typing = false;
 				};
 			};
 			general = {
