@@ -13,6 +13,7 @@
 		inputs.nixvim.homeManagerModules.nixvim
 		inputs.stylix.homeManagerModules.stylix
 		inputs.ssbm.homeManagerModule
+		../scripts/wallpaper.nix
 		./ssbm.nix
 		./mangohud.nix
 		./firefox.nix
