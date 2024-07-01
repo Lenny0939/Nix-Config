@@ -8,11 +8,7 @@
 	home-manager.users.lenny.wayland.windowManager.hyprland.settings.monitor = ",highres,auto,1.25";
 	networking.hostName = "aragorn"; 
 	environment.sessionVariables = { WLR_NO_HARDWARE_CURSORS = "1"; };
-	hardware.opengl = {
-		enable = true;
-		driSupport = true;
-		driSupport32Bit = true;
-	};
+	hardware.opengl.enable = true;
 	services.resilio = {
 		enable = true;
 		enableWebUI = true;

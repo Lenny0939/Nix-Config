@@ -1,6 +1,6 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 let
-	startup = with pkgs; pkgs.pkgs.writeShellScriptBin "startup" /* bash */ ''
+	startup = with pkgs; writeShellScriptBin "startup" /* bash */ ''
 		${eww}/bin/eww open bar_1
 		${hyprlock}/bin/hyprlock
 		${easyeffects}/bin/easyeffects --gapplication-service
@@ -55,9 +55,6 @@ in
 				pseudotile = "yes";
 				preserve_split = "yes";
 				no_gaps_when_only = 1;
-			};
-			master = {
-				new_is_master = true;
 			};
 			gestures = {
 				workspace_swipe = "on";
