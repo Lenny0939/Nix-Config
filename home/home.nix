@@ -1,8 +1,17 @@
 { inputs, ... }: 
 {
-  home.username = "lenny";
-  home.homeDirectory = "/home/lenny";
-	home.stateVersion = "24.05"; 
+  home = { 
+		username = "lenny";
+  	#homeDirectory = "/users/lenny";
+		stateVersion = "24.05"; 
+	};
+		xdg = {
+			enable = true;
+      configHome = "/users/lenny/config";
+      cacheHome = "/users/lenny/config/cache";
+      dataHome = "/users/lenny/config/local/share";
+      stateHome = "/users/lenny/config/local/state";
+		};
   nix.gc = {
 		automatic = true;
 		frequency = "weekly";

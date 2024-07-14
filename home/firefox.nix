@@ -1,4 +1,12 @@
 { pkgs, config, ... }:
+let
+  firefox = pkgs.firefox/* -beta */.overrideAttrs (a: {
+		buildCommand = a.buildCommand + ''
+        wrapProgram "$executablePath" \
+					--set 'HOME' '/users/lenny/config'
+		'';
+	});
+in 
 {
 	/* nixpkgs.overlays =
   let
@@ -13,7 +21,7 @@
   ]; */
 	programs.firefox = {
 		enable = true;
-		package = pkgs.firefox-beta;
+		package = firefox;
 		profiles.lenchog = {
 			search = {
 				engines = {
@@ -39,9 +47,11 @@
 
 					"SearX" = {
 						urls = [{
-							template = "http://192.168.0.11:8888/search?q={searchTerms}";
+							#template = "http://192.168.0.11:8888/search?q={searchTerms}";
+							template = "http://localhost/search?q={searchTerms}";
 						}];
-						iconUpdateURL = "http://192.168.0.11:8888/favicon.ico";
+						#iconUpdateURL = "http://192.168.0.11:8888/favicon.ico";
+						iconUpdateURL = "http://localhost/favicon.ico";
 						updateInterval = 24 * 60 * 60 * 1000;
 						definedAliases = [ "@sx" ];
 					};

@@ -2,7 +2,6 @@
 let
 	startup = with pkgs; writeShellScriptBin "startup" /* bash */ ''
 		${eww}/bin/eww open bar
-		${hyprlock}/bin/hyprlock
 		${easyeffects}/bin/easyeffects --gapplication-service
 	'';
 in
@@ -15,7 +14,7 @@ in
 		enable = true;
 		settings = {
 			preload = [ "${config.stylix.image}" ];
-			wallpaper = [ "eDP-1,${config.stylix.image}" "HDMI-A-1,${config.stylix.image}"];
+			wallpaper = [ ",${config.stylix.image}" ];
 			splash = false;
 			ipc = true;
 		};
@@ -28,9 +27,6 @@ in
 			xwayland.force_zero_scaling = true;
 			misc.disable_hyprland_logo = true;
 			input = {
-				kb_layout = "us,us";
-				kb_variant = ",colemak"; 
-				kb_options = "caps:backspace, grp:ctrl_alt_toggle, shift:both_capslock_cancel";
 				follow_mouse = 1;
 				touchpad = {
 					natural_scroll = "yes";
@@ -72,7 +68,6 @@ in
 				"$mainMod, V, togglefloating"
 				"$mainMod, S, exec, ${pkgs.wofi}/bin/wofi"
 				"$mainMod, H, togglesplit,"
-				"$mainMod, B, exec, ${pkgs.firefox-beta}/bin/firefox-beta"
 				"$mainMod, A, fullscreen"
 				"$mainMod, M, exec, ${pkgs.hyprlock}/bin/hyprlock"
 				", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set -e +5%"

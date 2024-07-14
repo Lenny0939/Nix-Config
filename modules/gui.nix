@@ -1,15 +1,17 @@
 { inputs, pkgs, lib, ... }:
 let
-  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-	steam-session = "${pkgs.xorg.xinit}/bin/startx /home/lenny/.xinitrc";
-  hyprland-session = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/share/wayland-sessions/hyprland.desktop";
+  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions ${hyprland-session}";
+  hyprland-session = "${pkgs.hyprland}/share/wayland-sessions/hyprland.desktop";
+	greetd-script = pkgs.writeShellScriptBin "greetd-script" ''
+	'';
 in
 {
 	imports = [ 
 		#./home/spotify.nix
-		../modules/homework.nix
+		#../modules/homework.nix
 		./configuration.nix
 		../modules/printer.nix
+		../machines/frodo/searx.nix
 		#../modules/keyd.nix
 		inputs.ssbm.nixosModule
 	];
@@ -18,9 +20,13 @@ in
 	services.joycond.enable = true;
 	hardware.steam-hardware.enable = true;
 	virtualisation.docker.enable = true;
-	services.xserver.enable = true;
   programs.steam = {
-    enable = true;
+	enable = true;
+		package = pkgs.steam.override {
+			extraEnv = {
+					HOME = "/users/lenny/steam";
+			};  
+		};
 		gamescopeSession.enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
@@ -52,10 +58,10 @@ in
       lenny = import ../home/home.nix;
     };
   };
-  services.greetd = {
-    enable = true;
+	services.getty.autologinUser = "lenny";
+  /* services.greetd = {
+    enable = false;
     settings = rec {
-			/*
 			hyprland-session = {
 				command = "${hyprland-session}";
 				#command = "${pkgs.hyprland}/bin/Hyprland";
@@ -69,13 +75,12 @@ in
         command = "${tuigreet} --time --remember --remember-session --sessions ${hyprland-session}";
         user = "greeter";
 			};
-			*/
       default_session = {
-				command = "Hyprland";
+				command = "export HOME='/users/lenny' && ${tuigreet}";
 				user = "lenny";
 			};
 		};
-  };
+  }; */
 
   # this is a life saver.
   # literally no documentation about this anywhere.

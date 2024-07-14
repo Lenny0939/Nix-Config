@@ -1,6 +1,6 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
-	home.file.".config/MangoHud/MangoHud.conf".text = ''
+	xdg.configFile."MangoHud/MangoHud.conf".text = ''
 		### MangoHud configuration file
 		### Uncomment any options you wish to enable. Default options are left uncommented
 		### Use some_parameter=0 to disable a parameter (only works with on/off parameters)
