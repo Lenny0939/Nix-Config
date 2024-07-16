@@ -19,7 +19,6 @@ in
 			intel-media-driver
 		];
 	};
-	home-manager.users.lenny.imports = [ ../../home/hyprland/hypridle.nix ];
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -33,7 +32,8 @@ in
 			settings = {
 				main = {
 					rightalt = "layer(raise)";
-					leftalt = "oneshot(qwerty)";
+					leftalt = "oneshot(alt)";
+					rightcontrol = "toggle(qwerty)";
 					capslock = "backspace";
 					q = builtins.elemAt canary 0;
 					w = builtins.elemAt canary 1;
@@ -66,7 +66,39 @@ in
 					"." = builtins.elemAt canary 28;
 					"/" = builtins.elemAt canary 29;
 				};
-				"qwerty:A" = {
+				"qwerty" = {
+					q = "q";
+					w = "w";
+					e = "e";
+					r = "r";
+					t = "t";
+					y = "y";
+					u = "u";
+					i = "i";
+					o = "o";
+					p = "p";
+					a = "a";
+					s = "s";
+					d = "d";
+					f = "f";
+					g = "g";
+					h = "h";
+					j = "j";
+					k = "k";
+					l = "l";
+					";" = "-;";
+					z = "z";
+					x = "x";
+					c = "c";
+					v = "v";
+					b = "b";
+					n = "n";
+					m = "m";
+					"," = ",";
+					"." = ".";
+					"/" = "/";
+				};
+				"alt:A" = {
 					q = "A-q";
 					w = "A-w";
 					e = "A-e";
