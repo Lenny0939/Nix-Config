@@ -1,13 +1,13 @@
 { config, pkgs, ... }:
 let
 	startup = with pkgs; writeShellScriptBin "startup" /* bash */ ''
-		${eww}/bin/eww open bar
+		${hyprpaper}/bin/hyprpaper &
+		${eww}/bin/eww open bar &
 		${easyeffects}/bin/easyeffects --gapplication-service
 	'';
 in
 {   
 	imports = [
-		./hyprlock.nix
 		../../modules/blur.nix
 	];
 	services.hyprpaper = {
@@ -69,7 +69,6 @@ in
 				"$mainMod, S, exec, ${pkgs.wofi}/bin/wofi"
 				"$mainMod, H, togglesplit,"
 				"$mainMod, A, fullscreen"
-				"$mainMod, M, exec, ${pkgs.hyprlock}/bin/hyprlock"
 				", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set -e +5%"
 				", XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set -e 5%-"
 				", XF86AudioRaiseVolume, exec, ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +10%"

@@ -47,8 +47,6 @@ in
 		kernelPackages = pkgs.linuxPackages_zen;
 	};
 	programs.hyprland.enable = true;
-	security.pam.services.hyprlock = {};
-	systemd.user.services.hypridle.enable = true;
 	networking.nameservers = [ "192.168.0.11" "1.1.1.1" ];
 	services.blueman.enable = true;
 	hardware.bluetooth.enable = true;
@@ -58,7 +56,6 @@ in
       lenny = import ../home/home.nix;
     };
   };
-	services.getty.autologinUser = "lenny";
   /* services.greetd = {
     enable = false;
     settings = rec {
