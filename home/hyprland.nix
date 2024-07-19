@@ -8,7 +8,7 @@ let
 in
 {   
 	imports = [
-		../../modules/blur.nix
+		../modules/blur.nix
 	];
 	services.hyprpaper = {
 		enable = true;
@@ -20,7 +20,6 @@ in
 		};
 	};
 	wayland.windowManager.hyprland = {
-		enable = true;
 		systemd.enable = true;
 		settings = {
 			exec-once = "${startup}/bin/startup";

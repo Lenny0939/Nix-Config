@@ -20,7 +20,6 @@ in
     nightlyOverlay
   ]; */
 	programs.firefox = {
-		enable = true;
 		package = firefox;
 		profiles.lenchog = {
 			search = {

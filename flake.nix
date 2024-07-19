@@ -24,20 +24,51 @@
       system = "x86_64-linux";
     in {
     	nixosConfigurations = {
-      	legolas = nixpkgs.lib.nixosSystem {
-        	specialArgs = { inherit inputs system; };
+      	legolas = nixpkgs.lib.nixosSystem rec {
+        	specialArgs = { 
+						inherit inputs system; 
+						gui = true;
+						laptop = true;
+						desktop = false;
+						games = true;
+						server = false;
+					};
 					modules = [
-	  				./machines/legolas/legolas.nix
+						./configuration.nix
+						./modules/options.nix
+						inputs.home-manager.nixosModules.home-manager
+						{ 
+							home-manager = {
+								extraSpecialArgs = specialArgs; 
+								users = {
+									lenny = import ./home/home.nix;
+								};
+							};
+						}
 					];
   			};
       	aragorn = nixpkgs.lib.nixosSystem {
-        	specialArgs = { inherit inputs system; };
+        	specialArgs = { 
+						inherit inputs system; 
+						gui = true;
+						laptop = false;
+						desktop = true;
+						games = true;
+						server = false;
+					};
 					modules = [
 	  				./machines/aragorn/aragorn.nix
 					];
   			};
 				frodo = nixpkgs.lib.nixosSystem {
-        	specialArgs = { inherit inputs system; };
+        	specialArgs = { 
+						inherit inputs system;
+						gui = false;
+						laptop = false;
+						desktop = false;
+						games = false;
+						server = true;
+					};
 					modules = [
 	  				./machines/frodo/frodo.nix
 					];

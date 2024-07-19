@@ -1,7 +1,6 @@
 { config, ... }:
 {
 	services.mako = with config.colorScheme.palette; {
-    enable = true;
 		#font = "${config.font}";
     # backgroundColor = "#${base00}";
     # borderColor = "#${base0E}";

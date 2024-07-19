@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 let
 	canary = [
 		"w" "l" "y" "p" "k" "z" "x" "o" "u" ";"
@@ -7,26 +7,7 @@ let
 	];
 in
 {
-	imports = [
-		../../modules/gui.nix
-		./hardware-configuration-legolas.nix
-	];
-	services.tlp.enable = true;
-	networking.hostName = "legolas";
-	hardware.opengl = {
-		enable = true;
-		extraPackages = with pkgs; [
-			intel-media-driver
-		];
-	};
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-	};
 	services.keyd = {
-		enable = true;
 		keyboards."laptop" = {
 			ids = [ "0001:0001" ];
 			settings = {

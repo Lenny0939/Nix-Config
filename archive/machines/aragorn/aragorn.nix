@@ -9,10 +9,6 @@
 	networking.hostName = "aragorn"; 
 	environment.sessionVariables = { WLR_NO_HARDWARE_CURSORS = "1"; };
 	hardware.opengl.enable = true;
-	services.resilio = {
-		enable = true;
-		enableWebUI = true;
-	};
   services.pipewire = {
     enable = true;
     alsa.enable = true;

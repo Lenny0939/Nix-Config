@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   programs.zsh = {
-    enable = true;
 		dotDir = "config/zsh";
 			shellAliases = {
 			detnsw = "${pkgs.networkmanager}/bin/nmcli --ask con up detnsw";
@@ -71,7 +70,6 @@
 			${pkgs.fastfetch}/bin/fastfetch
 		'';
   };  
-	programs.zoxide.enable = true;
 	home.sessionVariables = {
 		FZF_DEFAULT_COMMAND = "fd --type f";
 		FZF_DEFAULT_OPTS = "--layout=reverse";

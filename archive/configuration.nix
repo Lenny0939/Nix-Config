@@ -2,8 +2,6 @@
 {
 	imports = [
     inputs.home-manager.nixosModules.home-manager
-		inputs.sops-nix.nixosModules.sops
-		../modules/sops.nix
 		../modules/nh.nix
 	];
 	programs.zsh.enable = true;
@@ -23,10 +21,6 @@
 	programs.neovim.defaultEditor = true;
   systemd.services.NetworkManager-wait-online.enable = false;
 	powerManagement.enable = true;
-	swapDevices = [ {
-		device = "/var/lib/swapfile";
-		size = 16*1024;
-	}];
 	nix = { 
 		optimise = {
 			automatic = true;
