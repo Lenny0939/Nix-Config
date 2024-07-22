@@ -12,6 +12,7 @@ with specialArgs;
   i18n.defaultLocale = "en_AU.UTF-8";
 	users.defaultUserShell = pkgs.zsh;
 	programs = {
+		adb.enable = laptop;
 		zsh.enable = true;
 		nh.enable = true;
 		neovim = {
