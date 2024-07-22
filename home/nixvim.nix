@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.nixvim = {
 		globals.mapleader = " ";
@@ -23,12 +23,13 @@
 			mouse = "a";
 			scrolloff = 1000;
 		};
+		extraPlugins = with pkgs.vimPlugins; [
+			markdown-nvim
+		];
     plugins = {
-			/* Rust */
-				rustaceanvim.enable = true;
+			rustaceanvim.enable = true;
 			godot.enable = true;
-			/* Telescope */
-				telescope.enable = true;
+			telescope.enable = true;
 			/* UI */
 				oil.enable = true;
 				lualine.enable = true;
