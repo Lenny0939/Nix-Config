@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
 	startup = with pkgs; writeShellScriptBin "startup" /* bash */ ''
-		${eww}/bin/eww open bar_1
+		${eww}/bin/eww open bar
 		${hyprlock}/bin/hyprlock
 		${easyeffects}/bin/easyeffects --gapplication-service
 	'';

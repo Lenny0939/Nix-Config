@@ -139,7 +139,6 @@ in
 					 :halign "center" 
 				day_word day month year))
 
-		; TODO make this not hacky
 		(defvar audio_sink "")
 
 		(deflisten volume :initial "0" "${audio}/bin/audio volume")
@@ -175,25 +174,13 @@ in
 		(defvar workspaces_2_yuck "")
 
 
-		(defwindow bar_1
-			;:monitor "DisplayPort-0"
-			:monitor 0
-			:geometry (geometry :width "40px" :height "100%" :anchor "left center")
-			:exclusive true
-			:windowtype "dock"
-			;:reserve (struts :distance "40px" :side "left")
-			(bar :screen 1))
-
-		(defwindow bar_2
-			;:monitor "HDMI-A-1"
-			:monitor 0
-			:geometry (geometry :x 0 :y 0 :width "40px" :height "100%")
-			:anchor "top left"
-			:reserve (struts :distance "40px" :side "left")
-			(bar :screen 2))
-
-
-
+			(defwindow bar
+				:monitor 0
+				; :monitor "DisplayPort-0"
+				:stacking "fg"
+				:geometry (geometry :x 0 :y 0 :width "40px" :height "160%" :anchor "center left")
+				:exclusive true
+				(bar :screen 1))
 
 		;(defwidget music-popup []
 		;(if-else :cond {music_data.status == "Stopped" || music_data.status == ""}
