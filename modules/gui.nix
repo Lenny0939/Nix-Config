@@ -15,6 +15,8 @@ in
 	];
 
 	ssbm.overlay.enable = true;
+	services.joycond.enable = true;
+	hardware.steam-hardware.enable = true;
 	virtualisation.docker.enable = true;
 	services.xserver.enable = true;
   programs.steam = {
