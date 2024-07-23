@@ -21,7 +21,14 @@ with specialArgs;
 		};
 		gamemode.enable = games;
 		hyprland.enable = gui;
-		steam.enable = true;
+		steam = {
+			enable = true;
+			package = pkgs.steam.override {
+				extraEnv = {
+					HOME = "/users/lenny/steam";
+				};
+			};
+		};
 	};
 	powerManagement.enable = laptop;
   boot = lib.mkIf (gui == true) {

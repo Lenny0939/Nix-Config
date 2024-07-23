@@ -25,7 +25,6 @@
 		../modules/options.nix
 		inputs.nixvim.homeManagerModules.nixvim
 		inputs.stylix.homeManagerModules.stylix
-		inputs.ssbm.homeManagerModule
 		../scripts/wallpaper.nix
 		./xdg.nix
 		./mangohud.nix
