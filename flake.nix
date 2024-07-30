@@ -28,20 +28,9 @@
 						desktop = false;
 						games = true;
 						server = false;
+						vm = false;
 					};
-					modules = [
-						./configuration.nix
-						./modules/options.nix
-						inputs.home-manager.nixosModules.home-manager
-						{ 
-							home-manager = {
-								extraSpecialArgs = specialArgs; 
-								users = {
-									lenny = import ./home/home.nix;
-								};
-							};
-						}
-					];
+					modules = [ ./configuration.nix ];
   			};
       	aragorn = nixpkgs.lib.nixosSystem {
         	specialArgs = { 
@@ -51,9 +40,24 @@
 						desktop = true;
 						games = true;
 						server = false;
+						vm = false;
 					};
 					modules = [
-	  				./machines/aragorn/aragorn.nix
+	  				./configuration.nix
+					];
+				};
+      	vm = nixpkgs.lib.nixosSystem {
+        	specialArgs = { 
+						inherit inputs system; 
+						gui = false;
+						laptop = false;
+						desktop = false;
+						games = false;
+						server = false;
+						vm = true;
+					};
+					modules = [
+	  				./configuration.nix
 					];
   			};
 				frodo = nixpkgs.lib.nixosSystem {
@@ -67,13 +71,6 @@
 					};
 					modules = [
 	  				./machines/frodo/frodo.nix
-					];
-  			};
-
-				palintir = nixpkgs.lib.nixosSystem {
-        	specialArgs = { inherit inputs system; };
-					modules = [
-						./machines/palintir/palintir.nix
 					];
   			};
 	  	};

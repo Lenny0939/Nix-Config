@@ -1,8 +1,10 @@
-{ specialArgs, pkgs, inputs, lib, config, ... }:
+{ specialArgs, pkgs, lib, ... }:
 with specialArgs;
 {
 	imports = [
+		inputs.home-manager.nixosModules.home-manager
 		./modules/nh.nix
+		./modules/options.nix
 		./modules/keyd.nix
 		./archive/machines/legolas/hardware-configuration-legolas.nix
 	];
@@ -10,7 +12,6 @@ with specialArgs;
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
   time.timeZone = "Australia/Sydney";
   i18n.defaultLocale = "en_AU.UTF-8";
-	users.defaultUserShell = pkgs.zsh;
 	programs = {
 		adb.enable = laptop;
 		zsh.enable = true;
@@ -22,7 +23,7 @@ with specialArgs;
 		gamemode.enable = games;
 		hyprland.enable = gui;
 		steam = {
-			enable = true;
+			enable = games;
 			package = pkgs.steam.override {
 				extraEnv = {
 					HOME = "/users/lenny/steam";
@@ -31,7 +32,7 @@ with specialArgs;
 		};
 	};
 	powerManagement.enable = laptop;
-  boot = lib.mkIf (gui == true) {
+  boot = {#lib.mkIf (gui == true) {
 	  loader = {
 		  systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -65,6 +66,7 @@ with specialArgs;
 		};
 	};
 	services = {
+		getty.autologinUser = lib.mkIf (vm) "lenny";
 		blueman.enable = gui;
 		tlp.enable = laptop;
 		keyd.enable = laptop;
@@ -85,18 +87,27 @@ with specialArgs;
 		"frodo"
 	else
 		"aragorn";
-  users.users.lenny = {
-    isNormalUser = true;
-    description = "Lenny";
-    extraGroups = [ "networkmanager" "wheel" ];
-		home = "/users/lenny";
+  users = {
+		defaultUserShell = pkgs.zsh;
+		users.lenny = {
+			isNormalUser = true;
+			description = "Lenny";
+			extraGroups = [ "networkmanager" "wheel" ];
+			home = "/users/lenny";
 
-    # This is required until this is merged: 
-    #   https://github.com/NixOS/nixpkgs/pull/324618
-    # Reasoning in the PR
-    homeMode = "0755";
+			# This is required until this is merged: 
+			#   https://github.com/NixOS/nixpkgs/pull/324618
+			# Reasoning in the PR
+			homeMode = "0755";
 
-    createHome = true;
-  };
+			createHome = true;
+		};
+	};
+	home-manager = {
+		extraSpecialArgs = specialArgs; 
+		users = {
+			lenny = import ./home/home.nix;
+		};
+	};
 	system.stateVersion = "24.11";
 }
