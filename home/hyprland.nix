@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ lib, specialArgs, config, pkgs, ... }:
 let
 	startup = with pkgs; writeShellScriptBin "startup" /* bash */ ''
 		${hyprpaper}/bin/hyprpaper &
@@ -22,6 +22,7 @@ in
 		systemd.enable = true;
 		settings = {
 			exec-once = "${startup}/bin/startup";
+			monitor = lib.mkIf (specialArgs.desktop) ",highres,auto,1.25";
 			xwayland.force_zero_scaling = true;
 			misc.disable_hyprland_logo = true;
 			input = {

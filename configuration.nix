@@ -1,17 +1,20 @@
-{ specialArgs, pkgs, lib, ... }:
+{ config, specialArgs, pkgs, lib, ... }:
 with specialArgs;
 {
 	imports = [
 		inputs.home-manager.nixosModules.home-manager
 		(if impermanence then inputs.disko.nixosModules.disko else {})
+		(if impermanence then import ./modules/disko.nix { device = "/dev/nvme0n1"; } else {})
 		(if impermanence then inputs.impermanence.nixosModules.impermanence else {})
-		./modules/nh.nix
+		(modulesPath + "/installer/scan/not-detected.nix")
 		./modules/options.nix
 		./modules/kanata.nix
-		./archive/machines/legolas/hardware-configuration-legolas.nix
-		(if impermanence then import ./modules/disko.nix { device = "/dev/nvme0n1"; } else {})
+		./modules/nh.nix
 	];
-	nixpkgs.config.allowUnfree = true;
+	nixpkgs = {
+		config.allowUnfree = true;
+		hostPlatform = lib.mkDefault "x86_64-linux";
+	};
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
   time.timeZone = "Australia/Sydney";
   i18n.defaultLocale = "en_AU.UTF-8";
@@ -36,7 +39,7 @@ with specialArgs;
 	};
 	hardware.steam-hardware.enable = games;
 	powerManagement.enable = laptop;
-  boot = lib.mkIf (gui == true) {
+  boot = lib.mkIf (gui) {
 	  loader = {
 		  systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -44,6 +47,7 @@ with specialArgs;
 		};
 		consoleLogLevel = 0;
     initrd = {
+			availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" ];
 			verbose = false;
 			postDeviceCommands = ''
 				mkdir /btrfs_tmp
@@ -69,6 +73,8 @@ with specialArgs;
 				umount /btrfs_tmp
 			'';
 		};
+		kernelModules = if desktop then [ "kvm-amd" ]
+		else [ "kvm-intel" ];
 		kernelParams = [ "quiet" "udev.log_level=0" ];
 		kernelPackages = pkgs.linuxPackages_zen;
 	};
@@ -115,10 +121,19 @@ with specialArgs;
 	};
   systemd.services.NetworkManager-wait-online.enable = false;
 	hardware = {
+		nvidia = lib.mkIf (desktop) {
+			modesetting.enable = true;
+			open = false;
+			package = config.boot.kernelPackages.nvidiaPackages.beta;
+		};
 		bluetooth.enable = gui;
 		graphics = {
 			enable = gui;
 			extraPackages = lib.mkIf (laptop) [ pkgs.intel-media-driver ];
+		};
+		cpu = {
+			amd.updateMicrocode = lib.mkIf (desktop) config.hardware.enableRedistributableFirmware;
+			intel.updateMicrocode = lib.mkIf (laptop) config.hardware.enableRedistributableFirmware;
 		};
 	};
 	services = {
@@ -136,17 +151,6 @@ with specialArgs;
 		};
 		xserver.videoDrivers = lib.mkIf (desktop) [ "nvidia" ];
 	};
-	networking.networkmanager.enable = true;
-	networking.hostName = if laptop then
-	  "legolas"
-	else if server then 
-		"frodo"
-	else if vm then
-		"vm"
-	else if desktop then
-		"aragorn"
-	else
-		"computer";
   users = {
 		mutableUsers = false;
 		defaultUserShell = pkgs.zsh;
@@ -172,12 +176,41 @@ with specialArgs;
 			};
 		};
 	};
+	networking = {
+		useDHCP = lib.mkDefault true;
+		networkmanager.enable = true;
+		hostName = if laptop then
+			"legolas"
+		else if server then 
+			"frodo"
+		else
+			"aragorn";
+	};
 	home-manager = {
 		extraSpecialArgs = specialArgs; 
 		users = {
 			lenny = import ./home/home.nix;
 		};
+  };
+  fileSystems = { 
+		"/" = if desktop then
+    	{ device = "/dev/disk/by-uuid/ce6b7dd2-5df7-49b7-bd87-45c6c86ee0fb";
+      	fsType = "ext4";
+    	}
+		else 
+			{ device = "/dev/disk/by-uuid/0b5746da-2914-406c-8771-b9be1cb25652";
+				fsType = "ext4";
+			};
+
+  "/boot" = if desktop then
+    { device = "/dev/disk/by-uuid/4239-6CA4";
+      fsType = "vfat";
+    }
+		else
+    { device = "/dev/disk/by-uuid/BF18-BB3C";
+      fsType = "vfat";
+    };
 	};
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  #nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 	system.stateVersion = "24.11";
 }

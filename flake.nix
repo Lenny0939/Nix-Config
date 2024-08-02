@@ -38,7 +38,7 @@
 					};
 					modules = [ ./configuration.nix ];
   			};
-      	aragorn = nixpkgs.lib.nixosSystem {
+      	aragorn = nixpkgs.lib.nixosSystem rec {
         	specialArgs = { 
 						inherit inputs system; 
 						gui = true;
