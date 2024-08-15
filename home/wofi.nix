@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
 	programs.wofi = {
 		settings = {
@@ -19,7 +19,7 @@
 			filter_rate = 100;
 			allow_markup = true;
 		};
-		style = with config.lib.stylix.colors; /* css */ ''
+		style = with config.lib.stylix.colors; lib.mkForce /* css */ ''
 			* {
 					font-family: ${config.stylix.fonts.monospace.name}, monospace;
 					font-size: 24px;
