@@ -11,12 +11,6 @@
 			#lutris
 			mangohud # Overlay, like MSI Afterburner
 		/* Coding stuff */
-			/* Rust */
-				cargo
-				rustc
-			/* C */
-				gnumake
-				clang
 			/* Git */
 				gh 
 				git 
@@ -44,7 +38,6 @@
 			yt-dlp
 			audacity
 			qmk
-			figma-linux
 			prismlauncher
 			# Most apps have their own modules
 		/* Services */
