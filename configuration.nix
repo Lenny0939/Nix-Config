@@ -85,11 +85,17 @@ with specialArgs;
 	  "legolas"
 	else if server then 
 		"frodo"
+	else if vm then
+		"vm"
+	else if desktop then
+		"aragorn"
 	else
-		"aragorn";
+		"computer";
   users = {
+		mutableUsers = !vm;
 		defaultUserShell = pkgs.zsh;
 		users.lenny = {
+			initialPassword = "password";
 			isNormalUser = true;
 			description = "Lenny";
 			extraGroups = [ "networkmanager" "wheel" ];
