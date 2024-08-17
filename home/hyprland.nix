@@ -2,8 +2,7 @@
 let
 	startup = with pkgs; writeShellScriptBin "startup" /* bash */ ''
 		${hyprpaper}/bin/hyprpaper &
-		${eww}/bin/eww open bar &
-		${easyeffects}/bin/easyeffects --gapplication-service
+		${eww}/bin/eww open bar
 	'';
 in
 {   
