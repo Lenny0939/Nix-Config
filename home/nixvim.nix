@@ -24,7 +24,7 @@
 			scrolloff = 1000;
 		};
 		extraPlugins = with pkgs.vimPlugins; [
-			markdown-nvim
+			markview-nvim
 		];
     plugins = {
 			rustaceanvim.enable = true;
