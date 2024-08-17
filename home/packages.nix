@@ -29,7 +29,6 @@
 		/* Apps */
 			spotify
 			blanket
-			qmk
 			bottom # Task manager except cool
 			speedtest-cli
 			acpi
@@ -44,14 +43,12 @@
 			/* Notifications */
 				libnotify
 		/* Miscellaneous */
-			playerctl
 			hyprshot 
 			wl-clipboard
 		  nix-search-cli
-			swww 
 			qmk 
 			brightnessctl 
-			easyeffects
+			#easyeffects
 			trashy
   ];
 }
