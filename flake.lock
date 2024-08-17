@@ -371,6 +371,21 @@
         "type": "github"
       }
     },
+    "impermanence": {
+      "locked": {
+        "lastModified": 1719091691,
+        "narHash": "sha256-AxaLX5cBEcGtE02PeGsfscSb/fWMnyS7zMWBXQWDKbE=",
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "rev": "23c1f06316b67cb5dabdfe2973da3785cfe9c34a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -486,11 +501,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1723726977,
-        "narHash": "sha256-8N1lnLbHFCn39y/nez7QofjzMeAGykJtu8tQPPJGOI8=",
+        "lastModified": 1723816538,
+        "narHash": "sha256-h37ltjdifkd7iLtMtBXSBBeYSTuBEKMW6ClFoC7nReQ=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "fb4e6c2361ffd88e3a0a48ac8e90034076f25527",
+        "rev": "00f32f0430f82c74919c72af84bc95bf5ae434e4",
         "type": "github"
       },
       "original": {
@@ -525,6 +540,7 @@
       "inputs": {
         "disko": "disko",
         "home-manager": "home-manager",
+        "impermanence": "impermanence",
         "nixos": "nixos",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
@@ -566,11 +582,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1722946882,
-        "narHash": "sha256-mxtnMye8gs82tdQbVC+g6v3aPOZlH150f9WyntHIkTg=",
+        "lastModified": 1723834469,
+        "narHash": "sha256-PkJTr9DWBQcR5Ru1fJpG80dtw0MLSxAZlKnhHHFAGIA=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "5853f1a8bd072f2ebabfc3de3973084353cf6f1e",
+        "rev": "6858d08ed012bc6491cc92c13142104e56badf31",
         "type": "github"
       },
       "original": {

@@ -4,6 +4,7 @@ with specialArgs;
 	imports = [
 		inputs.home-manager.nixosModules.home-manager
 		(if impermanence then inputs.disko.nixosModules.disko else {})
+		(if impermanence then inputs.impermanence.nixosModules.impermanence else {})
 		./modules/nh.nix
 		./modules/options.nix
 		./modules/keyd.nix
@@ -69,6 +70,21 @@ with specialArgs;
 		};
 		kernelParams = [ "quiet" "udev.log_level=0" ];
 		kernelPackages = pkgs.linuxPackages_zen;
+	};
+	fileSystems."/persist".neededForBoot = true;
+	environment.persistence."/persist/system" = {
+		hideMounts = true;
+		directories = [
+			"/var/log"
+			"/var/lib/bluetooth"
+			"/var/lib/nixos"
+			"/var/lib/systemd/coredump"
+			"/etc/NetworkManager/system-connections"
+			"/users/lenny/home"
+		];
+		files = [ 
+			"/etc/machine-id"
+		];
 	};
  systemd.tmpfiles.settings = {
     "10-create-home" = {
