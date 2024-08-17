@@ -8,6 +8,10 @@
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+		disko = {
+			url = "github:nix-community/disko";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 		stylix.url = "github:danth/stylix";
 		nixvim = {
 			url = "github:nix-community/nixvim";
@@ -29,6 +33,7 @@
 						games = true;
 						server = false;
 						vm = false;
+						impermanence = true;
 					};
 					modules = [ ./configuration.nix ];
   			};
@@ -41,6 +46,7 @@
 						games = true;
 						server = false;
 						vm = false;
+						impermanence = false;
 					};
 					modules = [
 	  				./configuration.nix
@@ -55,6 +61,7 @@
 						games = false;
 						server = false;
 						vm = true;
+						impermanence = true;
 					};
 					modules = [
 	  				./configuration.nix
@@ -68,6 +75,7 @@
 						desktop = false;
 						games = false;
 						server = true;
+						impermanence = false;
 					};
 					modules = [
 	  				./machines/frodo/frodo.nix
