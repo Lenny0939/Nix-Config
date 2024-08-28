@@ -80,22 +80,36 @@ with specialArgs;
 			"/var/lib/nixos"
 			"/var/lib/systemd/coredump"
 			"/etc/NetworkManager/system-connections"
-			"/users/lenny/home"
 		];
 		files = [ 
 			"/etc/machine-id"
 		];
+		users.lenny = {
+			directories = [
+				"nix"
+				"home"
+				"steam"
+			];
+			files = [ "zsh_history" ];
+			home = "/users/lenny";
+		};
 	};
- systemd.tmpfiles.settings = {
-    "10-create-home" = {
-       "/users/lenny/home" = {
-         d = {
-           group = "root";
-           mode = "0700";
-           user = "lenny";
-         };
-       };
-    };
+	systemd.tmpfiles = {
+		settings = {
+    	"10-create-home" = {
+      	"/users/lenny/home" = {
+       	 d = {
+       	   group = "root";
+       	   mode = "0700";
+       	   user = "lenny";
+        	};
+      	};
+    	};
+		};
+		rules = [
+			"d /persist/users/ 0777 root root"
+			"d /persist/users/lenny 0700 lenny users -"
+		];
 	};
   systemd.services.NetworkManager-wait-online.enable = false;
 	hardware = {

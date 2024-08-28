@@ -14,6 +14,7 @@
 		nixvim.enable = true;
 		kitty.enable = true;
 	};
+	#home.persistence.enable = specialArgs.impermanence;
 	services = {
 		mako.enable = true;
 	};
@@ -22,9 +23,9 @@
 	wayland.windowManager.hyprland.enable = specialArgs.gui;
 	xdg.enable = true;
   imports = [
-		../modules/options.nix
 		inputs.nixvim.homeManagerModules.nixvim
 		inputs.stylix.homeManagerModules.stylix
+		../modules/options.nix
 		../scripts/wallpaper.nix
 		./xdg.nix
 		./mangohud.nix
