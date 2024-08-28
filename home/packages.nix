@@ -32,7 +32,7 @@
 			bottom # Task manager except cool
 			speedtest-cli
 			acpi
-			discord
+			webcord
 			pavucontrol
 			yt-dlp
 			audacity
