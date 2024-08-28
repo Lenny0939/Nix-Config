@@ -17,6 +17,19 @@
 			monospace = {
 				package = (pkgs.nerdfonts.override { fonts = ["Iosevka"]; });
 				name = "Iosevka Nerd Font";
+				/* package = (pkgs.iosevka.override {
+					privateBuildPlan = {
+						family = "Iosevka Custom";
+					 spacing = "normal";
+					 serifs = "sans";
+				
+					 variants = {
+						 design.capital-j = "serifless";
+						 italic.i = "tailed";
+					 };
+				 };
+				});
+				name = "Iosevka Custom"; */
 			};
 		};
 		cursor = {
