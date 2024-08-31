@@ -149,21 +149,28 @@ with specialArgs;
 	else
 		"computer";
   users = {
-		mutableUsers = !vm;
+		mutableUsers = false;
 		defaultUserShell = pkgs.zsh;
-		users.lenny = {
-			initialPassword = "password";
-			isNormalUser = true;
-			description = "Lenny";
-			extraGroups = [ "networkmanager" "wheel" ];
-			home = "/users/lenny";
+		users = { 
+			lenny = {
+				initialPassword = "password";
+				passwordFile = "/persist/passwords/lenny";
+				isNormalUser = true;
+				description = "Lenny";
+				extraGroups = [ "networkmanager" "wheel" ];
+				home = "/users/lenny";
 
-			# This is required until this is merged: 
-			#   https://github.com/NixOS/nixpkgs/pull/324618
-			# Reasoning in the PR
-			homeMode = "0755";
+				# This is required until this is merged: 
+				#   https://github.com/NixOS/nixpkgs/pull/324618
+				# Reasoning in the PR
+				homeMode = "0755";
 
-			createHome = true;
+				createHome = true;
+			};
+			root = {
+				passwordFile = "/persist/passwords/root";
+				initialPassword = "password";
+			};
 		};
 	};
 	home-manager = {
