@@ -154,7 +154,7 @@ with specialArgs;
 		users = { 
 			lenny = {
 				initialPassword = "password";
-				passwordFile = "/persist/passwords/lenny";
+				hashedPasswordFile = "/persist/passwords/lenny";
 				isNormalUser = true;
 				description = "Lenny";
 				extraGroups = [ "networkmanager" "wheel" ];
@@ -168,7 +168,7 @@ with specialArgs;
 				createHome = true;
 			};
 			root = {
-				passwordFile = "/persist/passwords/root";
+				hashedPasswordFile = "/persist/passwords/root";
 				initialPassword = "password";
 			};
 		};
