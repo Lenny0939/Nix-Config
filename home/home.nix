@@ -12,9 +12,9 @@
 		zsh.enable = true;
 		zoxide.enable = true;
 		nixvim.enable = true;
-		kitty.enable = true;
+		kitty.enable = specialArgs.gui;
+		#slippi-launcher.enable = specialArgs.games;
 	};
-	#home.persistence.enable = specialArgs.impermanence;
 	services = {
 		mako.enable = true;
 	};
@@ -25,6 +25,7 @@
   imports = [
 		inputs.nixvim.homeManagerModules.nixvim
 		inputs.stylix.homeManagerModules.stylix
+		inputs.slippi.homeManagerModules.default
 		../modules/options.nix
 		../scripts/wallpaper.nix
 		./xdg.nix
@@ -42,6 +43,7 @@
 		./eww.nix
 		./mako.nix
 		./lf.nix
+		./slippi.nix
 	];
 }
 

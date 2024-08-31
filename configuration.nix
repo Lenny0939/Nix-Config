@@ -7,9 +7,10 @@ with specialArgs;
 		(if impermanence then inputs.impermanence.nixosModules.impermanence else {})
 		./modules/nh.nix
 		./modules/options.nix
-		./modules/keyd.nix
+		./modules/kanata.nix
 		./archive/machines/legolas/hardware-configuration-legolas.nix
 		(if impermanence then import ./modules/disko.nix { device = "/dev/nvme0n1"; } else {})
+		(if games then inputs.slippi.nixosModules.default else {})
 	];
 	nixpkgs.config.allowUnfree = true;
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -34,6 +35,7 @@ with specialArgs;
 			};
 		};
 	};
+	hardware.steam-hardware.enable = games;
 	powerManagement.enable = laptop;
   boot = lib.mkIf (gui == true) {
 	  loader = {
@@ -89,6 +91,7 @@ with specialArgs;
 				"nix"
 				"home"
 				"steam"
+				".mozilla"
 			];
 			files = [ "zsh_history" ];
 			home = "/users/lenny";
