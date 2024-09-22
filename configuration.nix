@@ -10,7 +10,6 @@ with specialArgs;
 		./modules/kanata.nix
 		./archive/machines/legolas/hardware-configuration-legolas.nix
 		(if impermanence then import ./modules/disko.nix { device = "/dev/nvme0n1"; } else {})
-		(if games then inputs.slippi.nixosModules.default else {})
 	];
 	nixpkgs.config.allowUnfree = true;
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -126,7 +125,7 @@ with specialArgs;
 		getty.autologinUser = lib.mkIf (vm) "lenny";
 		blueman.enable = gui;
 		tlp.enable = laptop;
-		keyd.enable = laptop;
+		kanata.enable = laptop;
 		pipewire = {
 			enable = true;
 			alsa = {
