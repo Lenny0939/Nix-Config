@@ -3,7 +3,7 @@ let
   firefox = pkgs.firefox/* -beta */.overrideAttrs (a: {
 		buildCommand = a.buildCommand + ''
         wrapProgram "$executablePath" \
-					--set 'HOME' '/users/lenny/config'
+					--set 'HOME' '/users/lenny/'
 		'';
 	});
 in 
@@ -56,7 +56,7 @@ in
 					};
 				};
 				force = true;
-				default = "SearX";
+				default = "Google";
 			};
 			settings = {
 				/****************************************************************************
