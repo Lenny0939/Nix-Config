@@ -19,7 +19,6 @@
     	inputs.nixpkgs.follows = "nixpkgs";
 		};
 		sops-nix.url = "github:Mic92/sops-nix";
-		slippi.url = "github:lytedev/slippi-nix";
   };
   outputs = { self, nixos, nixpkgs, home-manager, ... }@inputs:
     let
