@@ -25,7 +25,6 @@
   imports = [
 		inputs.nixvim.homeManagerModules.nixvim
 		inputs.stylix.homeManagerModules.stylix
-		inputs.slippi.homeManagerModules.default
 		../modules/options.nix
 		../scripts/wallpaper.nix
 		./xdg.nix
@@ -43,7 +42,6 @@
 		./eww.nix
 		./mako.nix
 		./lf.nix
-		./slippi.nix
 	];
 }
 
