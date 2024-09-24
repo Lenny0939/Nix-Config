@@ -48,7 +48,7 @@
 		  nix-search-cli
 			qmk 
 			brightnessctl 
-			#easyeffects
+			easyeffects
 			trashy
   ];
 }

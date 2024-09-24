@@ -7,8 +7,8 @@ with specialArgs;
 		(if impermanence then import ./modules/disko.nix { device = "/dev/nvme0n1"; } else {})
 		(if impermanence then inputs.impermanence.nixosModules.impermanence else {})
 		(modulesPath + "/installer/scan/not-detected.nix")
+		(if laptop then ./modules/kanata.nix else {})
 		./modules/options.nix
-		./modules/kanata.nix
 		./modules/nh.nix
 	];
 	nixpkgs = {
@@ -49,7 +49,7 @@ with specialArgs;
     initrd = {
 			availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" ];
 			verbose = false;
-			postDeviceCommands = ''
+			postDeviceCommands = lib.mkIf (impermanence) ''
 				mkdir /btrfs_tmp
 				mount /dev/root_vg/root /btrfs_tmp
 				if [[ -e /btrfs_tmp/root ]]; then
@@ -78,8 +78,8 @@ with specialArgs;
 		kernelParams = [ "quiet" "udev.log_level=0" ];
 		kernelPackages = pkgs.linuxPackages_zen;
 	};
-	fileSystems."/persist".neededForBoot = true;
-	environment.persistence."/persist/system" = {
+	#fileSystems."/persist".neededForBoot = impermanence;
+	/* environment.persistence."/persist/system" = (lib.mkIf specialArgs.impermanence) {
 		hideMounts = true;
 		directories = [
 			"/var/log"
@@ -118,7 +118,7 @@ with specialArgs;
 			"d /persist/users/ 0777 root root"
 			"d /persist/users/lenny 0700 lenny users -"
 		];
-	};
+	}; */
   systemd.services.NetworkManager-wait-online.enable = false;
 	hardware = {
 		nvidia = lib.mkIf (desktop) {
@@ -157,7 +157,7 @@ with specialArgs;
 		users = { 
 			lenny = {
 				initialPassword = "password";
-				hashedPasswordFile = "/persist/passwords/lenny";
+				hashedPasswordFile = lib.mkIf (impermanence) "/persist/passwords/lenny";
 				isNormalUser = true;
 				description = "Lenny";
 				extraGroups = [ "networkmanager" "wheel" ];
@@ -171,7 +171,7 @@ with specialArgs;
 				createHome = true;
 			};
 			root = {
-				hashedPasswordFile = "/persist/passwords/root";
+				hashedPasswordFile = lib.mkIf (impermanence) "/persist/passwords/root";
 				initialPassword = "password";
 			};
 		};
@@ -211,6 +211,5 @@ with specialArgs;
       fsType = "vfat";
     };
 	};
-  #nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 	system.stateVersion = "24.11";
 }
