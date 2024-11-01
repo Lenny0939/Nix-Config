@@ -1,6 +1,6 @@
-self: super:
-let pkgs = self;
-    lib = pkgs.lib;
+self: super: let
+  pkgs = self;
+  lib = pkgs.lib;
 in {
   linux_5_15_embedded = pkgs.callPackage ./linux-5.15.nix {
     kernelPatches = with pkgs.kernelPatches; [

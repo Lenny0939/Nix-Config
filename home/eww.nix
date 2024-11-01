@@ -1,291 +1,312 @@
-{ pkgs, config, ... }:
-let audio = pkgs.writeShellScriptBin "audio" /* bash */ ''
-	${pkgs.pamixer}/bin/pamixer --get-volume; 
-	${pkgs.pulseaudio}/bin/pactl subscribe \
-		| grep --line-buffered "Event 'change' on sink " \
-		| while read -r evt; 
-		do ${pkgs.pamixer}/bin/pamixer --get-volume | cut -d " " -f1;
-	done
-'';
-workspaces = with pkgs; writeShellScriptBin "workspaces" /* bash */ ''
-${pkgs.socat}/bin/socat -u UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | while read -r line; do
-	if [[ $(hyprctl workspaces -j | ${pkgs.jq}/bin/jq '.[] | select(.id=='"$1"')') ]]; then
-		echo ◆
-	else 
-		echo ◇
-	fi
-done
-'';
-in
 {
-	home.packages = [ pkgs.eww ];
-	xdg.configFile."eww/eww.yuck".text = /* yuck */ ''
-		(defwidget bar [screen]
-			(centerbox :orientation "v"
-				(box :class "segment-top"
-						 :valign "start"
-					(top :screen screen))
-				(box :valign "center"
-						 :class "middle" 
-					(middle :screen screen))
-				(box :valign "end"
-						 :class "segment-bottom" 
-					(bottom :screen screen))))
+  pkgs,
+  config,
+  ...
+}: let
+  audio =
+    pkgs.writeShellScriptBin "audio"
+    /*
+    bash
+    */
+    ''
+      ${pkgs.pamixer}/bin/pamixer --get-volume;
+      ${pkgs.pulseaudio}/bin/pactl subscribe \
+      	| grep --line-buffered "Event 'change' on sink " \
+      	| while read -r evt;
+      	do ${pkgs.pamixer}/bin/pamixer --get-volume | cut -d " " -f1;
+      done
+    '';
+  workspaces = with pkgs;
+    writeShellScriptBin "workspaces"
+    /*
+    bash
+    */
+    ''
+      ${pkgs.socat}/bin/socat -u UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | while read -r line; do
+      	if [[ $(hyprctl workspaces -j | ${pkgs.jq}/bin/jq '.[] | select(.id=='"$1"')') ]]; then
+      		echo ◆
+      	else
+      		echo ◇
+      	fi
+      done
+    '';
+in {
+  home.packages = [pkgs.eww];
+  xdg.configFile."eww/eww.yuck".text =
+    /*
+    yuck
+    */
+    ''
+      (defwidget bar [screen]
+      	(centerbox :orientation "v"
+      		(box :class "segment-top"
+      				 :valign "start"
+      			(top :screen screen))
+      		(box :valign "center"
+      				 :class "middle"
+      			(middle :screen screen))
+      		(box :valign "end"
+      				 :class "segment-bottom"
+      			(bottom :screen screen))))
 
-		(defwidget top [screen]
-			(workspaces))
+      (defwidget top [screen]
+      	(workspaces))
 
-		(defwidget workspaces []
-			(box :orientation "v" :style "color: #${config.lib.stylix.colors.base0D}"
-				"''${workspace1}"
-				"''${workspace2}"
-				"''${workspace3}"
-				"''${workspace4}"
-				"''${workspace5}"
-				"''${workspace6}"
-				"''${workspace7}"
-				"''${workspace8}"
-				"''${workspace9}"
-				"''${workspace10}"))
+      (defwidget workspaces []
+      	(box :orientation "v" :style "color: #${config.lib.stylix.colors.base0D}"
+      		"''${workspace1}"
+      		"''${workspace2}"
+      		"''${workspace3}"
+      		"''${workspace4}"
+      		"''${workspace5}"
+      		"''${workspace6}"
+      		"''${workspace7}"
+      		"''${workspace8}"
+      		"''${workspace9}"
+      		"''${workspace10}"))
 
-		(defwidget middle [] (time))
-		(defwidget time []
-			(box :orientation "v" 
-					 :class "time"
-					 :style "color: #${config.lib.stylix.colors.base0C}"
-				hour min))
-
-
-		(defwidget metric [icon ?font-size]
-			(box :class "metric" 
-					 :orientation "v"
-				(label :class "metric-icon" 
-							 :style {font-size != "" ? "font-size: ''${font-size}rem;" : ""} 
-							 :text icon)
-				(children)))
-
-		(defwidget bottom [screen] 
-			(box :orientation "v"
-					 :valign "end"
-					 :space-evenly true
-					 :spacing "5"
-
-				;(metric :icon "󰎆" :font-size 1 (music-button))
-
-				(volume)
-
-				(battery)
-
-				;(metric :icon "" 
-				;        :font-size 0.8
-				;  "''${round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}%")
-
-				;(metric :icon "󰍛" "''${round(EWW_RAM.used_mem_perc, 0)}%")
-
-				;(metric :icon "" "''${round(EWW_CPU.avg, 0)}%")
-
-				(box :class "metric" :style "color: #${config.lib.stylix.colors.base09}"(date))))
-
-		(defwidget music-button []
-			(button :onclick "playerctl play-pause"
-				"''${music_data == "" ? "⏸" : music_data.status == "Playing" ? "⏸" : "▶"}"))
-
-		(defwidget battery []
-					(box :class "volume-metric"
-							 :orientation "v"
-							 :space-evenly false
-							 :valign "fill"
-							 :vexpand false
-						(scale :orientation "h" 
-									 :min 0
-									 :max 100 
-									 :value "''${round(EWW_BATTERY.BAT0.capacity, 0)}")
-							(box :orientation "v"
-									 :valign "fill"
-									 :vexpand true
-							(button 
-								(label :style "font-size: 1.2em; color: #${config.lib.stylix.colors.base06}"
-											 :text "󰁹"))			 
-									 "''${round(EWW_BATTERY.BAT0.capacity,0)}%")))
+      (defwidget middle [] (time))
+      (defwidget time []
+      	(box :orientation "v"
+      			 :class "time"
+      			 :style "color: #${config.lib.stylix.colors.base0C}"
+      		hour min))
 
 
-		(defwidget volume []
-			(box :class "volume-metric"
-					 :orientation "v"
-					 :space-evenly false
-					 :valign "fill"
-					 :vexpand false
-				(scale :orientation "h" 
-							 :min 0
-							 :max 100 
-							 :onchange "${pkgs.pamixer}/bin/pamixer --set-volume $(echo {} | sed 's/\\..*//g')"
-							 :value volume)
-				(eventbox :onscroll "if [ '{}' == 'up' ]; then ${pkgs.pamixer}/bin/pamixer -i 5; else ${pkgs.pamixer}/bin/pamixer -d 5; fi"
-									:vexpand true
-									:valign "fill"
-					(box :orientation "v"
-							 :valign "fill"
-							 :vexpand true
-				(button 
-          (label :style "font-size: 1.2em; color: #${config.lib.stylix.colors.base0B}"
-                 :text "󰕾"))			 
-								 "''${volume}%"))))
+      (defwidget metric [icon ?font-size]
+      	(box :class "metric"
+      			 :orientation "v"
+      		(label :class "metric-icon"
+      					 :style {font-size != "" ? "font-size: ''${font-size}rem;" : ""}
+      					 :text icon)
+      		(children)))
 
-		(defwidget large-sym [sym]
-			(label :class "metric-icon large-symbol" :text sym))
+      (defwidget bottom [screen]
+      	(box :orientation "v"
+      			 :valign "end"
+      			 :space-evenly true
+      			 :spacing "5"
 
-		(defwidget date []
-			(box :orientation "v" 
-					 :halign "center" 
-				day_word day month year))
+      		;(metric :icon "󰎆" :font-size 1 (music-button))
 
-		(defvar audio_sink "")
+      		(volume)
 
-		(deflisten volume :initial "0" "${audio}/bin/audio volume")
-		
-		(deflisten workspace1 :initial "0" "${workspaces}/bin/workspaces 1")
-		(deflisten workspace2 :initial "0" "${workspaces}/bin/workspaces 2")
-		(deflisten workspace3 :initial "0" "${workspaces}/bin/workspaces 3")
-		(deflisten workspace4 :initial "0" "${workspaces}/bin/workspaces 4")
-		(deflisten workspace5 :initial "0" "${workspaces}/bin/workspaces 5")
-		(deflisten workspace6 :initial "0" "${workspaces}/bin/workspaces 6")
-		(deflisten workspace7 :initial "0" "${workspaces}/bin/workspaces 7")
-		(deflisten workspace8 :initial "0" "${workspaces}/bin/workspaces 8")
-		(deflisten workspace9 :initial "0" "${workspaces}/bin/workspaces 9")
-		(deflisten workspace10 :initial "0" "${workspaces}/bin/workspaces 10")
+      		(battery)
 
-		(deflisten music_data 
-			:initial `{"status": ""}`
-			`
-			playerctl          metadata --format '{ "status": "{{status}}", "artist": "{{artist}}", "title": "{{title}}"}' || echo '{"status": ""}';
-			# playerctl --follow metadata --format '{ "status": "{{status}}", "artist": "{{artist}}", "title": "{{title}}"}'
-			`)
+      		;(metric :icon ""
+      		;        :font-size 0.8
+      		;  "''${round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}%")
 
-		(defpoll hour :interval "1s" "date +%H")
-		(defpoll min  :interval "1s" "date +%M")
-		(defpoll sec  :interval "1s" "date +%S")
+      		;(metric :icon "󰍛" "''${round(EWW_RAM.used_mem_perc, 0)}%")
 
-		(defpoll day_word :interval "10m" "date +%a | tr [:upper:] [:lower:]")
-		(defpoll day      :interval "10m" "date +%d")
-		(defpoll month    :interval "1h"  "date +%m")
-		(defpoll year     :interval "1h"  "date +%y")
+      		;(metric :icon "" "''${round(EWW_CPU.avg, 0)}%")
 
-		(defvar workspaces_1_yuck "")
-		(defvar workspaces_2_yuck "")
+      		(box :class "metric" :style "color: #${config.lib.stylix.colors.base09}"(date))))
+
+      (defwidget music-button []
+      	(button :onclick "playerctl play-pause"
+      		"''${music_data == "" ? "⏸" : music_data.status == "Playing" ? "⏸" : "▶"}"))
+
+      (defwidget battery []
+      			(box :class "volume-metric"
+      					 :orientation "v"
+      					 :space-evenly false
+      					 :valign "fill"
+      					 :vexpand false
+      				(scale :orientation "h"
+      							 :min 0
+      							 :max 100
+      							 :value "''${round(EWW_BATTERY.BAT0.capacity, 0)}")
+      					(box :orientation "v"
+      							 :valign "fill"
+      							 :vexpand true
+      					(button
+      						(label :style "font-size: 1.2em; color: #${config.lib.stylix.colors.base06}"
+      									 :text "󰁹"))
+      							 "''${round(EWW_BATTERY.BAT0.capacity,0)}%")))
 
 
-			(defwindow bar
-				:monitor 0
-				; :monitor "DisplayPort-0"
-				:stacking "fg"
-				:geometry (geometry :x 0 :y 0 :width "40px" :height "100%" :anchor "center left")
-				:exclusive true
-				(bar :screen 1))
+      (defwidget volume []
+      	(box :class "volume-metric"
+      			 :orientation "v"
+      			 :space-evenly false
+      			 :valign "fill"
+      			 :vexpand false
+      		(scale :orientation "h"
+      					 :min 0
+      					 :max 100
+      					 :onchange "${pkgs.pamixer}/bin/pamixer --set-volume $(echo {} | sed 's/\\..*//g')"
+      					 :value volume)
+      		(eventbox :onscroll "if [ '{}' == 'up' ]; then ${pkgs.pamixer}/bin/pamixer -i 5; else ${pkgs.pamixer}/bin/pamixer -d 5; fi"
+      							:vexpand true
+      							:valign "fill"
+      			(box :orientation "v"
+      					 :valign "fill"
+      					 :vexpand true
+      		(button
+              (label :style "font-size: 1.2em; color: #${config.lib.stylix.colors.base0B}"
+                     :text "󰕾"))
+      						 "''${volume}%"))))
 
-		;(defwidget music-popup []
-		;(if-else :cond {music_data.status == "Stopped" || music_data.status == ""}
-		;"No music playing"
-		;(box :orientation "h" 
-		;:valign "fill"
-		;:space-evenly false 
-		;:spacing 10
-		;(button :onclick "playerctl previous" "⏮")
-		;"''${music_data.artist} - $\{music_data.title}"
-		;(button :onclick "playerctl next" "⏭"))))
+      (defwidget large-sym [sym]
+      	(label :class "metric-icon large-symbol" :text sym))
 
-		;(defwindow music_popup
-		;:monitor 1
-		;:anchor "bottom left"
-		;:geometry (geometry :x "30px" :y "10px" :height "65px")
-		;(music-popup))
-	'';
-	xdg.configFile."eww/eww.scss".text = /* scss */ ''
-		* {
-			all: unset;
-			font-family: ${config.stylix.fonts.monospace.name};
-		}
+      (defwidget date []
+      	(box :orientation "v"
+      			 :halign "center"
+      		day_word day month year))
 
-		window {
-			background: #${config.lib.stylix.colors.base00};
-			color: #${config.lib.stylix.colors.base05};
-			font-size: 14px;
+      (defvar audio_sink "")
 
-			& > * {
-				margin: 3px;
-			}
-		}
+      (deflisten volume :initial "0" "${audio}/bin/audio volume")
 
-		.workspaces {
-			button {
-				background: none;
-				margin: 3px;
-				padding-left: 1px;
-				&.inactive {
-					color: #${config.lib.stylix.colors.base03};
-				}
-				&.active {
-					color: #${config.lib.stylix.colors.base0B};
-				}
-				&.occupied {
-					font-size: 1.01rem;
-				}
-				&.empty {
-					font-size: 0.8rem;
-				}
-			}
-		}
+      (deflisten workspace1 :initial "0" "${workspaces}/bin/workspaces 1")
+      (deflisten workspace2 :initial "0" "${workspaces}/bin/workspaces 2")
+      (deflisten workspace3 :initial "0" "${workspaces}/bin/workspaces 3")
+      (deflisten workspace4 :initial "0" "${workspaces}/bin/workspaces 4")
+      (deflisten workspace5 :initial "0" "${workspaces}/bin/workspaces 5")
+      (deflisten workspace6 :initial "0" "${workspaces}/bin/workspaces 6")
+      (deflisten workspace7 :initial "0" "${workspaces}/bin/workspaces 7")
+      (deflisten workspace8 :initial "0" "${workspaces}/bin/workspaces 8")
+      (deflisten workspace9 :initial "0" "${workspaces}/bin/workspaces 9")
+      (deflisten workspace10 :initial "0" "${workspaces}/bin/workspaces 10")
 
-		.segment-top {
-			margin-top: 10px;
-		}
+      (deflisten music_data
+      	:initial `{"status": ""}`
+      	`
+      	playerctl          metadata --format '{ "status": "{{status}}", "artist": "{{artist}}", "title": "{{title}}"}' || echo '{"status": ""}';
+      	# playerctl --follow metadata --format '{ "status": "{{status}}", "artist": "{{artist}}", "title": "{{title}}"}'
+      	`)
 
-		.segment-bottom {
-			margin-bottom: 10px;
-		}
+      (defpoll hour :interval "1s" "date +%H")
+      (defpoll min  :interval "1s" "date +%M")
+      (defpoll sec  :interval "1s" "date +%S")
 
-		.volume-metric {
-			background-color: #${config.lib.stylix.colors.base01};
-			color: #${config.lib.stylix.colors.base05};
-			padding: 0;
+      (defpoll day_word :interval "10m" "date +%a | tr [:upper:] [:lower:]")
+      (defpoll day      :interval "10m" "date +%d")
+      (defpoll month    :interval "1h"  "date +%m")
+      (defpoll year     :interval "1h"  "date +%y")
 
-			.volume-top > scale {
-				margin-bottom: 5px;
-			}
+      (defvar workspaces_1_yuck "")
+      (defvar workspaces_2_yuck "")
 
-			slider {
-				all: unset;
-			}
 
-			scale trough highlight {
-				all: unset;
-				background-color: #${config.lib.stylix.colors.base05};
-				border-bottom-right-radius: 5px;
-			}
-			scale trough {
-				all: unset;
-				background-color: #${config.lib.stylix.colors.base03};
-				min-width: 34px;
-				min-height: 2px;
-			}
-		}
+      	(defwindow bar
+      		:monitor 0
+      		; :monitor "DisplayPort-0"
+      		:stacking "fg"
+      		:geometry (geometry :x 0 :y 0 :width "40px" :height "100%" :anchor "center left")
+      		:exclusive true
+      		(bar :screen 1))
 
-		.large-symbol {
-			font-size: 0.8em;
-		}
+      ;(defwidget music-popup []
+      ;(if-else :cond {music_data.status == "Stopped" || music_data.status == ""}
+      ;"No music playing"
+      ;(box :orientation "h"
+      ;:valign "fill"
+      ;:space-evenly false
+      ;:spacing 10
+      ;(button :onclick "playerctl previous" "⏮")
+      ;"''${music_data.artist} - $\{music_data.title}"
+      ;(button :onclick "playerctl next" "⏭"))))
 
-		.metric {
-			background-color: #${config.lib.stylix.colors.base01};
-			padding: 5px 2px;
-		}
-		.metric-icon {
-			font-family: "FontAwesome5Free";
-			font-size: 0.7em;
-		}
+      ;(defwindow music_popup
+      ;:monitor 1
+      ;:anchor "bottom left"
+      ;:geometry (geometry :x "30px" :y "10px" :height "65px")
+      ;(music-popup))
+    '';
+  xdg.configFile."eww/eww.scss".text =
+    /*
+    scss
+    */
+    ''
+      * {
+      	all: unset;
+      	font-family: ${config.stylix.fonts.monospace.name};
+      }
 
-		.time {
-			padding-top: 7px;
-			padding-bottom: 7px;
-			color: #${config.lib.stylix.colors.base05};
-		}
-	'';
+      window {
+      	background: #${config.lib.stylix.colors.base00};
+      	color: #${config.lib.stylix.colors.base05};
+      	font-size: 14px;
+
+      	& > * {
+      		margin: 3px;
+      	}
+      }
+
+      .workspaces {
+      	button {
+      		background: none;
+      		margin: 3px;
+      		padding-left: 1px;
+      		&.inactive {
+      			color: #${config.lib.stylix.colors.base03};
+      		}
+      		&.active {
+      			color: #${config.lib.stylix.colors.base0B};
+      		}
+      		&.occupied {
+      			font-size: 1.01rem;
+      		}
+      		&.empty {
+      			font-size: 0.8rem;
+      		}
+      	}
+      }
+
+      .segment-top {
+      	margin-top: 10px;
+      }
+
+      .segment-bottom {
+      	margin-bottom: 10px;
+      }
+
+      .volume-metric {
+      	background-color: #${config.lib.stylix.colors.base01};
+      	color: #${config.lib.stylix.colors.base05};
+      	padding: 0;
+
+      	.volume-top > scale {
+      		margin-bottom: 5px;
+      	}
+
+      	slider {
+      		all: unset;
+      	}
+
+      	scale trough highlight {
+      		all: unset;
+      		background-color: #${config.lib.stylix.colors.base05};
+      		border-bottom-right-radius: 5px;
+      	}
+      	scale trough {
+      		all: unset;
+      		background-color: #${config.lib.stylix.colors.base03};
+      		min-width: 34px;
+      		min-height: 2px;
+      	}
+      }
+
+      .large-symbol {
+      	font-size: 0.8em;
+      }
+
+      .metric {
+      	background-color: #${config.lib.stylix.colors.base01};
+      	padding: 5px 2px;
+      }
+      .metric-icon {
+      	font-family: "FontAwesome5Free";
+      	font-size: 0.7em;
+      }
+
+      .time {
+      	padding-top: 7px;
+      	padding-bottom: 7px;
+      	color: #${config.lib.stylix.colors.base05};
+      }
+    '';
 }

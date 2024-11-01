@@ -10,37 +10,43 @@
 #
 # The derivation for the SD image will be placed in
 # config.system.build.sdImage
-
-{ config, lib, pkgs, ... }:
-
-with lib;
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
   rootfsImage = pkgs.callPackage <nixpkgs/nixos/lib/make-ext4-fs.nix> ({
-    inherit (config.sdImage) storePaths;
-    compressImage = true;
-    populateImageCommands = config.sdImage.populateRootCommands;
-    volumeLabel = "NIXOS_SD";
-  } // optionalAttrs (config.sdImage.rootPartitionUUID != null) {
-    uuid = config.sdImage.rootPartitionUUID;
-  });
+      inherit (config.sdImage) storePaths;
+      compressImage = true;
+      populateImageCommands = config.sdImage.populateRootCommands;
+      volumeLabel = "NIXOS_SD";
+    }
+    // optionalAttrs (config.sdImage.rootPartitionUUID != null) {
+      uuid = config.sdImage.rootPartitionUUID;
+    });
 
   hasFirmwarePartition = with config.sdImage;
     firmwarePartition && firmwarePartitionSize > 0;
 
   compressedImageExtension = with config.sdImage;
-    if compressImage then
-      (if compressImageMethod == "zstd" then ".zst"
-       else ".${compressImageMethod}") else "";
+    if compressImage
+    then
+      (
+        if compressImageMethod == "zstd"
+        then ".zst"
+        else ".${compressImageMethod}"
+      )
+    else "";
 
   compressLevelCmdLineArg = with config.sdImage;
     lib.optionalString (compressImageLevel != null)
-      "-${toString compressImageLevel}";
-in
-{
+    "-${toString compressImageLevel}";
+in {
   imports = [
-    (mkRemovedOptionModule [ "sdImage" "bootPartitionID" ] "The FAT partition for SD image now only holds the Raspberry Pi firmware files. Use firmwarePartitionID to configure that partition's ID.")
-    (mkRemovedOptionModule [ "sdImage" "bootSize" ] "The boot files for SD image have been moved to the main ext4 partition. The FAT partition now only holds the Raspberry Pi firmware files. Changing its size may not be required.")
+    (mkRemovedOptionModule ["sdImage" "bootPartitionID"] "The FAT partition for SD image now only holds the Raspberry Pi firmware files. Use firmwarePartitionID to configure that partition's ID.")
+    (mkRemovedOptionModule ["sdImage" "bootSize"] "The boot files for SD image have been moved to the main ext4 partition. The FAT partition now only holds the Raspberry Pi firmware files. Changing its size may not be required.")
     <nixpkgs/nixos/modules/profiles/all-hardware.nix>
   ];
 
@@ -221,7 +227,7 @@ in
         # Alternatively, this could be removed from the configuration.
         # The filesystem is not needed at runtime, it could be treated
         # as an opaque blob instead of a discrete FAT32 filesystem.
-        options = [ "nofail" "noauto" ];
+        options = ["nofail" "noauto"];
       };
       "/" = {
         device = "/dev/disk/by-label/NIXOS_SD";
@@ -229,104 +235,119 @@ in
       };
     };
 
-    sdImage.storePaths = [ config.system.build.toplevel ];
+    sdImage.storePaths = [config.system.build.toplevel];
 
     system.build.sdImage = pkgs.callPackage ({
-      stdenv, dosfstools, e2fsprogs,
-      mtools, libfaketime, util-linux, zstd, xz
-    }: stdenv.mkDerivation {
-      name = config.sdImage.imageName;
+      stdenv,
+      dosfstools,
+      e2fsprogs,
+      mtools,
+      libfaketime,
+      util-linux,
+      zstd,
+      xz,
+    }:
+      stdenv.mkDerivation {
+        name = config.sdImage.imageName;
 
-      nativeBuildInputs = [ dosfstools e2fsprogs mtools libfaketime util-linux zstd xz ];
+        nativeBuildInputs = [dosfstools e2fsprogs mtools libfaketime util-linux zstd xz];
 
-      buildInputs = lib.optional (config.sdImage.ubootPackage != null) config.sdImage.ubootPackage;
+        buildInputs = lib.optional (config.sdImage.ubootPackage != null) config.sdImage.ubootPackage;
 
-      buildCommand = ''
-        mkdir -p $out/nix-support $out/sd-image
-        export img=$out/sd-image/${config.sdImage.imageName}
+        buildCommand = ''
+          mkdir -p $out/nix-support $out/sd-image
+          export img=$out/sd-image/${config.sdImage.imageName}
 
-        echo "${pkgs.stdenv.buildPlatform.system}" > $out/nix-support/system
-        echo "file sd-image $img${compressedImageExtension}" >> $out/nix-support/hydra-build-products
+          echo "${pkgs.stdenv.buildPlatform.system}" > $out/nix-support/system
+          echo "file sd-image $img${compressedImageExtension}" >> $out/nix-support/hydra-build-products
 
-        echo "Decompressing rootfs image"
-        zstd -d --no-progress "${rootfsImage}" -o ./root-fs.img
+          echo "Decompressing rootfs image"
+          zstd -d --no-progress "${rootfsImage}" -o ./root-fs.img
 
-        blockSize=512
-        partitionsOffsetBlocks=$((${toString config.sdImage.partitionsOffset} * 1024 * 1024 / blockSize))
+          blockSize=512
+          partitionsOffsetBlocks=$((${toString config.sdImage.partitionsOffset} * 1024 * 1024 / blockSize))
 
-        ${if hasFirmwarePartition then ''
-        firmwarePartitionNumber=1
-        firmwarePartitionOffsetBlocks=$partitionsOffsetBlocks
-        firmwarePartitionSizeBlocks=$((${toString config.sdImage.firmwarePartitionSize} * 1024 * 1024 / blockSize))
-        firmwarePartitionSizeBytes=$((firmwarePartitionSizeBlocks * blockSize))
-        rootPartitionNumber=2
-        rootPartitionOffsetBlocks=$((firmwarePartitionOffsetBlocks + firmwarePartitionSizeBlocks))
-        '' else ''
-        rootPartitionNumber=1
-        rootPartitionOffsetBlocks=$partitionsOffsetBlocks
-        ''}
+          ${
+            if hasFirmwarePartition
+            then ''
+              firmwarePartitionNumber=1
+              firmwarePartitionOffsetBlocks=$partitionsOffsetBlocks
+              firmwarePartitionSizeBlocks=$((${toString config.sdImage.firmwarePartitionSize} * 1024 * 1024 / blockSize))
+              firmwarePartitionSizeBytes=$((firmwarePartitionSizeBlocks * blockSize))
+              rootPartitionNumber=2
+              rootPartitionOffsetBlocks=$((firmwarePartitionOffsetBlocks + firmwarePartitionSizeBlocks))
+            ''
+            else ''
+              rootPartitionNumber=1
+              rootPartitionOffsetBlocks=$partitionsOffsetBlocks
+            ''
+          }
 
-        rootPartitionOffsetBytes=$((rootPartitionOffsetBlocks * blockSize))
+          rootPartitionOffsetBytes=$((rootPartitionOffsetBlocks * blockSize))
 
-        # Create the image file sized to fit /boot/firmware and /, plus slack for the gap.
-        rootPartitionSizeBlocks=$(du -B $blockSize --apparent-size ./root-fs.img | awk '{ print $1 }')
-        rootPartitionSizeBytes=$((rootPartitionSizeBlocks * blockSize))
+          # Create the image file sized to fit /boot/firmware and /, plus slack for the gap.
+          rootPartitionSizeBlocks=$(du -B $blockSize --apparent-size ./root-fs.img | awk '{ print $1 }')
+          rootPartitionSizeBytes=$((rootPartitionSizeBlocks * blockSize))
 
-        imageSizeBytes=$((rootPartitionOffsetBytes + rootPartitionSizeBytes))
-        truncate -s $imageSizeBytes $img
+          imageSizeBytes=$((rootPartitionOffsetBytes + rootPartitionSizeBytes))
+          truncate -s $imageSizeBytes $img
 
-        # type=b is 'W95 FAT32', type=83 is 'Linux'.
-        # The "bootable" partition is where u-boot will look file for the bootloader
-        # information (dtbs, extlinux.conf file).
-        sfdisk $img <<EOF
-            label: dos
-            label-id: ${config.sdImage.firmwarePartitionID}
+          # type=b is 'W95 FAT32', type=83 is 'Linux'.
+          # The "bootable" partition is where u-boot will look file for the bootloader
+          # information (dtbs, extlinux.conf file).
+          sfdisk $img <<EOF
+              label: dos
+              label-id: ${config.sdImage.firmwarePartitionID}
 
-            ${lib.optionalString hasFirmwarePartition ''
+              ${lib.optionalString hasFirmwarePartition ''
             start=$firmwarePartitionOffsetBlocks, size=$firmwarePartitionSizeBlocks, type=b
-            ''}
-            start=$rootPartitionOffsetBlocks, type=83, bootable
-        EOF
+          ''}
+              start=$rootPartitionOffsetBlocks, type=83, bootable
+          EOF
 
-        # Copy the rootfs into the SD image
-        eval $(partx $img -o START,SECTORS --nr $rootPartitionNumber --pairs)
-        echo "Root partition: $START,$SECTORS"
-        dd conv=notrunc if=./root-fs.img of=$img seek=$START count=$SECTORS
+          # Copy the rootfs into the SD image
+          eval $(partx $img -o START,SECTORS --nr $rootPartitionNumber --pairs)
+          echo "Root partition: $START,$SECTORS"
+          dd conv=notrunc if=./root-fs.img of=$img seek=$START count=$SECTORS
 
-        ${lib.optionalString hasFirmwarePartition ''
-        # Create a FAT32 /boot/firmware partition of suitable size into firmware_part.img
-        eval $(partx $img -o START,SECTORS --nr $firmwarePartitionNumber --pairs)
-        echo "Firmware partition: $START,$SECTORS"
-        truncate -s $((SECTORS * blockSize)) firmware_part.img
-        faketime "1970-01-01 00:00:00" mkfs.vfat -i ${config.sdImage.firmwarePartitionID} -n ${config.sdImage.firmwarePartitionName} firmware_part.img
+          ${lib.optionalString hasFirmwarePartition ''
+            # Create a FAT32 /boot/firmware partition of suitable size into firmware_part.img
+            eval $(partx $img -o START,SECTORS --nr $firmwarePartitionNumber --pairs)
+            echo "Firmware partition: $START,$SECTORS"
+            truncate -s $((SECTORS * blockSize)) firmware_part.img
+            faketime "1970-01-01 00:00:00" mkfs.vfat -i ${config.sdImage.firmwarePartitionID} -n ${config.sdImage.firmwarePartitionName} firmware_part.img
 
-        # Populate the files intended for /boot/firmware
-        mkdir firmware
-        ${config.sdImage.populateFirmwareCommands}
+            # Populate the files intended for /boot/firmware
+            mkdir firmware
+            ${config.sdImage.populateFirmwareCommands}
 
-        # Copy the populated /boot/firmware into the SD image
-        (cd firmware; mcopy -psvm -i ../firmware_part.img ./* ::)
-        # Verify the FAT partition before copying it.
-        fsck.vfat -vn firmware_part.img
-        dd conv=notrunc if=firmware_part.img of=$img seek=$START count=$SECTORS
-        ''}
+            # Copy the populated /boot/firmware into the SD image
+            (cd firmware; mcopy -psvm -i ../firmware_part.img ./* ::)
+            # Verify the FAT partition before copying it.
+            fsck.vfat -vn firmware_part.img
+            dd conv=notrunc if=firmware_part.img of=$img seek=$START count=$SECTORS
+          ''}
 
-        ${lib.optionalString (config.sdImage.ubootPackage != null) ''
-        # Install U-Boot binary image
-        echo "Install U-Boot: ${config.sdImage.ubootPackage}/${config.sdImage.ubootBinary} ${toString config.sdImage.ubootOffset}"
-        dd if=${config.sdImage.ubootPackage}/${config.sdImage.ubootBinary} of=$img bs=1024 seek=${toString config.sdImage.ubootOffset} conv=notrunc
-        ''}
+          ${lib.optionalString (config.sdImage.ubootPackage != null) ''
+            # Install U-Boot binary image
+            echo "Install U-Boot: ${config.sdImage.ubootPackage}/${config.sdImage.ubootBinary} ${toString config.sdImage.ubootOffset}"
+            dd if=${config.sdImage.ubootPackage}/${config.sdImage.ubootBinary} of=$img bs=1024 seek=${toString config.sdImage.ubootOffset} conv=notrunc
+          ''}
 
-        ${config.sdImage.postBuildCommands}
+          ${config.sdImage.postBuildCommands}
 
-        ${lib.optionalString config.sdImage.compressImage
-          (if config.sdImage.compressImageMethod == "zstd" then ''
-            zstd -T$NIX_BUILD_CORES ${compressLevelCmdLineArg} --rm $img
-          '' else ''
-            xz -T$NIX_BUILD_CORES -F${config.sdImage.compressImageMethod} ${compressLevelCmdLineArg} $img
-          '')}
-      '';
-    }) {};
+          ${lib.optionalString config.sdImage.compressImage
+            (
+              if config.sdImage.compressImageMethod == "zstd"
+              then ''
+                zstd -T$NIX_BUILD_CORES ${compressLevelCmdLineArg} --rm $img
+              ''
+              else ''
+                xz -T$NIX_BUILD_CORES -F${config.sdImage.compressImageMethod} ${compressLevelCmdLineArg} $img
+              ''
+            )}
+        '';
+      }) {};
 
     boot.postBootCommands = lib.mkIf config.sdImage.expandOnBoot ''
       # On the first boot do some maintenance tasks

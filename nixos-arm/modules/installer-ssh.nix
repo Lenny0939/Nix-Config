@@ -1,6 +1,5 @@
-{ lib, ... }:
-with lib;
-{
+{lib, ...}:
+with lib; {
   users.extraUsers.root = {
     initialPassword = mkDefault "nixospi";
   };
