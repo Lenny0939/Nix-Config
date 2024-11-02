@@ -25,13 +25,11 @@
   stylix.enable = specialArgs.gui;
   gtk.enable = specialArgs.gui;
   wayland.windowManager.hyprland.enable = specialArgs.gui;
-  xdg.enable = true;
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     inputs.stylix.homeManagerModules.stylix
     ../modules/options.nix
     ../scripts/wallpaper.nix
-    ./xdg.nix
     ./mangohud.nix
     ./firefox.nix
     ./fastfetch.nix

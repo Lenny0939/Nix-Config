@@ -43,11 +43,6 @@ with specialArgs; {
     hyprland.enable = gui;
     steam = {
       enable = games;
-      package = pkgs.steam.override {
-        extraEnv = {
-          HOME = "/users/lenny/steam";
-        };
-      };
     };
   };
   hardware.steam-hardware.enable = games;
@@ -109,25 +104,8 @@ with specialArgs; {
         ".mozilla"
       ];
       files = ["zsh_history"];
-      home = "/users/lenny";
+      home = "/home/lenny";
     };
-  };
-  systemd.tmpfiles = {
-    settings = {
-      "10-create-home" = {
-        "/users/lenny/home" = {
-          d = {
-            group = "root";
-            mode = "0700";
-            user = "lenny";
-          };
-        };
-      };
-    };
-    rules = [
-      "d /persist/users/ 0777 root root"
-      "d /persist/users/lenny 0700 lenny users -"
-    ];
   };
   systemd.services.NetworkManager-wait-online.enable = false;
   hardware = {
@@ -173,14 +151,7 @@ with specialArgs; {
         isNormalUser = true;
         description = "Lenny";
         extraGroups = ["networkmanager" "wheel"];
-        home = "/users/lenny";
-
-        # This is required until this is merged:
-        #   https://github.com/NixOS/nixpkgs/pull/324618
-        # Reasoning in the PR
-        homeMode = "0755";
-
-        createHome = true;
+        home = "/home/lenny";
       };
       root = {
         hashedPasswordFile = "/persist/passwords/root";

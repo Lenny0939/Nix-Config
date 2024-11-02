@@ -53,29 +53,9 @@
         file = "p10k.zsh";
       }
     ];
-    envExtra =
-      /*
-      sh
-      */
-      ''
-        export ZDOTDIR="/users/lenny/config/zsh"
-        export HOME="/users/lenny"
-      '';
-    initExtra =
-      /*
-      sh
-      */
-      ''
-        	export HOME="/users/lenny/home"
-        source "$(fzf-share)/key-bindings.zsh"
-        source "$(fzf-share)/completion.zsh"
-        if [ -z "$DISPLAY" ];
-        then
-        	cd ~
-        	Hyprland
-        fi
-        ${pkgs.fastfetch}/bin/fastfetch
-      '';
+    initExtra = ''
+      ${pkgs.fastfetch}/bin/fastfetch
+    '';
   };
   home.sessionVariables = {
     FZF_DEFAULT_COMMAND = "fd --type f";
