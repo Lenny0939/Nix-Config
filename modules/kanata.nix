@@ -20,9 +20,9 @@
           )
           (deflayer whirl
             _   _    _    _    _    _    _    _    _    _    _    _    _
-          	_    b    g    d    f    '     q   j    u    o    y  _    _
+          	_    b    g    d    f    '     q   l    u    o    y  _    _
            C-bspc n    s    t    h    m    z    r    e    a    i    /
-          	p      c    v    w    k    spc     x    l    ;    .    ,    _
+          	p         c    v    w    k  @*  x    j    ;    .    ,    _
           	_    _      @alt               _            @*  @qwr _
           )
           (deflayer nav
