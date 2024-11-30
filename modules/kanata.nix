@@ -18,11 +18,12 @@
           	lsft z    x    c    v    b    n    m    ,    .    /    rsft
           	lctl lmet lalt           spc            ralt @wrl rctl
           )
+          )
           (deflayer whirl
             _   _    _    _    _    _    _    _    _    _    _    _    _
-          	_    b    g    d    f    '     q   l    u    o    y  _    _
-           C-bspc n    s    t    h    m    z    r    e    a    i    /
-          	p         c    v    w    k  @*  x    j    ;    .    ,    _
+          	_    q    g    d    f    v     z   l    u    o    y  _    _
+           C-bspc n    s    t    h    m    '    r    e    a    i    /
+          	b      c    p    w    k    spc     x    j    ;    .    ,    _
           	_    _      @alt               _            @*  @qwr _
           )
           (deflayer nav
@@ -42,7 +43,7 @@
           		((key-history y 1)) , break
           		((key-history u 1)) e break
           		((key-history g 1)) s break
-          		((key-history ' 1)) r break
+          		((key-history ' 1)) m break
           		() rpt break)
           	)
         '';
