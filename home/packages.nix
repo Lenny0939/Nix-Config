@@ -8,24 +8,12 @@
     cmatrix # Matrix effect
     pipes # Cool pipes screensaver thingo
     cava # Cool audio visualiser
-    /*
-    Gaming
-    */
-    #lutris
     mangohud # Overlay, like MSI Afterburner
     dolphin-emu
-    /*
-    Coding stuff
-    */
-    /*
-    Git
-    */
     gh
     git
-    /*
-    Godot
-    */
     godot_4
+		reaper
     /*
     Utilities
     */
@@ -52,23 +40,13 @@
     audacity
     qmk
     prismlauncher
-    # Most apps have their own modules
-    /*
-    Services
-    */
-    /*
-    Notifications
-    */
     libnotify
-    /*
-    Miscellaneous
-    */
     hyprshot
     wl-clipboard
     nix-search-cli
     qmk
     brightnessctl
-    #easyeffects
+    easyeffects
     trashy
   ];
 }
