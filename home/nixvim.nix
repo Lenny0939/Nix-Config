@@ -1,12 +1,12 @@
 {pkgs, ...}: {
   programs.nixvim = {
     globals.mapleader = " ";
-    colorschemes.nord = {
+    colorschemes.rose-pine = {
       enable = true;
-      settings = {
-        disable_background = true;
-        italic = false;
-      };
+      #settings = {
+      #  disable_background = true;
+      #  italic = false;
+      #};
     };
     opts = {
       linebreak = true;
@@ -39,7 +39,7 @@
         enable = true;
         backgroundColour = "#000000";
       };
-      noice.enable = true;
+      #noice.enable = true;
       /*
       CMP/snippets
       */
@@ -91,6 +91,7 @@
           html.enable = true;
           gdscript.enable = true;
           gdscript.package = null;
+					csharp-ls.enable = true;
           # Rust-analyzer automatically enabled by rustaceanvim
         };
       };
