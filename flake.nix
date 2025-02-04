@@ -21,7 +21,7 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sops-nix.url = "github:Mic92/sops-nix";
+		niri.url = "github:sodiboo/niri-flake";
   };
   outputs = {
     self,

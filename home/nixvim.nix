@@ -1,11 +1,10 @@
-{pkgs, ...}: {
+{...}: {
   programs.nixvim = {
     globals.mapleader = " ";
-    colorschemes.nord = {
+    colorschemes.catppuccin = {
       enable = true;
       settings = {
-        disable_background = true;
-        italic = false;
+        flavor = "mocha";
       };
     };
     opts = {
@@ -22,23 +21,19 @@
       mouse = "a";
       scrolloff = 1000;
     };
-    extraPlugins = with pkgs.vimPlugins; [
-      markview-nvim
-    ];
     plugins = {
+			trouble.enable = true;
       rustaceanvim.enable = true;
       godot.enable = true;
       telescope.enable = true;
       web-devicons.enable = true;
+			markview.enable = true;
+			nvim-ufo.enable = true;
       /*
       UI
       */
       oil.enable = true;
       lualine.enable = true;
-      notify = {
-        enable = true;
-        backgroundColour = "#000000";
-      };
       noice.enable = true;
       /*
       CMP/snippets
@@ -91,6 +86,7 @@
           html.enable = true;
           gdscript.enable = true;
           gdscript.package = null;
+					csharp_ls.enable = true;
           # Rust-analyzer automatically enabled by rustaceanvim
         };
       };
@@ -108,17 +104,13 @@
       /*
       Color preview
       */
-      nvim-colorizer = {
+      colorizer = {
         enable = true;
-        userDefaultOptions = {
+        settings.user_default_options = {
           names = false;
           mode = "virtualtext";
         };
       };
-      /*
-      Dependencies
-      */
-      dap.enable = true;
     };
     keymaps = [
       {

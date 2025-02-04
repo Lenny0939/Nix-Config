@@ -55,6 +55,7 @@
     ];
     initExtra = ''
       ${pkgs.fastfetch}/bin/fastfetch
+			bindkey '^H' backward-kill-word
     '';
   };
   home.sessionVariables = {

@@ -56,7 +56,7 @@ in {
       dwindle = {
         pseudotile = "yes";
         preserve_split = "yes";
-        no_gaps_when_only = 1;
+        #no_gaps_when_only = 1;
       };
       gestures = {
         workspace_swipe = "on";
@@ -67,13 +67,12 @@ in {
         ", PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
         #"CAPS, Caps_Lock, exec, notify-send working"
         "$mainMod, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m output --clipboard-only"
-        "$mainMod, F, exec, ${pkgs.kitty}/bin/kitty"
-        "$mainMod, D, exec, ${pkgs.kitty}/bin/kitty --hold ${pkgs.fzf}/bin/fzf --bind 'enter:become($EDITOR {})'"
-        "$mainMod, Z, killactive,"
+        "$mainMod, H, exec, ${pkgs.ghostty}/bin/ghostty"
+        "$mainMod, B, killactive,"
         "$mainMod, V, togglefloating"
         "$mainMod, S, exec, ${pkgs.wofi}/bin/wofi"
-        "$mainMod, H, togglesplit,"
-        "$mainMod, A, fullscreen"
+        "$mainMod, i, togglesplit,"
+        "$mainMod, n, fullscreen"
         ", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set -e +5%"
         ", XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set -e 5%-"
         ", XF86AudioRaiseVolume, exec, ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +10%"
@@ -82,46 +81,46 @@ in {
         ", XF86AudioMicMute, exec, ${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle"
 
         # Move focus with mainMod + arrow keys
-        "$mainMod, h, movefocus, l"
-        "$mainMod, j, movefocus, d"
-        "$mainMod, k, movefocus, u"
-        "$mainMod, l, movefocus, r"
+        "$mainMod, z, movefocus, l"
+        "$mainMod, r, movefocus, d"
+        "$mainMod, e, movefocus, u"
+        "$mainMod, a, movefocus, r"
 
         # Resize windows with mainMod + SUPER + arrow keys
-        "$mainMod SUPER, h, resizeactive, -25 0"
-        "$mainMod SUPER, j, resizeactive, 0 25"
-        "$mainMod SUPER, k, resizeactive, 0 -25"
-        "$mainMod SUPER, l, resizeactive, 25 0"
+        "$mainMod SUPER, z, resizeactive, -25 0"
+        "$mainMod SUPER, r, resizeactive, 0 25"
+        "$mainMod SUPER, e, resizeactive, 0 -25"
+        "$mainMod SUPER, a, resizeactive, 25 0"
 
         # Move windows with mainMod + shift + arrow keys
-        "$mainMod SHIFT, h, movewindow, l"
-        "$mainMod SHIFT, j, movewindow, d"
-        "$mainMod SHIFT, k, movewindow, u"
-        "$mainMod SHIFT, l, movewindow, r"
+        "$mainMod SHIFT, z, movewindow, l"
+        "$mainMod SHIFT, r, movewindow, d"
+        "$mainMod SHIFT, e, movewindow, u"
+        "$mainMod SHIFT, a, movewindow, r"
 
         # Switch workspaces with mainMod + [0-9]
         "$mainMod, q, workspace, 1"
-        "$mainMod, w, workspace, 2"
-        "$mainMod, e, workspace, 3"
-        "$mainMod, r, workspace, 4"
-        "$mainMod, t, workspace, 5"
-        "$mainMod, y, workspace, 6"
-        "$mainMod, u, workspace, 7"
-        "$mainMod, i, workspace, 8"
+        "$mainMod, g, workspace, 2"
+        "$mainMod, d, workspace, 3"
+        "$mainMod, f, workspace, 4"
+        "$mainMod, ', workspace, 5"
+        "$mainMod, z, workspace, 6"
+        "$mainMod, l, workspace, 7"
+        "$mainMod, u, workspace, 8"
         "$mainMod, o, workspace, 9"
-        "$mainMod, p, workspace, 10"
+        "$mainMod, y, workspace, 10"
 
         # Move active window to a workspace with mainMod + SHIFT + [0-9]
         "$mainMod SHIFT, q, movetoworkspace, 1"
-        "$mainMod SHIFT, w, movetoworkspace, 2"
-        "$mainMod SHIFT, e, movetoworkspace, 3"
-        "$mainMod SHIFT, r, movetoworkspace, 4"
-        "$mainMod SHIFT, t, movetoworkspace, 5"
-        "$mainMod SHIFT, y, movetoworkspace, 6"
-        "$mainMod SHIFT, u, movetoworkspace, 7"
-        "$mainMod SHIFT, i, movetoworkspace, 8"
+        "$mainMod SHIFT, g, movetoworkspace, 2"
+        "$mainMod SHIFT, d, movetoworkspace, 3"
+        "$mainMod SHIFT, f, movetoworkspace, 4"
+        "$mainMod SHIFT, ', movetoworkspace, 5"
+        "$mainMod SHIFT, z, movetoworkspace, 6"
+        "$mainMod SHIFT, l, movetoworkspace, 7"
+        "$mainMod SHIFT, u, movetoworkspace, 8"
         "$mainMod SHIFT, o, movetoworkspace, 9"
-        "$mainMod SHIFT, p, movetoworkspace, 10"
+        "$mainMod SHIFT, y, movetoworkspace, 10"
 
         # Scroll through existing workspaces with mainMod + scroll
         "$mainMod, mouse_down, workspace, e+1"
