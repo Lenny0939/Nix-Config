@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}: {
+{ pkgs, lib, config, ... }: {
   imports = [
     <nixpkgs/nixos/modules/profiles/base.nix>
     ../../sd-image.nix

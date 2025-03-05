@@ -10,9 +10,9 @@
     */
     ''
       ${hyprpaper}/bin/hyprpaper &
-      ${eww}/bin/eww open bar
     '';
 in {
+      # ${eww}/bin/eww open bar
   imports = [
     ../modules/blur.nix
   ];

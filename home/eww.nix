@@ -195,7 +195,7 @@ in {
       		:monitor 0
       		; :monitor "DisplayPort-0"
       		:stacking "fg"
-      		:geometry (geometry :x 0 :y 0 :width "40px" :height "100%" :anchor "center left")
+      		:geometry (geometry :x 0 :y 0 :width "40px" :height "2160px" :anchor "center left")
       		:exclusive true
       		(bar :screen 1))
 

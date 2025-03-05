@@ -1,7 +1,7 @@
-self: super: let
-  pkgs = self;
+self: super:
+let pkgs = self;
 
-  buildCrustScpFirmware = pkgs.callPackage ./crust.nix {};
+    buildCrustScpFirmware = pkgs.callPackage ./crust.nix {};
 in {
   crustScpFirmwareOrangePi3 = buildCrustScpFirmware {
     defconfig = "orangepi_3_defconfig";

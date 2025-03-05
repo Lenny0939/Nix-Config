@@ -43,7 +43,7 @@
     ./nixvim.nix
     ./helix.nix
     ./kitty.nix
-    ./eww.nix
+    #./eww.nix
     ./mako.nix
     ./lf.nix
 		./ghostty.nix

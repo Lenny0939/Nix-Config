@@ -13,6 +13,7 @@ with specialArgs; {
 			then import ./archive/machines/aragorn/hardware-configuration-aragorn.nix
 			else  {}
 		)
+		./modules/sops.nix
     ./modules/nh.nix
     ./modules/options.nix
     ./modules/kanata.nix
@@ -29,6 +30,10 @@ with specialArgs; {
   time.timeZone = "Australia/Sydney";
   i18n.defaultLocale = "en_AU.UTF-8";
   programs = {
+  	gamescope = {
+    	enable = games;
+			capSysNice = true;
+		};
     adb.enable = laptop;
     zsh.enable = true;
     nh.enable = true;
@@ -40,6 +45,25 @@ with specialArgs; {
     hyprland.enable = gui;
     steam = {
       enable = games;
+			gamescopeSession.enable = true;
+			package = pkgs.steam.override {
+				/* extraPkgs = pkgs: with pkgs; [
+					libkrb5
+					keyutils
+				]; */
+  extraPkgs = pkgs: with pkgs; [
+        xorg.libXcursor
+        xorg.libXi
+        xorg.libXinerama
+        xorg.libXScrnSaver
+        libpng
+        libpulseaudio
+        libvorbis
+        stdenv.cc.cc.lib
+        libkrb5
+        keyutils
+      ];
+			};
     };
   };
   hardware.steam-hardware.enable = games;
@@ -50,6 +74,7 @@ with specialArgs; {
 		packages = with pkgs; [ spleen ];
 	};
   boot = lib.mkIf (gui == true) {
+		binfmt.emulatedSystems = [ "aarch64-linux" ];
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -113,7 +138,6 @@ with specialArgs; {
     users = {
       lenny = {
         initialPassword = "password";
-        #hashedPasswordFile = "/persist/passwords/lenny";
         isNormalUser = true;
         description = "Lenny";
         extraGroups = [ "networkmanager" "wheel" "dialout" ];
@@ -128,7 +152,7 @@ with specialArgs; {
   home-manager = {
     extraSpecialArgs = specialArgs;
     users = {
-      lenny = import ./home/home.nix;
+      lenny = if server then import ./frodo/home-frodo.nix else ./home/home.nix;
     };
   };
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

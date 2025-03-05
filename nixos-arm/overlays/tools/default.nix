@@ -1,6 +1,6 @@
-self: super: let
-  pkgs = self;
-  makeToolchain = pkgs.callPackage ./gcc-bootlin-toolchain {};
+self: super:
+let pkgs = self;
+    makeToolchain = pkgs.callPackage ./gcc-bootlin-toolchain {};
 in {
   gcc-openrisc-linux-musl = makeToolchain {
     arch = "openrisc";

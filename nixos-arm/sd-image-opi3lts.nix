@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}: {
+{ pkgs, lib, config, ... }: {
   imports = [
     ./modules/board/orangepi-3-lts/sd-image.nix
   ];
@@ -22,5 +17,5 @@
       # "ssh-ed25519 AAAAC3NzaC1lZDI1.... username@tld"
     ];
   };
-  boot.supportedFilesystems = lib.mkForce ["btrfs" "cifs" "f2fs" "jfs" "ntfs" "reiserfs" "vfat" "xfs"];
+  boot.supportedFilesystems = lib.mkForce [ "btrfs" "cifs" "f2fs" "jfs" "ntfs" "reiserfs" "vfat" "xfs" ];
 }

@@ -2,14 +2,8 @@
   pkgs,
   ...
 }: {
-  /* gtk = {
-    cursorTheme.package = pkgs.bibata-cursors;
-    cursorTheme.name = "Bibata-Modern-Ice";
-    iconTheme.package = pkgs.papirus-icon-theme;
-    iconTheme.name = "Papirus";
-  }; */
   stylix = {
-    image = ../wallpapers/valley.png;
+    image = ../wallpapers/kida.png;
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     #base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
@@ -20,8 +14,10 @@
 
     fonts = {
       monospace = {
-				package = pkgs.spleen;
-        name = "\"Spleen 12x24\"";
+				/* package = pkgs.spleen;
+        name = "\"Spleen 12x24\""; */
+				package = pkgs.iosevka;
+				name = "Iosevka";
         /*
            package = (pkgs.iosevka.override {
         	privateBuildPlan = {
@@ -49,5 +45,6 @@
 			dark = "Papirus Dark";
 		};
   };
+	wayland.windowManager.hyprland.settings.monitor = [ "HDMI-A-1, highres, 0x0, 1.5" ];
   blur = false;
 }

@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos.url = "nixpkgs/nixos-unstable";
+		garf.url = "github:lenny0939/garf";
+		nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,6 +24,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 		niri.url = "github:sodiboo/niri-flake";
+    sops-nix.url = "github:Mic92/sops-nix";
   };
   outputs = {
     self,
@@ -85,9 +88,10 @@
           games = false;
           server = true;
           impermanence = false;
+					vm = false;
         };
         modules = [
-          ./machines/frodo/frodo.nix
+          ./frodo/frodo.nix
         ];
       };
     };

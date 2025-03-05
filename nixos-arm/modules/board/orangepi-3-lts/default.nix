@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{ lib, pkgs, ... }: {
   imports = [
     ../../arch/sunxi
     ../../periph/bluetooth
