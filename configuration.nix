@@ -9,7 +9,7 @@
 with specialArgs; {
   imports = [
     inputs.home-manager.nixosModules.home-manager
-		lix-module.nixosModules.default
+		inputs.lix-module.nixosModules.default
 		(
 			if desktop 
 			then import ./archive/machines/aragorn/hardware-configuration-aragorn.nix
