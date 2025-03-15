@@ -15,7 +15,6 @@
       rev = "ef5e339bcb8274c1127a1434d0c5f3ad80ea3692";
     })
     */
-    #./nextcloud.nix
     #./wireguard-server.nix
     #./vaultwarden.nix
     ./blocky.nix
@@ -25,6 +24,8 @@
   ];
 	
 	system.stateVersion = "23.05";
+	hardware.bluetooth.enable = false;
+
   nixpkgs.hostPlatform = "aarch64-linux";
   nix.settings = {
     substituters = [
@@ -68,16 +69,23 @@ hardware.firmware = [pkgs.uwe5622-firmware];
     firewall = {
       enable = true;
       allowedTCPPorts = [
+				# searx
         8888
-        80
-        443
+				# http?
+        # 80
+        # 443
+				# blocky
         53
         23
+				# minecraft
 				25565
+				25566
       ];
       allowedUDPPorts = [
         51820
         53
+				# minecraft voice chat 
+				24454
       ];
     };
     interfaces.wlp3s0.ipv4.addresses = [

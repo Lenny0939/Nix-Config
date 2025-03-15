@@ -7,6 +7,7 @@ imports = [
     age.keyFile = "/home/lenny/.config/sops/age/keys.txt";
     secrets = {
       garf_key = {};
+			wireguard-frodo-private = {};
     };
   };
 }

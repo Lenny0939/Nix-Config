@@ -24,19 +24,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 		niri.url = "github:sodiboo/niri-flake";
-    sops-nix.url = "github:Mic92/sops-nix";
-  };
+	  lix-module = {
+				url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
+				inputs.nixpkgs.follows = "nixpkgs";
+			};   sops-nix.url = "github:Mic92/sops-nix";
+		};
   outputs = {
-    self,
-    nixos,
     nixpkgs,
-    home-manager,
+    lix-module,
     ...
   } @ inputs: let
     system = "x86_64-linux";
   in {
     nixosConfigurations = {
-      legolas = nixpkgs.lib.nixosSystem rec {
+      legolas = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs system;
           gui = true;

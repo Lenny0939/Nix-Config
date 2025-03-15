@@ -8,7 +8,6 @@
       server = {
         port = 8888;
         bind_address = "192.168.0.165";
-        #bind_address = "localhost";
         secret_key = "secretkey";
       };
       search = {
