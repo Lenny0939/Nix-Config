@@ -14,25 +14,8 @@
 
     fonts = {
       monospace = {
-				/* package = pkgs.spleen;
-        name = "\"Spleen 12x24\""; */
-				package = pkgs.iosevka;
-				name = "Iosevka";
-        /*
-           package = (pkgs.iosevka.override {
-        	privateBuildPlan = {
-        		family = "Iosevka Custom";
-        	 spacing = "normal";
-        	 serifs = "sans";
-
-        	 variants = {
-        		 design.capital-j = "serifless";
-        		 italic.i = "tailed";
-        	 };
-         };
-        });
-        name = "Iosevka Custom";
-        */
+				package = pkgs.nerd-fonts.iosevka;
+				name = "Iosevka Nerd Font";
       };
     };
     cursor = {
