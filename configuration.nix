@@ -131,17 +131,42 @@ with specialArgs; {
           LV2_PATH = "/nix/var/nix/profiles/default/lib/lv2:~/.nix-profile/lib/lv2:~/.lv2";
           DSSI_PATH = "/nix/var/nix/profiles/default/lib/dssi:~/.nix-profile/lib/dssi:~/.dssi";
         };
-  networking.networkmanager.enable = true;
-  networking.hostName =
-    if laptop
-    then "legolas"
-    else if server
-    then "frodo"
-    else if vm
-    then "vm"
-    else if desktop
-    then "aragorn"
-    else "computer";
+	networking = {
+		networkmanager.enable = true;
+		hostName =
+			if laptop
+			then "legolas"
+			else if server
+			then "frodo"
+			else if vm
+			then "vm"
+			else if desktop
+			then "aragorn"
+			else "computer";
+    firewall = lib.mkIf server {
+      enable = true;
+      allowedTCPPorts = [
+				# searx
+        8888
+				# http?
+        # 80
+        # 443
+				22
+				# blocky
+        53
+        23
+				# minecraft
+				25565
+				25566
+      ];
+      allowedUDPPorts = [
+        51820
+        53
+				# minecraft voice chat 
+				24454
+      ];
+		};
+  };
   users = {
     mutableUsers = false;
     defaultUserShell = pkgs.zsh;
@@ -154,8 +179,9 @@ with specialArgs; {
         home = "/home/lenny";
       };
       root = {
-        hashedPasswordFile = "/persist/passwords/root";
-        initialPassword = "password";
+        /* hashedPasswordFile = "/persist/passwords/root";
+        initialPassword = "password"; */
+				password = "password";
       };
     };
   };

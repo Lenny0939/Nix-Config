@@ -35,7 +35,7 @@
 				Factions = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/ZjwW8Q6n/versions/sKyOcfhJ/factions-mc1.21.4-2.7.2.jar"; sha256 = "FNpfQigg0ir/VqG3v6QWnet4EYhIdJITVREu0+pgmSQ="; };
 				AudioPlayer = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/SRlzjEBS/versions/377C94c4/audioplayer-fabric-1.21.4-1.13.2.jar"; sha256 = "Eu6zoQZa9aeBID7EXk/6QkQHzuhKIN8WYVxaTYynhqw="; };
       });
-			jvmOpts = "-Xms7G -Xmx7G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true";
+			jvmOpts = "-Xms6G -Xmx6G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true";
 		};
 	};	
 services.haproxy = {
@@ -53,7 +53,7 @@ services.haproxy = {
       timeout connect 20s
     frontend minecraft-frontend
       bind *:25565
-			# default_backend craft
+			default_backend craft
       tcp-request inspect-delay 5s
       acl craft req.payload(5,16),lower -m sub mc.lench.org
       tcp-request content accept if craft

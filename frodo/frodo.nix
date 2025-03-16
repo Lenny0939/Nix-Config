@@ -63,7 +63,7 @@
         home = "/home/lenny";
       };
       root = {
-        initialPassword = "password";
+        password = "password";
       };
     };
   };
@@ -94,7 +94,7 @@
     };
     interfaces.wlp3s0.ipv4.addresses = [
       {
-        address = "192.168.0.61";
+        address = "192.168.0.154";
         prefixLength = 24;
       }
     ];
