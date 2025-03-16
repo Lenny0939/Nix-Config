@@ -93,7 +93,7 @@
 					vm = false;
         };
         modules = [
-          ./frodo/frodo.nix
+          ./configuration.nix
         ];
       };
     };

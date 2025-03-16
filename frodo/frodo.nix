@@ -5,8 +5,11 @@
   ...
 }: {
   imports = [
+		inputs.disko.nixosModules.disko
+		./hardware-configuration.nix
+		../disko-config.nix
 		./searx.nix
-    ../nixos-arm/sd-image-opi3lts.nix
+    #../nixos-arm/sd-image-opi3lts.nix
 		./minecraft.nix
     /*
        (builtins.fetchGit {
@@ -26,15 +29,16 @@
 	system.stateVersion = "23.05";
 	hardware.bluetooth.enable = false;
 
-  nixpkgs.hostPlatform = "aarch64-linux";
-  nix.settings = {
+  # nixpkgs.hostPlatform = "aarch64-linux";
+	nixpkgs.hostPlatform = "x86_64-linux";
+  /* nix.settings = {
     substituters = [
       "https://sunxi64.cachix.org"
     ];
     trusted-public-keys = [
       "sunxi64.cachix.org-1:q5kIj6q7nUG/J88HPCwMYNzoesce9sl6hbVXji2buIQ="
     ];
-  };
+  }; */
   boot = {
     loader = {
       grub.enable = false;
@@ -46,7 +50,7 @@
       "earlycon"
       "console=ttyS0,115200n8"
     ];
-    initrd.availableKernelModules = ["sunxi-mmc"];
+    #initrd.availableKernelModules = ["sunxi-mmc"];
   };
   users = {
     mutableUsers = false;
@@ -63,7 +67,7 @@
       };
     };
   };
-hardware.firmware = [pkgs.uwe5622-firmware];
+#hardware.firmware = [pkgs.uwe5622-firmware];
   networking = {
     hostName = "frodo";
     firewall = {
@@ -90,7 +94,7 @@ hardware.firmware = [pkgs.uwe5622-firmware];
     };
     interfaces.wlp3s0.ipv4.addresses = [
       {
-        address = "192.168.0.165";
+        address = "192.168.0.61";
         prefixLength = 24;
       }
     ];

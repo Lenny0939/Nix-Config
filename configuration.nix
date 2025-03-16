@@ -24,9 +24,14 @@ with specialArgs; {
       then import ./modules/impermanence.nix
       else {}
      )
-  ];
+  ] ++ (if server then [
+    inputs.disko.nixosModules.disko
+    ./frodo/hardware-configuration.nix
+    ./disko-config.nix
+    ./frodo/searx.nix
+    ./frodo/minecraft.nix
+  ] else []);
 	fonts.fontconfig.allowBitmaps = true;
-	environment.systemPackages = [ pkgs.dolphin-emu ];
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
   time.timeZone = "Australia/Sydney";
@@ -75,8 +80,8 @@ with specialArgs; {
 		font = "${pkgs.spleen}/share/consolefonts/spleen-16x32.psfu";
 		packages = with pkgs; [ spleen ];
 	};
-  boot = lib.mkIf (gui == true) {
-		binfmt.emulatedSystems = [ "aarch64-linux" ];
+  boot = {
+		binfmt.emulatedSystems = lib.mkIf desktop [ "aarch64-linux" ];
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -102,12 +107,15 @@ with specialArgs; {
     };
   };
   services = {
+		openssh = {
+			enable = true;
+		};
     getty.autologinUser = lib.mkIf vm "lenny";
     blueman.enable = gui;
     tlp.enable = laptop;
     kanata.enable = laptop;
     pipewire = {
-      enable = true;
+      enable = gui;
       alsa = {
         enable = true;
         support32Bit = true;
@@ -116,7 +124,7 @@ with specialArgs; {
     };
     xserver.videoDrivers = lib.mkIf desktop ["nvidia"];
   };
-        environment.variables = {
+        environment.variables = lib.mkIf gui {
           VST_PATH = "/nix/var/nix/profiles/default/lib/vst:~/.nix-profile/lib/vst:~/.vst";
           LXVST_PATH = "/nix/var/nix/profiles/default/lib/lxvst:~/.nix-profile/lib/lxvst:~/.lxvst";
           LADSPA_PATH = "/nix/var/nix/profiles/default/lib/ladspa:~/.nix-profile/lib/ladspa:~/.ladspa";
@@ -151,7 +159,7 @@ with specialArgs; {
       };
     };
   };
-  home-manager = {
+  home-manager = lib.mkIf gui {
     extraSpecialArgs = specialArgs;
     users = {
       lenny = if server then import ./frodo/home-frodo.nix else ./home/home.nix;
