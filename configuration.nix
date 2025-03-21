@@ -29,6 +29,7 @@ with specialArgs; {
     ./frodo/hardware-configuration.nix
     ./disko-config.nix
     ./frodo/searx.nix
+		./frodo/garf.nix
     ./frodo/minecraft.nix
   ] else []);
 	fonts.fontconfig.allowBitmaps = true;
