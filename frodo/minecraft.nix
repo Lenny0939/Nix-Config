@@ -15,7 +15,7 @@
 				motd = "Arvion ♥";
 				online-mode = false;
 			};
-			files = {
+			/* files = {
 				"config/antixray.toml" = (pkgs.formats.toml { }).generate "AntiXRay.toml" {
 					settings = {
 						enabled = true;
@@ -29,7 +29,7 @@
 						deathPenalty = 10;
 					};
 				};
-			};
+			}; */
 			symlinks."mods" = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
 				Lithium = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/kLc5Oxr4/lithium-fabric-0.14.8%2Bmc1.21.4.jar"; sha256 = "tRIF9xDNCcY5scktZLxSG6bZD/pej0GVHspeo2kSFT0="; };
 				Chunky = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/fALzjamp/versions/VkAgASL1/Chunky-Fabric-1.4.27.jar"; sha256 = "A8kKcLIzQWvZZziUm+kJ0eytrHQ/fBVZQ18uQXN9Qf0="; };
@@ -46,7 +46,7 @@
 				LenientDeath = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/Bfi1KBJV/versions/rxsQ1aP9/lenientdeath-1.2.5%2B1.21.2.jar"; sha256 = "KUveYV7trHhbf5dyeXvSyDcqnZOfX0sOC4S8NYepzhU="; };
 				Factions = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/ZjwW8Q6n/versions/sKyOcfhJ/factions-mc1.21.4-2.7.2.jar"; sha256 = "FNpfQigg0ir/VqG3v6QWnet4EYhIdJITVREu0+pgmSQ="; };
 				AudioPlayer = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/SRlzjEBS/versions/377C94c4/audioplayer-fabric-1.21.4-1.13.2.jar"; sha256 = "Eu6zoQZa9aeBID7EXk/6QkQHzuhKIN8WYVxaTYynhqw="; };
-				Trading = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/x5iQ3NM5/versions/ImLX0SOZ/toms_trading_network-fabric-1.21.4-0.3.3.jar"; sha256 = "WC7Hr+YdzTpMS657F0YCunckZ/heAaUzsQbiZGSVACw="; };
+				# Trading = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/x5iQ3NM5/versions/ImLX0SOZ/toms_trading_network-fabric-1.21.4-0.3.3.jar"; sha256 = "WC7Hr+YdzTpMS657F0YCunckZ/heAaUzsQbiZGSVACw="; };
       });
 			jvmOpts = "-Xms6G -Xmx6G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true";
 		};
