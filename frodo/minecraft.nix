@@ -12,7 +12,6 @@
 			serverProperties = {
 				server-port = 25566;
 				difficulty = "hard";
-				max-players = 20;
 				motd = "Arvion ♥";
 				online-mode = false;
 			};
@@ -25,9 +24,9 @@
 				"config/factions.json" = (pkgs.formats.json { }).generate "factions.json" {
 					safe.enderchest = false;
 					power = {
-						base = 30;
-						member = 30;
-						deathPenalty = 15;
+						base = 40;
+						member = 40;
+						deathPenalty = 10;
 					};
 				};
 			};
