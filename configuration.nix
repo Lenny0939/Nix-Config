@@ -110,6 +110,9 @@ with specialArgs; {
   services = {
 		openssh = {
 			enable = true;
+			settings = {
+				PermitRootLogin = "yes";
+			};
 		};
     getty.autologinUser = lib.mkIf vm "lenny";
     blueman.enable = gui;
