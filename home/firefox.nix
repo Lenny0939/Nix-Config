@@ -52,7 +52,7 @@
           };
         };
         force = true;
-        default = "Google";
+        default = "google";
       };
       settings = {
         /*

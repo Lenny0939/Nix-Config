@@ -13,7 +13,7 @@ with specialArgs; {
 		(
 			if desktop 
 			then import ./archive/machines/aragorn/hardware-configuration-aragorn.nix
-			else  {}
+			else if laptop then import ./archive/machines/legolas/hardware-configuration-legolas.nix else {}
 		)
 		./modules/sops.nix
     ./modules/nh.nix
@@ -128,13 +128,6 @@ with specialArgs; {
     };
     xserver.videoDrivers = lib.mkIf desktop ["nvidia"];
   };
-        environment.variables = lib.mkIf gui {
-          VST_PATH = "/nix/var/nix/profiles/default/lib/vst:~/.nix-profile/lib/vst:~/.vst";
-          LXVST_PATH = "/nix/var/nix/profiles/default/lib/lxvst:~/.nix-profile/lib/lxvst:~/.lxvst";
-          LADSPA_PATH = "/nix/var/nix/profiles/default/lib/ladspa:~/.nix-profile/lib/ladspa:~/.ladspa";
-          LV2_PATH = "/nix/var/nix/profiles/default/lib/lv2:~/.nix-profile/lib/lv2:~/.lv2";
-          DSSI_PATH = "/nix/var/nix/profiles/default/lib/dssi:~/.nix-profile/lib/dssi:~/.dssi";
-        };
 	networking = {
 		networkmanager.enable = true;
 		hostName =

@@ -47,7 +47,7 @@
           games = true;
           server = false;
           vm = false;
-          impermanence = true;
+          impermanence = false;
         };
         modules = [./configuration.nix];
       };

@@ -30,7 +30,7 @@
           owner = "zsh-users";
           repo = "zsh-syntax-highlighting";
           rev = "master";
-          sha256 = "sha256-4rW2N+ankAH4sA6Sa5mr9IKsdAg7WTgrmyqJ2V1vygQ=";
+          sha256 = "sha256-KRsQEDRsJdF7LGOMTZuqfbW6xdV5S38wlgdcCM98Y/Q=";
         };
       }
       {
