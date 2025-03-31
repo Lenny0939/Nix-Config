@@ -153,6 +153,7 @@ with specialArgs; {
         53
         23
 				# minecraft
+				25564
 				25565
 				25566
       ];
