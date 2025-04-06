@@ -10,6 +10,7 @@ with specialArgs; {
   imports = [
     inputs.home-manager.nixosModules.home-manager
 		inputs.lix-module.nixosModules.default
+		inputs.musnix.nixosModules.musnix
 		(
 			if desktop 
 			then import ./archive/machines/aragorn/hardware-configuration-aragorn.nix
@@ -17,6 +18,7 @@ with specialArgs; {
 		)
 		./modules/sops.nix
     ./modules/nh.nix
+
     ./modules/options.nix
     ./modules/kanata.nix
     (
@@ -50,7 +52,11 @@ with specialArgs; {
       defaultEditor = true;
     };
     gamemode.enable = games;
-    hyprland.enable = gui;
+    hyprland = {
+			enable = gui;
+			withUWSM = true;
+			xwayland.enable = true;
+		};
     steam = {
       enable = games;
 			gamescopeSession.enable = true;
@@ -107,6 +113,7 @@ with specialArgs; {
       extraPackages = lib.mkIf laptop [pkgs.intel-media-driver];
     };
   };
+	musnix.enable = true;
   services = {
 		openssh = {
 			enable = true;

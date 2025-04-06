@@ -6,6 +6,7 @@
     nixos.url = "nixpkgs/nixos-unstable";
 		garf.url = "github:lenny0939/garf";
 		nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+		musnix.url = "github:musnix/musnix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
