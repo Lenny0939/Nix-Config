@@ -25,6 +25,8 @@
     /*
     Apps
     */
+		vital
+		distrho-ports
     spotify
     blanket
     bottom # Task manager except cool
