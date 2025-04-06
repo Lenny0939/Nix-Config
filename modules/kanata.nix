@@ -22,8 +22,8 @@
             _   _    _    _    _    _    _    _    _    _    _    _    _
           	_    b    g    d    f    v     z   l    u    o    y  _    _
            C-bspc n    s    t    h    m    '    r    e    a    i    /
-          	-         c    p    w    k  q  x    j    ;    .    ,    _
-          	_    _      @alt               _            @*  @qwr _
+          	_         c    p    w    k  q  x    j    ;    .    ,    _
+          	_    _      lalt               _            @*  @qwr _
           )
           (deflayer nav
           	_    _    _    _    _    _    _    _    _    _    _    _    _
