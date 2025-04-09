@@ -9,8 +9,8 @@
     bash
     */
     ''
-      ${hyprpaper}/bin/hyprpaper &
-      ${eww}/bin/eww open bar
+      ${pkgs.uwsm}/bin/uwsm app -- ${hyprpaper}/bin/hyprpaper &
+      ${pkgs.uwsm}/bin/uwsm app -- ${eww}/bin/eww open bar
     '';
 in {
   imports = [
@@ -67,10 +67,10 @@ in {
         ", PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
         #"CAPS, Caps_Lock, exec, notify-send working"
         "$mainMod, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m output --clipboard-only"
-        "$mainMod, H, exec, ${pkgs.ghostty}/bin/ghostty"
+        "$mainMod, H, exec, ${pkgs.uwsm}/bin/uwsm app -- ${pkgs.ghostty}/bin/ghostty"
         "$mainMod, B, killactive,"
         "$mainMod, V, togglefloating"
-        "$mainMod, S, exec, ${pkgs.wofi}/bin/wofi"
+        "$mainMod, S, exec, ${pkgs.uwsm}/bin/uwsm app -- $(${pkgs.wofi}/bin/wofi --show drun --define=drun-print_desktop_file=true)"
         "$mainMod, i, togglesplit,"
         "$mainMod, n, fullscreen"
         ", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set -e +5%"

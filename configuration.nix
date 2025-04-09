@@ -115,6 +115,14 @@ with specialArgs; {
   };
 	musnix.enable = true;
   services = {
+		greetd = {
+			enable = gui;
+			settings = {
+				default_session = {
+					command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd '${pkgs.uwsm}/bin/uwsm start default'";
+				};
+			};
+		};
 		openssh = {
 			enable = true;
 			settings = {
