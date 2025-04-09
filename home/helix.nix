@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: {
-  xdg.configFile = {"helix/themes/kleur.toml".source = lib.mkForce "${inputs.kleur.themes.${pkgs.system}.dark.build}/helix.toml";};
+	# xdg.configFile = {"helix/themes/catppuccin_mocha.toml" = lib.mkForce "./helix-themes/default_catppuccin_mocha.toml";};
   programs.helix = {
     settings = {
-      theme = lib.mkForce "kleur";
+      theme = lib.mkForce "gruvbok_community";
     };
   };
 }
