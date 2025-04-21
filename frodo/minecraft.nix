@@ -1,14 +1,52 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+
+let inherit (inputs.nix-minecraft.lib) collectFilesAt;
+  modpack = pkgs.fetchzip {
+    url = "https://mediafilez.forgecdn.net/files/5529/449/Valhelsia-6-6.2.2-SERVER.zip";
+    hash = "sha256-4CL+JbrLyQralu3dQLRoS4ARIeg/v545EY0A4saPiPk=";
+    extension = "zip";
+    stripRoot = false;
+  };
+in {
 	imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
 	nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
-	nixpkgs.config.allowUnfree = true;
+	nixpkgs.config = {
+		allowUnfree = true;
+		allowInsecure = true;
+		permittedInsecurePackages = [
+			"freeimage-3.18.0-unstable-2024-04-18"
+		];
+	};
 	services.minecraft-servers = {
 		enable = true;
 		eula = true;
 		dataDir = "/var/lib/minecraft";
 		servers = {
-			chill-clan = {
+			valhelsia = {
 				enable = true;
+				package = pkgs.callPackage ./forge-server.nix {};
+				serverProperties = {
+					server-port = 25564;
+					difficulty = "hard";
+					motd = "Season 2 | VALHELSIA";
+					world-type = "biomesoplenty";
+					online-mode = false;
+					max-tick-time = -1;
+				};
+				files = {
+					config = "${modpack}/config";
+					defaultconfigs = "${modpack}/defaultconfigs";
+					kubejs = "${modpack}/kubejs";
+					#"server.properties" = "${modpack}/server.properties";
+					resourcepacks = "${modpack}/resourcepacks";
+				};
+				symlinks = collectFilesAt modpack "mods" // {
+					"server-icon.png" = "${modpack}/server-icon.png";
+				};
+				jvmOpts = "-Xms5G -Xmx5G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true";
+			};
+			chill-clan = {
+				enable = false;
 				package = pkgs.fabricServers.fabric-1_21_4;
 				serverProperties = {
 					server-port = 25564;
@@ -46,7 +84,7 @@
 					Spark = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/l6YH9Als/versions/X2sypdTL/spark-1.10.121-fabric.jar"; sha256 = "E1BDAk8b1YBuhdqLK98Vh4xVmL99qs5dEwI2/wCbt28="; };
 					ServerCore = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/4WWQxlQP/versions/uJYh4tBK/servercore-fabric-1.5.8%2B1.21.4.jar"; sha256 = "fC6fTqt88WkGrpU8caWno9TapUYHnh8D06A6dzS2hVE="; };
 				});
-jvmOpts = "-Xms6G -Xmx6G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true";
+				jvmOpts = "-Xms5G -Xmx5G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true";
 			};
 			new-clan = {
 				enable = false;
@@ -107,12 +145,7 @@ frontend minecraft-frontend
   acl craft req.payload(5,16),lower -m sub mc.lench.org
   tcp-request content accept if craft
   use_backend craft if craft
-  acl other-craft req.payload(5,16),lower -m sub new.lench.org
-  tcp-request content accept if other-craft
-  use_backend other-craft if other-craft
 backend craft
-   server craft-server 0.0.0.0:25566 check
-backend other-craft
    server craft-server 0.0.0.0:25564 check
   '';
 };

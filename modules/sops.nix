@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{inputs, config, ...}: {
 imports = [
 	inputs.sops-nix.nixosModules.sops
 ];
@@ -8,6 +8,15 @@ imports = [
     secrets = {
       garf_key = {};
 			wireguard-frodo-private = {};
+			hashedPassword = {
+				neededForUsers = true;
+			};
+			resticPassword = {};
+			email = {};
+			desec-token = {
+				owner = config.users.users.acme.name;
+			};
+			photoprism-password = {};
     };
   };
 }
