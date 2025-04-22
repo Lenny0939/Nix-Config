@@ -8,7 +8,7 @@
     dolphin-emu
     gh
     git
-    godot_4
+    #godot_4
 		reaper
     /*
     Utilities
@@ -46,5 +46,11 @@
     brightnessctl
     easyeffects
     trashy
+		(lutris.override {
+			extraPkgs = pkgs: [
+				wine-wayland
+				shadps4
+			];
+		})
   ];
 }

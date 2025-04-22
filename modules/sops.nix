@@ -1,4 +1,4 @@
-{inputs, config, ...}: {
+{inputs, config, lib, specialArgs, ...}: {
 imports = [
 	inputs.sops-nix.nixosModules.sops
 ];
@@ -13,10 +13,18 @@ imports = [
 			};
 			resticPassword = {};
 			email = {};
-			desec-token = {
+			desec-token = lib.mkIf specialArgs.server {
 				owner = config.users.users.acme.name;
 			};
 			photoprism-password = {};
+			ssh-private-key = {
+				path = "/home/lenny/.ssh/nixos_ed25519";
+				mode = "0600";
+			};
+			nix-key = {
+				path = "/etc/nix/signing-key.priv";
+				mode = "0600";
+			};
     };
   };
 }

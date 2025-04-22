@@ -27,16 +27,26 @@ with specialArgs; {
       else {}
      )
   ] ++ (if server then [
-    inputs.disko.nixosModules.disko
-    ./frodo/hardware-configuration.nix
-    ./disko-config.nix
-    ./frodo/searx.nix
+		inputs.disko.nixosModules.disko
+		./disko-config.nix
+		./frodo/minecraft.nix
 		./frodo/garf.nix
-    ./frodo/minecraft.nix
+		./frodo/searx.nix
+    ./frodo/blocky.nix
+		./frodo/networking.nix
+		./modules/sops.nix
+		./frodo/restic.nix
+		./frodo/photoprism.nix
+		./frodo/hardware-configuration.nix
   ] else []);
 	fonts.fontconfig.allowBitmaps = true;
   nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix = {
+		settings = {
+			experimental-features = ["nix-command" "flakes"];
+			trusted-public-keys = [ "nix-key:l41ilLGAQeblHWBfpYQ3rYgzVt/1x7n5/B8sx2hilp4=" ];
+		};
+	};
   time.timeZone = "Australia/Sydney";
   i18n.defaultLocale = "en_AU.UTF-8";
   programs = {
@@ -61,10 +71,6 @@ with specialArgs; {
       enable = games;
 			gamescopeSession.enable = true;
 			package = pkgs.steam.override {
-				/* extraPkgs = pkgs: with pkgs; [
-					libkrb5
-					keyutils
-				]; */
   extraPkgs = pkgs: with pkgs; [
         xorg.libXcursor
         xorg.libXi
@@ -115,6 +121,19 @@ with specialArgs; {
   };
 	musnix.enable = true;
   services = {
+		openssh = {
+			enable = server;
+			knownHosts = {
+				frodo = {
+					publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO+0JZwpWuhY8CMrdD7SiOHqDPWV+TBgXrjYnxB0vc/T";
+				};
+			};
+			ports = [ 2121 ];
+			settings = {
+				# PasswordAuthentication = false;
+				PermitRootLogin = "yes";
+			};
+		};
 		greetd = {
 			enable = gui;
 			settings = {
@@ -123,12 +142,7 @@ with specialArgs; {
 				};
 			};
 		};
-		openssh = {
-			enable = true;
-			settings = {
-				PermitRootLogin = "yes";
-			};
-		};
+		fail2ban.enable = true;
     getty.autologinUser = lib.mkIf vm "lenny";
     blueman.enable = gui;
     tlp.enable = laptop;
@@ -155,46 +169,20 @@ with specialArgs; {
 			else if desktop
 			then "aragorn"
 			else "computer";
-    firewall = lib.mkIf server {
-      enable = true;
-      allowedTCPPorts = [
-				# searx
-        8888
-				# http?
-        # 80
-        # 443
-				22
-				# blocky
-        53
-        23
-				# minecraft
-				25564
-				25565
-				25566
-      ];
-      allowedUDPPorts = [
-        51820
-        53
-				# minecraft voice chat 
-				24454
-      ];
 		};
-  };
   users = {
     mutableUsers = false;
-    defaultUserShell = pkgs.zsh;
+    defaultUserShell = lib.mkIf gui pkgs.zsh;
     users = {
       lenny = {
-        initialPassword = "password";
+				hashedPasswordFile = config.sops.secrets."hashedPassword".path;
         isNormalUser = true;
         description = "Lenny";
         extraGroups = [ "networkmanager" "wheel" "dialout" ];
         home = "/home/lenny";
       };
       root = {
-        /* hashedPasswordFile = "/persist/passwords/root";
-        initialPassword = "password"; */
-				password = "password";
+				hashedPasswordFile = config.sops.secrets."hashedPassword".path;
       };
     };
   };
