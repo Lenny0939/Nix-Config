@@ -24,7 +24,7 @@
     plugins = {
 			trouble.enable = true;
       rustaceanvim.enable = true;
-      godot.enable = true;
+      #godot.enable = true;
       telescope.enable = true;
       web-devicons.enable = true;
 			markview.enable = true;
