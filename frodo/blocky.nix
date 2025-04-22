@@ -12,10 +12,10 @@
 
       # For initially solving DoH/DoT Requests when no system Resolver is available.
       
-      bootstrap.Dns = {
+      /* bootstrap.Dns = {
       	upstream = "https://one.one.one.one/dns-query";
       	ips = [ "1.1.1.1" "1.0.0.1" ];
-      };
+      }; */
      
       #Enable Blocking of certian domains.
       blocking = {
