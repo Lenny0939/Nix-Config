@@ -11,12 +11,12 @@
       ];
 
       # For initially solving DoH/DoT Requests when no system Resolver is available.
-      /*
+      
       bootstrap.Dns = {
       	upstream = "https://one.one.one.one/dns-query";
       	ips = [ "1.1.1.1" "1.0.0.1" ];
       };
-      */
+     
       #Enable Blocking of certian domains.
       blocking = {
         blackLists = {
@@ -29,13 +29,17 @@
           default = ["ads"];
         };
       };
-      /*
+			customDNS = {
+				rewrite = {
+					home = "photos.lench.org";
+					rewrite = "192.168.0.154:2342";
+				};
+			};
       caching = {
       	minTime = "5m";
       	maxTime = "30m";
       	prefetching = true;
       };
-      */
     };
   };
 }
