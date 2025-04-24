@@ -42,7 +42,7 @@
 		};
   };
 services.nginx = {
-	enable = false;
+	enable = true;
 	recommendedProxySettings = true;
 	recommendedTlsSettings = true;
 	virtualHosts = let
@@ -53,9 +53,9 @@ services.nginx = {
       "photos.lench.org" = (SSL // {
         locations."/".proxyPass = "http://127.0.0.1:2342/";
       });
-      "search.lench.org" = (SSL // {
+      /* "search.lench.org" = (SSL // {
         locations."/".proxyPass = "http://127.0.0.1:8888/";
-      });
+      }); */
     };
 	};
 }

@@ -37,11 +37,17 @@ in {
 					config = "${modpack}/config";
 					defaultconfigs = "${modpack}/defaultconfigs";
 					kubejs = "${modpack}/kubejs";
-					#"server.properties" = "${modpack}/server.properties";
 					resourcepacks = "${modpack}/resourcepacks";
 				};
 				symlinks = collectFilesAt modpack "mods" // {
 					"server-icon.png" = "${modpack}/server-icon.png";
+					"mods/neth-horse.jar" = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/nDFVOeq7/versions/bkAAaHJp/netherite_horse_armor-forge-1.20.1-1.0.4.jar"; sha256 = "NIijtWvlQ0HtgawDKy8EezzHnQlm2sZRtEQP0T3N5zY="; };
+					#"mods/vanish.jar" = pkgs.fetchurl { url = ""; sha256 = ""; };
+					#"mods/inv-view.jar" = pkgs.fetchurl { url = ""; sha256 = ""; };
+					"mods/vive-craft.jar" = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/wGoQDPN5/versions/lrjgB0IC/vivecraft-1.20.1-1.2.5-forge.jar"; sha256 = "hGVo5+GscP8zWIXZzEE7W7lHhUDuQPd7Wp4IEL5pEm0="; };
+					#"mods/easyauth.jar" = pkgs.fetchurl { url = ""; sha256 = ""; };
+					"mods/discord.jar" = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/rbJ7eS5V/versions/ILJrSvYW/dcintegration-forge-3.0.7.1-1.20.1.jar"; sha256 = "jan7xTIim01VtIV8f8KN7ThcpuYh6Vujk6WEqt73ho0="; };
+					"mods/ars-instrumentum.jar" = pkgs.fetchurl { url = "https://mediafilez.forgecdn.net/files/5047/343/ars_instrumentum-1.20.1-4.1.0.jar"; sha256 = "H/eSNkC4DSdyarhkk3sTQse7+x1CQYXpz8slyliU0rU="; };
 				};
 				jvmOpts = "-Xms5G -Xmx5G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true";
 			};

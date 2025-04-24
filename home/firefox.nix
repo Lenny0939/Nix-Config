@@ -33,7 +33,7 @@
                 template = "https://www.youtube.com/results?search_query={searchTerms}";
               }
             ];
-            iconUpdateURL = "https://www.youtube.com/favicon.ico";
+            icon = "https://www.youtube.com/favicon.ico";
             updateInterval = 24 * 60 * 60 * 1000;
             definedAliases = ["@yt"];
           };
@@ -45,8 +45,8 @@
                 template = "http://localhost/search?q={searchTerms}";
               }
             ];
-            #iconUpdateURL = "http://192.168.0.11:8888/favicon.ico";
-            iconUpdateURL = "http://localhost/favicon.ico";
+            #icon = "http://192.168.0.11:8888/favicon.ico";
+            icon = "http://localhost/favicon.ico";
             updateInterval = 24 * 60 * 60 * 1000;
             definedAliases = ["@sx"];
           };

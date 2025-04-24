@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos.url = "nixpkgs/nixos-unstable";
+		deploy-rs.url = "github:serokell/deploy-rs";
 		garf.url = "github:lenny0939/garf";
 		nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 		musnix.url = "github:musnix/musnix";
@@ -33,11 +34,20 @@
 		};
   outputs = {
     nixpkgs,
-		lix-module,
+		self,
+		deploy-rs,
     ...
   } @ inputs: let
     system = "x86_64-linux";
   in {
+
+	deploy.nodes.frodo = {
+		hostname = "frodo";
+		profiles.system = {
+			user = "root";
+			path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.frodo; 
+		};
+	};
     nixosConfigurations = {
       legolas = nixpkgs.lib.nixosSystem {
         specialArgs = {
@@ -67,7 +77,7 @@
           ./configuration.nix
         ];
       };
-      vm = nixpkgs.lib.nixosSystem {
+      /* vm = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs system;
           gui = false;
@@ -81,7 +91,7 @@
         modules = [
           ./configuration.nix
         ];
-      };
+      }; */
       frodo = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs system;

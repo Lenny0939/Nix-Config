@@ -3,7 +3,6 @@
   pkgs,
   lib,
 	config,
-	lix-module,
   ...
 }:
 with specialArgs; {
@@ -44,7 +43,10 @@ with specialArgs; {
   nix = {
 		settings = {
 			experimental-features = ["nix-command" "flakes"];
-			trusted-public-keys = [ "nix-key:l41ilLGAQeblHWBfpYQ3rYgzVt/1x7n5/B8sx2hilp4=" ];
+			trusted-public-keys = [ "nix-key:hSWnFY8bjaxrQs/nUjirSXeNruuy1KW6fCY3cURGzfY=" ];
+			secret-key-files = [ config.sops.secrets."nix-key".path ];
+			auto-optimise-store = true;
+			trusted-users = [ "@wheel" ];
 		};
 	};
   time.timeZone = "Australia/Sydney";

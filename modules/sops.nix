@@ -22,7 +22,7 @@ imports = [
 				mode = "0600";
 			};
 			nix-key = {
-				path = "/etc/nix/signing-key.priv";
+				path = "/etc/nix/nix-key.priv";
 				mode = "0600";
 			};
     };
