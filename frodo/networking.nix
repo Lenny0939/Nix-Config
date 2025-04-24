@@ -13,6 +13,8 @@
 				# minecraft
 				25565
 				25564
+				# photoprism (tmp)
+				2342
       ];
       allowedUDPPorts = [
         51820
