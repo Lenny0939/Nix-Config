@@ -1,4 +1,5 @@
-{...}: let
+{ ... }:
+let
   canary = [
     "w"
     "l"
@@ -65,10 +66,11 @@
     "'"
     ","
   ];
-in {
+in
+{
   services.keyd = {
     keyboards."laptop" = {
-      ids = ["0001:0001"];
+      ids = [ "0001:0001" ];
       settings = {
         main = {
           rightalt = "layer(raise)";

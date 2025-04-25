@@ -16,7 +16,10 @@ with lib;
         peers = [
           {
             publicKey = "pGF767vIiPiLsTf0V0AhtAqapGSb2xFZjE/TvZbGdh0=";
-            allowedIPs = [ "100.64.0.2/32" "0.0.0.0/0" ]; # note the 32 subnet suffix
+            allowedIPs = [
+              "100.64.0.2/32"
+              "0.0.0.0/0"
+            ]; # note the 32 subnet suffix
             endpoint = "58.110.77.244:21";
           }
         ];
@@ -46,9 +49,11 @@ with lib;
       networkmanager.unmanaged = [ "${interface}" ];
       # allow to connect using domain name `ssh user@phone.internal.yourdomain.com` instead of `ssh user@100.64.0.2`.
       # just an example. in real world, you should leverave your nix-fu and map this automatically with the help of concatStringsSep and map.
-      /* extraHosts = ''
-        100.64.0.2 phone.internal.yourdomain.com
-      ''; */
+      /*
+        extraHosts = ''
+          100.64.0.2 phone.internal.yourdomain.com
+        '';
+      */
     };
 
 }

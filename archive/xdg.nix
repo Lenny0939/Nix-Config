@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   xdg = {
     configHome = "/users/lenny/config";
     cacheHome = "/users/lenny/config/cache";

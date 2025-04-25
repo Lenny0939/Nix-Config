@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 {
- services.photoprism = {
+  services.photoprism = {
     enable = true;
     port = 2342;
     originalsPath = "/var/lib/private/photoprism/originals";
@@ -8,7 +8,7 @@
     settings = {
       PHOTOPRISM_ADMIN_USER = "escott";
       #PHOTOPRISM_ADMIN_PASSWORD = "${config.sops.secrets."photoprism-password"}";
-			PHOTOPRISM_ADMIN_PASSWORD = "beanbag";
+      PHOTOPRISM_ADMIN_PASSWORD = "beanbag";
       PHOTOPRISM_DEFAULT_LOCALE = "en";
       PHOTOPRISM_DATABASE_DRIVER = "mysql";
       PHOTOPRISM_DATABASE_NAME = "photoprism";
@@ -24,11 +24,13 @@
     dataDir = "/data/photoprism";
     package = pkgs.mariadb;
     ensureDatabases = [ "photoprism" ];
-    ensureUsers = [ {
-      name = "photoprism";
-      ensurePermissions = {
-        "photoprism.*" = "ALL PRIVILEGES";
-      };
-    } ];
+    ensureUsers = [
+      {
+        name = "photoprism";
+        ensurePermissions = {
+          "photoprism.*" = "ALL PRIVILEGES";
+        };
+      }
+    ];
   };
 }

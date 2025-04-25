@@ -1,4 +1,8 @@
-{device ? throw "Set to disk device", ...}: {
+{
+  device ? throw "Set to disk device",
+  ...
+}:
+{
   disko.devices = {
     disk.main = {
       inherit device;
@@ -22,13 +26,13 @@
             };
           };
           /*
-             swap = {
-          	size = "4G";
-          	content = {
-          		type = "swap";
-          		resumeDevice = true;
-          	};
-          };
+               swap = {
+            	size = "4G";
+            	content = {
+            		type = "swap";
+            		resumeDevice = true;
+            	};
+            };
           */
           root = {
             name = "root";
@@ -49,17 +53,23 @@
             size = "100%FREE";
             content = {
               type = "btrfs";
-              extraArgs = ["-f"];
+              extraArgs = [ "-f" ];
               subvolumes = {
                 "/root" = {
                   mountpoint = "/";
                 };
                 "/persist" = {
-                  mountOptions = ["subvol=persist" "noatime"];
+                  mountOptions = [
+                    "subvol=persist"
+                    "noatime"
+                  ];
                   mountpoint = "/persist";
                 };
                 "/nix" = {
-                  mountOptions = ["subvol=nix" "noatime"];
+                  mountOptions = [
+                    "subvol=nix"
+                    "noatime"
+                  ];
                   mountpoint = "/nix";
                 };
               };

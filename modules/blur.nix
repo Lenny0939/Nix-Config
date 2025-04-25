@@ -1,3 +1,6 @@
-{lib, ...}: {
-  options = {blur = lib.mkEnableOption "hyprland blur";};
+{ lib, ... }:
+{
+  options = {
+    blur = lib.mkEnableOption "hyprland blur";
+  };
 }

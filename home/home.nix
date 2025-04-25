@@ -2,7 +2,8 @@
   specialArgs,
   inputs,
   ...
-}: {
+}:
+{
   home = {
     username = "lenny";
     stateVersion = "24.05";
@@ -17,7 +18,7 @@
     nixvim.enable = true;
     helix.enable = true;
     kitty.enable = specialArgs.gui;
-		ghostty.enable = specialArgs.gui;
+    ghostty.enable = specialArgs.gui;
     #slippi-launcher.enable = specialArgs.games;
   };
   services = {
@@ -46,6 +47,6 @@
     ./eww.nix
     ./mako.nix
     ./lf.nix
-		./ghostty.nix
+    ./ghostty.nix
   ];
 }

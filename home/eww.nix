@@ -2,40 +2,37 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   audio =
     pkgs.writeShellScriptBin "audio"
-    /*
-    bash
-    */
-    ''
-      ${pkgs.pamixer}/bin/pamixer --get-volume;
-      ${pkgs.pulseaudio}/bin/pactl subscribe \
-      	| grep --line-buffered "Event 'change' on sink " \
-      	| while read -r evt;
-      	do ${pkgs.pamixer}/bin/pamixer --get-volume | cut -d " " -f1;
-      done
-    '';
-  workspaces = with pkgs;
+      # bash
+      ''
+        ${pkgs.pamixer}/bin/pamixer --get-volume;
+        ${pkgs.pulseaudio}/bin/pactl subscribe \
+        	| grep --line-buffered "Event 'change' on sink " \
+        	| while read -r evt;
+        	do ${pkgs.pamixer}/bin/pamixer --get-volume | cut -d " " -f1;
+        done
+      '';
+  workspaces =
+    with pkgs;
     writeShellScriptBin "workspaces"
-    /*
-    bash
-    */
-    ''
-      ${pkgs.socat}/bin/socat -u UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | while read -r line; do
-      	if [[ $(hyprctl workspaces -j | ${pkgs.jq}/bin/jq '.[] | select(.id=='"$1"')') ]]; then
-      		echo ◆
-      	else
-      		echo ◇
-      	fi
-      done
-    '';
-in {
-  home.packages = [pkgs.eww];
+      # bash
+      ''
+        ${pkgs.socat}/bin/socat -u UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | while read -r line; do
+        	if [[ $(hyprctl workspaces -j | ${pkgs.jq}/bin/jq '.[] | select(.id=='"$1"')') ]]; then
+        		echo ◆
+        	else
+        		echo ◇
+        	fi
+        done
+      '';
+in
+{
+  home.packages = [ pkgs.eww ];
   xdg.configFile."eww/eww.yuck".text =
-    /*
-    yuck
-    */
+    # yuck
     ''
       (defwidget bar [screen]
       	(centerbox :orientation "v"
@@ -217,9 +214,7 @@ in {
       ;(music-popup))
     '';
   xdg.configFile."eww/eww.scss".text =
-    /*
-    scss
-    */
+    # scss
     ''
       * {
       	all: unset;

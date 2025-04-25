@@ -2,7 +2,8 @@
   modulesPath,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
     ../../modules/gui.nix

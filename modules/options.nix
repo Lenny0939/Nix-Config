@@ -1,5 +1,6 @@
-{lib, ...}:
-with lib; {
+{ lib, ... }:
+with lib;
+{
   options.specialArgs = {
     gui = mkOption {
       type = types.bool;

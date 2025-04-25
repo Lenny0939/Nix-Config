@@ -1,18 +1,15 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
-    /*
-    Useless Rice Stuff
-    */
+    # Useless Rice Stuff
     mangohud # Overlay, like MSI Afterburner
     dolphin-emu
     gh
     git
     #godot_4
-		reaper
-    /*
-    Utilities
-    */
+    reaper
+    # Utilities
     zip
     unzip
     fd # lists files, needed for telescope and also cool finding thingo
@@ -22,11 +19,9 @@
     ncdu
     bat
     nix-output-monitor
-    /*
-    Apps
-    */
-		vital
-		distrho-ports
+    # Apps
+    vital
+    distrho-ports
     spotify
     blanket
     bottom # Task manager except cool
@@ -46,11 +41,11 @@
     brightnessctl
     easyeffects
     trashy
-		(lutris.override {
-			extraPkgs = pkgs: [
-				wine-wayland
-				shadps4
-			];
-		})
+    (lutris.override {
+      extraPkgs = pkgs: [
+        wine-wayland
+        shadps4
+      ];
+    })
   ];
 }

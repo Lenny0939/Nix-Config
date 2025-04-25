@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.zsh = {
     dotDir = "config/zsh";
     shellAliases = {
@@ -7,9 +8,11 @@
       ff = "${pkgs.fzf}/bin/fzf --preview '${pkgs.pistol}/bin/pistol {}' --bind 'enter:become($EDITOR {})'";
       cd = "z";
       ls = "${pkgs.lsd}/bin/lsd";
-      /* nix = "${pkgs.nix-output-monitor}/bin/nom";
-      nix-build = "${pkgs.nix-output-monitor}/bin/nom-build";
-      nix-shell = "${pkgs.nix-output-monitor}/bin/nom-shell"; */
+      /*
+        nix = "${pkgs.nix-output-monitor}/bin/nom";
+        nix-build = "${pkgs.nix-output-monitor}/bin/nom-build";
+        nix-shell = "${pkgs.nix-output-monitor}/bin/nom-shell";
+      */
     };
     history.path = "$HOME/zsh_history";
     plugins = [
@@ -53,8 +56,8 @@
       }
     ];
     initExtra = ''
-      ${pkgs.fastfetch}/bin/fastfetch
-			bindkey '^H' backward-kill-word
+            ${pkgs.fastfetch}/bin/fastfetch
+      			bindkey '^H' backward-kill-word
     '';
   };
   home.sessionVariables = {

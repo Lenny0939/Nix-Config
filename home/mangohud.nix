@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   xdg.configFile."MangoHud/MangoHud.conf".text = ''
     ### MangoHud configuration file
     ### Uncomment any options you wish to enable. Default options are left uncommented

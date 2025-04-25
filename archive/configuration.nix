@@ -2,7 +2,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ../modules/nh.nix
@@ -27,7 +28,7 @@
   nix = {
     optimise = {
       automatic = true;
-      dates = ["weekly"];
+      dates = [ "weekly" ];
     };
   };
   services.openssh = {
@@ -38,13 +39,19 @@
     earlySetup = true;
   };
   security.rtkit.enable = true;
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   time.timeZone = "Australia/Sydney";
   i18n.defaultLocale = "en_AU.UTF-8";
   users.users.lenny = {
     isNormalUser = true;
     description = "Lenny";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     home = "/users/lenny";
 
     # This is required until this is merged:

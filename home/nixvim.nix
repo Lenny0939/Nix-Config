@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.nixvim = {
     globals.mapleader = " ";
     colorschemes.catppuccin = {
@@ -22,36 +23,30 @@
       scrolloff = 1000;
     };
     plugins = {
-			trouble.enable = true;
+      trouble.enable = true;
       rustaceanvim.enable = true;
       #godot.enable = true;
       telescope.enable = true;
       web-devicons.enable = true;
-			markview.enable = true;
-			nvim-ufo.enable = true;
-      /*
-      UI
-      */
+      markview.enable = true;
+      nvim-ufo.enable = true;
+      # UI
       oil.enable = true;
       lualine.enable = true;
       noice.enable = true;
-      /*
-      CMP/snippets
-      */
+      # CMP/snippets
       cmp_luasnip.enable = true;
       friendly-snippets.enable = true;
       luasnip = {
         enable = true;
-        fromVscode = [{}];
+        fromVscode = [ { } ];
       };
       cmp = {
         enable = true;
         settings = {
           mapping = {
             __raw =
-              /*
-              lua
-              */
+              # lua
               ''
                 cmp.mapping.preset.insert({
                 	['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -67,16 +62,14 @@
             expand = "luasnip";
           };
           sources = [
-            {name = "nvim_lsp";}
-            {name = "luasnip";}
-            {name = "path";}
-            {name = "buffer";}
+            { name = "nvim_lsp"; }
+            { name = "luasnip"; }
+            { name = "path"; }
+            { name = "buffer"; }
           ];
         };
       };
-      /*
-      LSP
-      */
+      # LSP
       lsp = {
         enable = true;
         servers = {
@@ -86,24 +79,18 @@
           html.enable = true;
           gdscript.enable = true;
           gdscript.package = null;
-					csharp_ls.enable = true;
+          csharp_ls.enable = true;
           # Rust-analyzer automatically enabled by rustaceanvim
         };
       };
-      /*
-      Makes code look nicer
-      */
+      # Makes code look nicer
       illuminate.enable = true;
       treesitter.enable = true;
-      /*
-      QOL
-      */
+      # QOL
       nvim-autopairs.enable = true;
       indent-blankline.enable = true;
       comment.enable = true;
-      /*
-      Color preview
-      */
+      # Color preview
       colorizer = {
         enable = true;
         settings.user_default_options = {

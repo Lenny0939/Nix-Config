@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ../../modules/gui.nix
     ./hardware-configuration-legolas.nix

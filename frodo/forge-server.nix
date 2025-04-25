@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   version = "1.20.1-47.4.0";
-	vanilla = pkgs.minecraftServers.vanilla-1_20;
+  vanilla = pkgs.minecraftServers.vanilla-1_20;
   installer = pkgs.fetchurl {
     pname = "forge-installer";
     inherit version;
@@ -12,10 +12,10 @@ let
 
 in
 pkgs.writeShellScriptBin "server" ''
-	echo "eula=true" > eula.txt
-	if ! [ -f "server.jar" ]; then 
-		cp ${vanilla.src} server.jar
-    ${java} -jar ${installer} --installServer
-	fi
-	exec ${java} "$@" @libraries/net/minecraftforge/forge/1.20.1-47.4.0/unix_args.txt
+  	echo "eula=true" > eula.txt
+  	if ! [ -f "server.jar" ]; then 
+  		cp ${vanilla.src} server.jar
+      ${java} -jar ${installer} --installServer
+  	fi
+  	exec ${java} "$@" @libraries/net/minecraftforge/forge/1.20.1-47.4.0/unix_args.txt
 ''

@@ -2,25 +2,26 @@
   config,
   pkgs,
   ...
-}: let
-  startup = with pkgs;
+}:
+let
+  startup =
+    with pkgs;
     writeShellScriptBin "startup"
-    /*
-    bash
-    */
-    ''
-      ${pkgs.uwsm}/bin/uwsm app -- ${hyprpaper}/bin/hyprpaper &
-      ${pkgs.uwsm}/bin/uwsm app -- ${eww}/bin/eww open bar
-    '';
-in {
+      # bash
+      ''
+        ${pkgs.uwsm}/bin/uwsm app -- ${hyprpaper}/bin/hyprpaper &
+        ${pkgs.uwsm}/bin/uwsm app -- ${eww}/bin/eww open bar
+      '';
+in
+{
   imports = [
     ../modules/blur.nix
   ];
   services.hyprpaper = {
     enable = true;
     settings = {
-      preload = ["${config.stylix.image}"];
-      wallpaper = [",${config.stylix.image}"];
+      preload = [ "${config.stylix.image}" ];
+      wallpaper = [ ",${config.stylix.image}" ];
       splash = false;
       ipc = true;
     };

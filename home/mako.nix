@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   services.mako = with config.colorScheme.palette; {
     #font = "${config.font}";
     # backgroundColor = "#${base00}";

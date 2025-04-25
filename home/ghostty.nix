@@ -1,7 +1,8 @@
-{ ... }: {
-	programs.ghostty = {
-		settings = {
-			font-size = 18;
-		};
-	};
+{ ... }:
+{
+  programs.ghostty = {
+    settings = {
+      font-size = 18;
+    };
+  };
 }

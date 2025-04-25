@@ -1,10 +1,14 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   systemd = {
     user = {
       timers."homework-timer" = {
-        wantedBy = ["timers.target"];
+        wantedBy = [ "timers.target" ];
         timerConfig = {
-          OnCalendar = ["daily" "*-*-* 15:30:00"];
+          OnCalendar = [
+            "daily"
+            "*-*-* 15:30:00"
+          ];
           Persistent = true;
           Unit = "homework-notify.service";
         };

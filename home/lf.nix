@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.lf = {
     enable = true;
     settings = {
@@ -9,9 +10,7 @@
     };
     commands = {
       mkdir =
-        /*
-        bash
-        */
+        # bash
         ''
           ''${{
           	printf "Directory Name: "
@@ -20,9 +19,7 @@
           }}
         '';
       mkfile =
-        /*
-        bash
-        */
+        # bash
         ''
           ''${{
           	printf "File Name: "
@@ -31,36 +28,26 @@
           }}
         '';
       trash =
-        /*
-        bash
-        */
+        # bash
         ''
           ''${{
           	${pkgs.trashy}/bin/trash "$f"
           }}
         '';
       restore-trash =
-        /*
-        bash
-        */
+        # bash
         ''
           ''${{
           	${pkgs.trashy}/bin/trash restore
           }}'';
       open-editor =
-        /*
-        bash
-        */
+        # bash
         ''$$EDITOR $f'';
       find-dir =
-        /*
-        bash
-        */
+        # bash
         ''$lf -remote "send $id cd $(${pkgs.fd}/bin/fd . ~ --type d | ${pkgs.fzf}/bin/fzf)"'';
       unarchive =
-        /*
-        bash
-        */
+        # bash
         ''
           ''${{
           	case "$f" in
@@ -89,29 +76,31 @@
       "dr" = "restore-trash";
       f = "find-dir";
     };
-    extraConfig = let
-      previewer = pkgs.writeShellScriptBin "preview.sh" ''
-          file=$1
-          w=$2
-          h=$3
-          x=$4
-          y=$5
+    extraConfig =
+      let
+        previewer = pkgs.writeShellScriptBin "preview.sh" ''
+            file=$1
+            w=$2
+            h=$3
+            x=$4
+            y=$5
 
-          if [[ "$( ${pkgs.file}/bin/file -Lb --mime-type "$file")" =~ ^image ]]; then
-              ${pkgs.kitty}/bin/kitty +kitten icat --transfer-mode file --stdin no --place "''${w}x''${h}@''${x}x''${y}" "''$file" < /dev/null > /dev/tty
-        #kitten icat --silent --stdin no --transfer-mode file --place "''${w}x''${h}@''${x}x''${y}" "$file" < /dev/null > /dev/tty
-              exit 1
-          fi
+            if [[ "$( ${pkgs.file}/bin/file -Lb --mime-type "$file")" =~ ^image ]]; then
+                ${pkgs.kitty}/bin/kitty +kitten icat --transfer-mode file --stdin no --place "''${w}x''${h}@''${x}x''${y}" "''$file" < /dev/null > /dev/tty
+          #kitten icat --silent --stdin no --transfer-mode file --place "''${w}x''${h}@''${x}x''${y}" "$file" < /dev/null > /dev/tty
+                exit 1
+            fi
 
-          ${pkgs.pistol}/bin/pistol "$file"
+            ${pkgs.pistol}/bin/pistol "$file"
+        '';
+        cleaner = pkgs.writeShellScriptBin "clean.sh" ''
+          ${pkgs.kitty}/bin/kitty +kitten icat --clear --stdin no --silent --transfer-mode file < /dev/null > /dev/tty
+        '';
+      in
+      ''
+        set cleaner ${cleaner}/bin/clean.sh
+        set previewer ${previewer}/bin/preview.sh
       '';
-      cleaner = pkgs.writeShellScriptBin "clean.sh" ''
-        ${pkgs.kitty}/bin/kitty +kitten icat --clear --stdin no --silent --transfer-mode file < /dev/null > /dev/tty
-      '';
-    in ''
-      set cleaner ${cleaner}/bin/clean.sh
-      set previewer ${previewer}/bin/preview.sh
-    '';
   };
   xdg.configFile."lf/icons".text = ''
     # vim:ft=conf

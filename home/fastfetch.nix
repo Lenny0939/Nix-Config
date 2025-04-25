@@ -1,9 +1,8 @@
-{pkgs, ...}: {
-  home.packages = [pkgs.fastfetch];
+{ pkgs, ... }:
+{
+  home.packages = [ pkgs.fastfetch ];
   xdg.configFile."fastfetch/config.jsonc".text =
-    /*
-    json
-    */
+    # json
     ''
       	{
           "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",

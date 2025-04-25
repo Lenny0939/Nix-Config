@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   home.persistence."/persist/users" = {
     directories = [
       "home"

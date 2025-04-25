@@ -1,7 +1,8 @@
 {
   pkgs,
   ...
-}: {
+}:
+{
   stylix = {
     image = ../wallpapers/kida.png;
     polarity = "dark";
@@ -14,21 +15,21 @@
 
     fonts = {
       monospace = {
-				package = pkgs.nerd-fonts.iosevka;
-				name = "Iosevka Nerd Font";
+        package = pkgs.nerd-fonts.iosevka;
+        name = "Iosevka Nerd Font";
       };
     };
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
-			size = 24;
+      size = 24;
     };
-		iconTheme = {
-			enable = true;
-			package = pkgs.papirus-icon-theme;
-			dark = "Papirus Dark";
-		};
+    iconTheme = {
+      enable = true;
+      package = pkgs.papirus-icon-theme;
+      dark = "Papirus Dark";
+    };
   };
-	#wayland.windowManager.hyprland.settings.monitor = [ "HDMI-A-1, highres, 0x0, 1.5" ];
+  #wayland.windowManager.hyprland.settings.monitor = [ "HDMI-A-1, highres, 0x0, 1.5" ];
   blur = false;
 }
