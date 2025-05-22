@@ -27,8 +27,7 @@
     };
     niri.url = "github:sodiboo/niri-flake";
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-1.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-3.tar.gz";
     };
     sops-nix.url = "github:Mic92/sops-nix";
   };
