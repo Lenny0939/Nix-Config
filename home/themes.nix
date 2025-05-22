@@ -1,5 +1,6 @@
 {
   pkgs,
+	config,
   ...
 }:
 {
@@ -29,6 +30,11 @@
       package = pkgs.papirus-icon-theme;
       dark = "Papirus Dark";
     };
+	targets = {
+		firefox = {
+			profileNames = ["lenchog"];
+		};
+	};
   };
   #wayland.windowManager.hyprland.settings.monitor = [ "HDMI-A-1, highres, 0x0, 1.5" ];
   blur = false;

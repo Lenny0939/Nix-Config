@@ -135,12 +135,9 @@ with specialArgs;
     };
     graphics = {
       enable = gui;
+			enable32Bit = gui;
       extraPackages = lib.mkIf laptop [ pkgs.intel-media-driver ];
     };
-		opengl = {
-			enable = true;
-			driSupport32Bit = true;
-		};
   };
   musnix.enable = true;
   services = {

@@ -1,12 +1,8 @@
-{ config, ... }:
+{ ... }:
 {
-  services.mako = with config.colorScheme.palette; {
-    #font = "${config.font}";
-    # backgroundColor = "#${base00}";
-    # borderColor = "#${base0E}";
+  services.mako.settings = {
     borderRadius = 5;
     borderSize = 2;
-    # textColor = "#${base05}";
     layer = "overlay";
     height = 200;
     defaultTimeout = 5000;

@@ -30,7 +30,7 @@
   wayland.windowManager.hyprland.enable = specialArgs.gui;
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
-    inputs.stylix.homeManagerModules.stylix
+    inputs.stylix.homeModules.stylix
 		inputs.niri.homeModules.niri
     ../modules/options.nix
     ../scripts/wallpaper.nix

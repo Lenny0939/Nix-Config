@@ -55,7 +55,7 @@
         file = "p10k.zsh";
       }
     ];
-    initExtra = ''
+    initContent = ''
             ${pkgs.fastfetch}/bin/fastfetch
       			bindkey '^H' backward-kill-word
     '';
