@@ -7,8 +7,6 @@
     dolphin-emu
     gh
     git
-    #godot_4
-    reaper
     # Utilities
     zip
     unzip
@@ -17,30 +15,20 @@
     fzf
     lsd
     ncdu
-    bat
-    nix-output-monitor
     # Apps
-    vital
-    distrho-ports
     spotify
     blanket
     bottom # Task manager except cool
-    speedtest-cli
-    acpi
     webcord
     pavucontrol
     yt-dlp
     audacity
     qmk
     prismlauncher
-    libnotify
     hyprshot
     wl-clipboard
     nix-search-cli
-    qmk
-    brightnessctl
     easyeffects
-    trashy
     (lutris.override {
       extraPkgs = pkgs: [
         wine-wayland
