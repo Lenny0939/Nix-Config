@@ -14,8 +14,10 @@
         # minecraft
         25565
         25564
-        # photoprism (tmp)
+        # photoprism
         2342
+				# grafana
+				3000
       ];
       allowedUDPPorts = [
         51820
@@ -33,13 +35,13 @@
   };
   security.acme = {
     acceptTerms = true;
-    #defaults.email = "${config.sops.secrets."email"}";
     defaults.email = "lennyescott@gmail.com";
     certs."lench.org" = {
       dnsProvider = "desec";
+			webroot = null;
       environmentFile = "${pkgs.writeText "desec-creds" ''
-        				DESEC_TOKEN_FILE=${config.sops.secrets."desec-token".path}
-        			''}";
+        DESEC_TOKEN_FILE=${config.sops.secrets."desec-token".path}
+      ''}";
     };
   };
   services.nginx = {
@@ -54,17 +56,36 @@
         };
       in
       {
+        "grafana.lench.org" = (
+          SSL
+          // {
+            locations."/" = {
+							proxyPass = "http://127.0.0.1:3000/";
+							proxyWebsockets = true;
+						};
+          }
+        );
         "photos.lench.org" = (
           SSL
           // {
             locations."/".proxyPass = "http://127.0.0.1:2342/";
           }
         );
-        /*
-          "search.lench.org" = (SSL // {
+        "search.lench.org" = (
+          SSL
+          // {
             locations."/".proxyPass = "http://127.0.0.1:8888/";
-          });
-        */
+          }
+        );
+        /* "lench.org" = (
+          SSL
+          // {
+            locations."/" = {
+							index = "test.html";
+							root = ".";
+						};
+          }
+        ); */
       };
   };
 }
