@@ -14,7 +14,7 @@
         nix-shell = "${pkgs.nix-output-monitor}/bin/nom-shell";
       */
     };
-    history.path = "$HOME/zsh_history";
+    history.path = "$HOME/.zsh_history";
     plugins = [
       {
         name = "zsh-autosuggestions";
