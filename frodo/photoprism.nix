@@ -7,8 +7,7 @@
     address = "0.0.0.0";
     settings = {
       PHOTOPRISM_ADMIN_USER = "escott";
-      #PHOTOPRISM_ADMIN_PASSWORD = "${config.sops.secrets."photoprism-password"}";
-      PHOTOPRISM_ADMIN_PASSWORD = "beanbag";
+      #PHOTOPRISM_ADMIN_PASSWORD = "${builtins.readFile (config.sops.secrets."photoprism-password")}";
       PHOTOPRISM_DEFAULT_LOCALE = "en";
       PHOTOPRISM_DATABASE_DRIVER = "mysql";
       PHOTOPRISM_DATABASE_NAME = "photoprism";
