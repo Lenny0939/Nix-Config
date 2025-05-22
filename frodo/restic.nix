@@ -3,7 +3,7 @@
   services.restic.backups = {
     b2 = {
       paths = [
-        "/var/lib/minecraft/valhelsia/world"
+        "/var/lib/minecraft/final-clan/world"
         "/var/lib/garf/scores.db"
       ];
       repository = "/var/restic";
