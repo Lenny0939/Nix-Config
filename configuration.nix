@@ -10,7 +10,7 @@ with specialArgs;
   imports =
     [
       inputs.home-manager.nixosModules.home-manager
-      #inputs.lix-module.nixosModules.default
+      inputs.lix-module.nixosModules.default
       inputs.musnix.nixosModules.musnix
       (
         if desktop then
@@ -37,6 +37,7 @@ with specialArgs;
           ./frodo/searx.nix
           ./frodo/blocky.nix
           ./frodo/networking.nix
+					./frodo/grafana.nix
           ./modules/sops.nix
           ./frodo/restic.nix
           ./frodo/photoprism.nix
@@ -64,7 +65,6 @@ with specialArgs;
   programs = {
     gamescope = {
       enable = games;
-      capSysNice = true;
     };
     adb.enable = laptop;
     zsh.enable = true;
@@ -116,10 +116,12 @@ with specialArgs;
     consoleLogLevel = 0;
     initrd = {
       verbose = false;
+			kernelModules = lib.mkIf desktop ["nvidia"];
     };
     kernelParams = [
       "quiet"
       "udev.log_level=0"
+			(if desktop then "nvidia-drm.modeset=1" else {})
     ];
     kernelPackages = pkgs.linuxPackages_zen;
   };
@@ -128,12 +130,17 @@ with specialArgs;
     bluetooth.enable = gui;
     nvidia = lib.mkIf desktop {
       open = false;
+			modesetting.enable = true;
       package = config.boot.kernelPackages.nvidiaPackages.beta;
     };
     graphics = {
       enable = gui;
       extraPackages = lib.mkIf laptop [ pkgs.intel-media-driver ];
     };
+		opengl = {
+			enable = true;
+			driSupport32Bit = true;
+		};
   };
   musnix.enable = true;
   services = {
