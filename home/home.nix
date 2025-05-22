@@ -19,6 +19,7 @@
     helix.enable = true;
     kitty.enable = specialArgs.gui;
     ghostty.enable = specialArgs.gui;
+		niri.enable = specialArgs.gui;
     #slippi-launcher.enable = specialArgs.games;
   };
   services = {
@@ -30,12 +31,14 @@
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     inputs.stylix.homeManagerModules.stylix
+		inputs.niri.homeModules.niri
     ../modules/options.nix
     ../scripts/wallpaper.nix
     ./mangohud.nix
     ./firefox.nix
     ./fastfetch.nix
     ./wofi.nix
+		./niri.nix
     ./git.nix
     ./hyprland.nix
     ./packages.nix
